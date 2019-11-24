@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="app_name"> Nimax-Cocktails</string>
+
+    <!-- Translations for the menu activity -->
+    <string name="menu_title"> Nimax </string>
+    <string name="menu_recipes"> Recipes </string>
+    <string name="menu_mixing"> Mixing </string>
+    <string name="menu_drinkers"> Drinkers </string>
+    <string name="menu_settings"> Settings </string>
+
+</resources>
