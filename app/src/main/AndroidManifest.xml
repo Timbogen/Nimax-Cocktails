@@ -10,10 +10,18 @@
         android:theme="@style/AppTheme"
         android:fullBackupContent="@xml/backup_descriptor"
         android:allowBackup="false">
-        <activity android:name=".drinkers.DrinkersActivity" />
-        <activity android:name=".mixing.MixingActivity" />
-        <activity android:name=".recipes.RecipesActivity" />
-        <activity android:name=".settings.SettingsActivity" />
+        <activity
+            android:name=".drinkers.DrinkersActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
+            android:name=".mixing.MixingActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
+            android:name=".recipes.RecipesActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">

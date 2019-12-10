@@ -15,4 +15,18 @@
     <string name="image_drinkers"> Image of person </string>
     <string name="image_settings"> Image of gear </string>
 
+    <!-- Transition names -->
+    <string name="transition_recipes_layout"> recipesLayout </string>
+    <string name="transition_recipes_logo"> recipesLogo </string>
+    <string name="transition_recipes_title"> recipesTitle </string>
+    <string name="transition_mixing_layout"> mixingLayout </string>
+    <string name="transition_mixing_logo"> mixingLogo </string>
+    <string name="transition_mixing_title"> mixingTitle </string>
+    <string name="transition_drinkers_layout"> drinkersLayout </string>
+    <string name="transition_drinkers_logo"> drinkersLogo </string>
+    <string name="transition_drinkers_title"> drinkersTitle </string>
+    <string name="transition_settings_layout"> settingsLayout </string>
+    <string name="transition_settings_logo"> settingsLogo </string>
+    <string name="transition_settings_title"> settingsTitle </string>
+
 </resources>
