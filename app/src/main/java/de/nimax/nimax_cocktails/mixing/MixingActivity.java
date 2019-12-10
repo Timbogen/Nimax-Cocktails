@@ -1,4 +1,4 @@
-package com.example.nimax_cocktails.mixing;
+package de.nimax.nimax_cocktails.mixing;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
@@ -8,8 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.nimax_cocktails.MainActivity;
-import com.example.nimax_cocktails.R;
+import de.nimax.nimax_cocktails.MainActivity;
+import com.nimax.nimax_cocktails.R;
 
 public class MixingActivity extends AppCompatActivity {
 

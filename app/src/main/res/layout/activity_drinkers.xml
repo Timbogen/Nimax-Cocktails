@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
-    tools:context=".drinkers.DrinkersActivity">
+    tools:context="de.nimax.nimax_cocktails.drinkers.DrinkersActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/drinkers_layout"

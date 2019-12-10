@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.nimax_cocktails">
+    package="com.nimax.nimax_cocktails">
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -11,23 +11,28 @@
         android:fullBackupContent="@xml/backup_descriptor"
         android:allowBackup="false">
         <activity
-            android:name=".drinkers.DrinkersActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:name="de.nimax.nimax_cocktails.drinkers.DrinkersActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".mixing.MixingActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:name="de.nimax.nimax_cocktails.mixing.MixingActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".recipes.RecipesActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:name="de.nimax.nimax_cocktails.recipes.RecipesActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".settings.SettingsActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:name="de.nimax.nimax_cocktails.settings.SettingsActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:name="de.nimax.nimax_cocktails.MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

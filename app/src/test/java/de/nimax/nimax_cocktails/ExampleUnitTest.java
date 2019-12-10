@@ -1,4 +1,4 @@
-package com.example.nimax_cocktails;
+package de.nimax.nimax_cocktails;
 
 import org.junit.Test;
 
