@@ -3,13 +3,20 @@
     package="com.example.nimax_cocktails">
 
     <application
-        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" android:theme="@style/Theme.AppCompat.NoActionBar">
+        android:theme="@style/AppTheme"
+        android:fullBackupContent="@xml/backup_descriptor"
+        android:allowBackup="false">
+        <activity android:name=".drinkers.DrinkersActivity" />
+        <activity android:name=".mixing.MixingActivity" />
+        <activity android:name=".recipes.RecipesActivity" />
+        <activity android:name=".settings.SettingsActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

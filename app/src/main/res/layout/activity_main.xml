@@ -41,6 +41,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_margin="12dp"
+                android:onClick="openRecipesActivity"
                 android:background="@drawable/menu_button">
 
                     <ImageView
@@ -48,7 +49,8 @@
                         android:layout_height="match_parent"
                         android:paddingBottom="30dp"
                         android:layout_margin="30dp"
-                        android:src="@drawable/menu_button_recipes"/>
+                        android:src="@drawable/menu_button_recipes"
+                        android:contentDescription="@string/image_recipes"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -74,7 +76,8 @@
                         android:layout_height="match_parent"
                         android:paddingBottom="30dp"
                         android:layout_margin="30dp"
-                        android:src="@drawable/menu_button_mixing"/>
+                        android:src="@drawable/menu_button_mixing"
+                        android:contentDescription="@string/image_mixing"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -108,7 +111,8 @@
                         android:layout_height="match_parent"
                         android:paddingBottom="30dp"
                         android:layout_margin="30dp"
-                        android:src="@drawable/menu_button_drinkers"/>
+                        android:src="@drawable/menu_button_drinkers"
+                        android:contentDescription="@string/image_drinkers"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -134,7 +138,8 @@
                         android:layout_height="match_parent"
                         android:paddingBottom="30dp"
                         android:layout_margin="30dp"
-                        android:src="@drawable/menu_button_settings"/>
+                        android:src="@drawable/menu_button_settings"
+                        android:contentDescription="@string/image_settings"/>
 
                     <TextView
                         android:layout_width="match_parent"

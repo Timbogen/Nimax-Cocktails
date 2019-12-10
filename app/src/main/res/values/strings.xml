@@ -9,4 +9,10 @@
     <string name="menu_drinkers"> Drinkers </string>
     <string name="menu_settings"> Settings </string>
 
+    <!-- Image description -->
+    <string name="image_recipes"> Image of lens </string>
+    <string name="image_mixing"> Image of cocktail </string>
+    <string name="image_drinkers"> Image of person </string>
+    <string name="image_settings"> Image of gear </string>
+
 </resources>
