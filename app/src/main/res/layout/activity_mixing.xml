@@ -27,7 +27,7 @@
         android:layout_margin="16dp"
         android:text="@string/menu_mixing"
         android:textColor="@color/black"
-        android:textSize="32sp"
+        android:textSize="36sp"
         tools:layout_editor_absoluteX="222dp"
         tools:layout_editor_absoluteY="16dp" />
 
@@ -35,7 +35,7 @@
         android:id="@+id/mixing_logo"
         android:transitionName="@string/transition_mixing_logo"
         android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_height="56dp"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -44,5 +44,82 @@
         android:src="@drawable/menu_button_mixing"
         tools:layout_editor_absoluteX="347dp"
         tools:layout_editor_absoluteY="16dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="100dp"
+        app:layout_constraintTop_toBottomOf="@id/mixing_logo"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="#FF909090"
+        android:layout_marginStart="100dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/mixing_logo">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/mixing_title_anti_alc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
+                android:textSize="28sp"
+                android:textColor="@color/black"
+                android:text="@string/mixing_anti_alc"
+                android:layout_marginStart="24dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#FF909090" />
+
+            <com.synnapps.carouselview.CarouselView
+                android:id="@+id/carousel_anti_alc"
+                android:layout_width="match_parent"
+                android:layout_height="290dp"
+                app:layout_constraintTop_toBottomOf="@id/mixing_title"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:fillColor="#000000"
+                app:radius="3dp"
+                app:strokeColor="@color/black"
+                app:strokeWidth="1dp">
+
+            </com.synnapps.carouselview.CarouselView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
+                android:textSize="28sp"
+                android:textColor="@color/black"
+                android:text="@string/mixing_alc"
+                android:layout_marginStart="24dp" />
+
+            <com.synnapps.carouselview.CarouselView
+                android:id="@+id/carousel_alc"
+                android:layout_width="match_parent"
+                android:layout_height="290dp"
+                app:layout_constraintTop_toBottomOf="@id/mixing_title"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginBottom="32dp"
+                app:fillColor="#000000"
+                app:radius="3dp"
+                app:strokeColor="@color/black"
+                app:strokeWidth="1dp">
+
+            </com.synnapps.carouselview.CarouselView>
+
+        </LinearLayout>
+
+
+    </ScrollView>
     
 </androidx.constraintlayout.widget.ConstraintLayout>
