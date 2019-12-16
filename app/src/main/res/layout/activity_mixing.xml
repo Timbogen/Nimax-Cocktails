@@ -78,7 +78,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#FF909090" />
+                android:layout_marginEnd="100dp"
+                android:background="#FF909090"
+                android:layout_marginRight="100dp" />
 
             <com.synnapps.carouselview.CarouselView
                 android:id="@+id/carousel_anti_alc"
@@ -89,6 +91,7 @@
                 app:fillColor="#000000"
                 app:radius="3dp"
                 app:strokeColor="@color/black"
+                app:autoPlay="false"
                 app:strokeWidth="1dp">
 
             </com.synnapps.carouselview.CarouselView>
@@ -103,16 +106,24 @@
                 android:text="@string/mixing_alc"
                 android:layout_marginStart="24dp" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginEnd="100dp"
+                android:background="#FF909090"
+                android:layout_marginRight="100dp" />
+
             <com.synnapps.carouselview.CarouselView
                 android:id="@+id/carousel_alc"
                 android:layout_width="match_parent"
                 android:layout_height="290dp"
                 app:layout_constraintTop_toBottomOf="@id/mixing_title"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="64dp"
                 app:fillColor="#000000"
                 app:radius="3dp"
                 app:strokeColor="@color/black"
+                app:autoPlay="false"
                 app:strokeWidth="1dp">
 
             </com.synnapps.carouselview.CarouselView>
