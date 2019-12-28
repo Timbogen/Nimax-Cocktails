@@ -36,18 +36,20 @@
         <string name="mixing_anti_alc"> Non-alcoholic drinks </string>
         <string name="mixing_level"> Level </string>
         <string name="mixing_alc"> Alcoholic drinks </string>
+        <string name="mixing_add_drink"> Added Amount per click: </string>
+        <string name="mixing_ml"> ml </string>
+        <string name="drink_drink"> Getränk </string>
+        <string name="drink_empty"> Leeren </string>
+        <string name="drink_amount"> Menge </string>
 
         <!-- Image description -->
         <string name="mixing_image_drinks"> Image of bottle </string>
+        <string name="mixing_image_trashcan"> Image of trashcan </string>
 
     <!-- Drinkers Activity -->
     <string name="menu_drinkers"> Drinkers </string>
 
-
-
     <!-- Settings Activity -->
     <string name="menu_settings"> Settings </string>
-
-
 
 </resources>

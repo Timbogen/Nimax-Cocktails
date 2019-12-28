@@ -1,6 +1,6 @@
-package de.nimax.nimax_cocktails.mixing.models;
+package de.nimax.nimax_cocktails.models;
 
-public class MixingDrink {
+public class Drink {
 
     /**
      * Name of the drink
@@ -15,15 +15,18 @@ public class MixingDrink {
      */
     public double alcohol;
     /**
-     * Water level
+     * How much of the drink is mixed in
+     */
+    public int amount;
+    /**
+     * How much is available
      */
     public int level;
 
-    public MixingDrink(String name, int image, double alcohol, int level) {
+    public Drink(String name, int image, double alcohol, int level) {
         this.image = image;
         this.alcohol = alcohol;
         this.name = name;
         this.level = level;
     }
-
 }

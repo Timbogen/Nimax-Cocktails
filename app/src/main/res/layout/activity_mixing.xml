@@ -1,63 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
     tools:context="de.nimax.nimax_cocktails.mixing.MixingActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mixing_layout"
-        android:transitionName="@string/transition_mixing_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/menu_button"
-        android:elevation="-1dp">
+        android:elevation="-1dp"
+        android:transitionName="@string/transition_mixing_layout">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/mixing_title"
-        android:transitionName="@string/transition_mixing_title"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/mixing_logo"
         android:layout_margin="16dp"
         android:text="@string/menu_mixing"
         android:textColor="@color/black"
         android:textSize="36sp"
+        android:transitionName="@string/transition_mixing_title"
+        app:layout_constraintRight_toLeftOf="@id/mixing_logo"
+        app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="222dp"
         tools:layout_editor_absoluteY="16dp" />
 
     <ImageView
         android:id="@+id/mixing_logo"
-        android:transitionName="@string/transition_mixing_logo"
         android:layout_width="48dp"
         android:layout_height="56dp"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         android:layout_margin="16dp"
         android:contentDescription="@string/image_mixing"
         android:src="@drawable/menu_button_mixing"
+        android:transitionName="@string/transition_mixing_logo"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:layout_editor_absoluteX="347dp"
         tools:layout_editor_absoluteY="16dp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
+        android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        app:layout_constraintTop_toBottomOf="@id/mixing_logo"
-        app:layout_constraintRight_toRightOf="parent"
         android:background="#FF909090"
-        android:layout_marginStart="100dp" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mixing_logo" />
+
+    <TableLayout
+        android:id="@+id/mixing_table_filled"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mixing_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:stretchColumns="0">
+    </TableLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/mixing_logo">
+        app:layout_constraintTop_toBottomOf="@id/mixing_table_filled">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,69 +78,149 @@
                 android:id="@+id/mixing_title_anti_alc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="24dp"
-                android:textSize="28sp"
-                android:textColor="@color/black"
                 android:text="@string/mixing_anti_alc"
-                android:layout_marginStart="24dp" />
+                android:textColor="@color/black"
+                android:textSize="28sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginEnd="100dp"
-                android:background="#FF909090"
-                android:layout_marginRight="100dp" />
+                android:layout_marginRight="100dp"
+                android:background="#FF909090" />
 
             <com.synnapps.carouselview.CarouselView
                 android:id="@+id/carousel_anti_alc"
                 android:layout_width="match_parent"
                 android:layout_height="290dp"
-                app:layout_constraintTop_toBottomOf="@id/mixing_title"
-                app:layout_constraintLeft_toLeftOf="parent"
+                app:autoPlay="false"
                 app:fillColor="#000000"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mixing_title"
                 app:radius="3dp"
                 app:strokeColor="@color/black"
-                app:autoPlay="false"
                 app:strokeWidth="1dp">
 
             </com.synnapps.carouselview.CarouselView>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:text="@string/mixing_add_drink"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/spinner_amount_non_alc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:popupBackground="@color/colorPrimary"
+                    android:layout_marginEnd="10dp" />
+
+                <TextView
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintRight_toRightOf="@id/spinner_amount_non_alc"
+                    android:layout_marginRight="25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mixing_ml"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:layout_marginEnd="25dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="24dp"
-                android:textSize="28sp"
-                android:textColor="@color/black"
                 android:text="@string/mixing_alc"
-                android:layout_marginStart="24dp" />
+                android:textColor="@color/black"
+                android:textSize="28sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginEnd="100dp"
-                android:background="#FF909090"
-                android:layout_marginRight="100dp" />
+                android:layout_marginRight="100dp"
+                android:background="#FF909090" />
 
             <com.synnapps.carouselview.CarouselView
                 android:id="@+id/carousel_alc"
                 android:layout_width="match_parent"
                 android:layout_height="290dp"
-                app:layout_constraintTop_toBottomOf="@id/mixing_title"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginBottom="64dp"
+                app:autoPlay="false"
                 app:fillColor="#000000"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mixing_title"
                 app:radius="3dp"
                 app:strokeColor="@color/black"
-                app:autoPlay="false"
                 app:strokeWidth="1dp">
 
             </com.synnapps.carouselview.CarouselView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/carousel_alc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="100dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:text="@string/mixing_add_drink"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/spinner_amount_alc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:popupBackground="@color/colorPrimary"
+                    android:layout_marginEnd="10dp" />
+
+                <TextView
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintRight_toRightOf="@id/spinner_amount_alc"
+                    android:layout_marginRight="25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mixing_ml"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:layout_marginEnd="25dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
 
     </ScrollView>
-    
+
 </androidx.constraintlayout.widget.ConstraintLayout>
