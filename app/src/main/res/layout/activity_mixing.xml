@@ -17,6 +17,37 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <ImageView
+        android:id="@+id/mixing_save"
+        android:layout_width="32dp"
+        android:layout_height="56dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/image_mixing"
+        android:src="@drawable/mixing_button_save"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:layout_editor_absoluteX="347dp"
+        tools:layout_editor_absoluteY="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="16dp" />
+
+    <ImageView
+        android:id="@+id/mixing_play"
+        android:layout_width="32dp"
+        android:layout_height="56dp"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/image_mixing"
+        android:src="@drawable/mixing_button_play"
+        app:layout_constraintLeft_toRightOf="@id/mixing_save"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:layout_editor_absoluteX="347dp"
+        tools:layout_editor_absoluteY="16dp" />
+
     <TextView
         android:id="@+id/mixing_title"
         android:layout_width="wrap_content"
@@ -48,26 +79,49 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginLeft="140dp"
         android:background="#FF909090"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mixing_logo" />
 
-    <TableLayout
-        android:id="@+id/mixing_table_filled"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mixing_logo"
+    <ScrollView
+        android:id="@+id/mixing_table_scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="20dp"
-        android:stretchColumns="0">
-    </TableLayout>
+        app:layout_constraintHeight_max="200dp"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mixing_logo">
+
+        <TableLayout
+            android:id="@+id/mixing_table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingLeft="20dp"
+            android:stretchColumns="0"/>
+
+    </ScrollView>
+
+    <View
+        android:id="@+id/mixing_table_underline"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#FF909090"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mixing_table_scroll" />
 
     <ScrollView
+        android:focusable="true"
+        android:descendantFocusability="beforeDescendants"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/mixing_table_filled">
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mixing_table_scroll">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="18dp"
                 android:text="@string/mixing_anti_alc"
                 android:textColor="@color/black"
                 android:textSize="28sp" />
@@ -112,36 +166,36 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginLeft="24dp"
                     android:text="@string/mixing_add_drink"
                     android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Spinner
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    android:layout_marginRight="10dp"
                     android:id="@+id/spinner_amount_non_alc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
                     android:popupBackground="@color/colorPrimary"
-                    android:layout_marginEnd="10dp" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintRight_toRightOf="@id/spinner_amount_non_alc"
-                    android:layout_marginRight="25dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginRight="25dp"
                     android:text="@string/mixing_ml"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:layout_marginEnd="25dp" />
+                    app:layout_constraintRight_toRightOf="@id/spinner_amount_non_alc"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -177,44 +231,44 @@
             </com.synnapps.carouselview.CarouselView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/carousel_alc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="100dp"
-                android:orientation="horizontal">
+                android:layout_marginBottom="24dp"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/carousel_alc">
 
                 <TextView
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginLeft="24dp"
                     android:text="@string/mixing_add_drink"
                     android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Spinner
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    android:layout_marginRight="10dp"
                     android:id="@+id/spinner_amount_alc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
                     android:popupBackground="@color/colorPrimary"
-                    android:layout_marginEnd="10dp" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintRight_toRightOf="@id/spinner_amount_alc"
-                    android:layout_marginRight="25dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginRight="25dp"
                     android:text="@string/mixing_ml"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:layout_marginEnd="25dp" />
+                    app:layout_constraintRight_toRightOf="@id/spinner_amount_alc"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

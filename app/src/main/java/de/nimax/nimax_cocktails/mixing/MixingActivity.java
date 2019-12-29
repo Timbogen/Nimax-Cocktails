@@ -5,15 +5,15 @@ import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.util.Pair;
 import androidx.viewpager.widget.ViewPager;
 
+import android.animation.LayoutTransition;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -28,11 +28,6 @@ import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageClickListener;
 
 public class MixingActivity extends AppCompatActivity {
-
-    /**
-     * Max volume of a glass used for the machine
-     */
-    public static int MAX_AMOUNT = 350;
     /**
      * Amount that is added to the mix on click on a non alc drink
      */
@@ -45,6 +40,10 @@ public class MixingActivity extends AppCompatActivity {
      * The current mix
      */
     private Mix mix = new Mix("Unnamed");
+    /**
+     * The current activity
+     */
+    private Activity activity = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,23 +84,11 @@ public class MixingActivity extends AppCompatActivity {
         antiAlcCarousel.setImageClickListener(new ImageClickListener() {
             @Override
             public void onClick(int position) {
-                mix.addDrink(Bar.ANTI_ALC.drinks[position], addAmountNonAlc);
+                mix.addDrink(Bar.ANTI_ALC.drinks[position], addAmountNonAlc, activity);
                 refreshTable();
             }
         });
-        antiAlcCarousel.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
 
-            @Override
-            public void onPageSelected(int position) {
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-            }
-        });
         // The alc carousel
         CarouselView alcCarousel = findViewById(R.id.carousel_alc);
         alcCarousel.setPageCount(Bar.ALC.drinks.length);
@@ -109,28 +96,18 @@ public class MixingActivity extends AppCompatActivity {
         alcCarousel.setImageClickListener(new ImageClickListener() {
             @Override
             public void onClick(int position) {
-                mix.addDrink(Bar.ALC.drinks[position], addAmountAlc);
+                mix.addDrink(Bar.ALC.drinks[position], addAmountAlc, activity);
                 refreshTable();
-            }
-        });
-        alcCarousel.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
             }
         });
     }
 
+    /**
+     * Method to setup the selection for the spinners
+     */
     private void setupSelection() {
         // Generate the possible values for the spinners
-        Integer[] values = new Integer[MAX_AMOUNT / 10];
+        Integer[] values = new Integer[Mix.MAX_AMOUNT / 10];
         for (int i = 0; i < values.length; i++) {
             values[i] = (i + 1) * 10;
         }
@@ -147,6 +124,7 @@ public class MixingActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+
         // Get and modify the non alc spinner
         Spinner alc = findViewById(R.id.spinner_amount_alc);
         alc.setAdapter(new ArrayAdapter<>(this, R.layout.amount_spinner_item, values));
@@ -167,8 +145,15 @@ public class MixingActivity extends AppCompatActivity {
      */
     private void refreshTable() {
         // Get the table
-        TableLayout table = findViewById(R.id.mixing_table_filled);
+        TableLayout table = findViewById(R.id.mixing_table);
         table.removeAllViews();
+        // Check if the mix is empty
+        View underline = findViewById(R.id.mixing_table_underline);
+        if (mix.isEmpty()) {
+            underline.setVisibility(View.INVISIBLE);
+            return;
+        }
+        underline.setVisibility(View.VISIBLE);
         // Fill the table
         for (int i = 0; i < mix.drinks.size(); i++) {
             // Declare the variables
@@ -211,6 +196,14 @@ public class MixingActivity extends AppCompatActivity {
             // Add table row to table
             table.addView(tr);
         }
+        // Scroll down the scrollview
+        final ScrollView scroll = findViewById(R.id.mixing_table_scroll);
+        scroll.post(new Runnable() {
+            @Override
+            public void run() {
+                scroll.fullScroll(ScrollView.FOCUS_DOWN);
+            }
+        });
     }
 
     /**
