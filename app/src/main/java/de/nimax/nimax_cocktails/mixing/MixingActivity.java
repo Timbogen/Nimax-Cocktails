@@ -3,9 +3,7 @@ package de.nimax.nimax_cocktails.mixing;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.util.Pair;
-import androidx.viewpager.widget.ViewPager;
 
-import android.animation.LayoutTransition;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,8 +18,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import de.nimax.nimax_cocktails.MainActivity;
-import de.nimax.nimax_cocktails.models.Bar;
-import de.nimax.nimax_cocktails.models.Mix;
+import de.nimax.nimax_cocktails.mixing.models.Drinks;
+import de.nimax.nimax_cocktails.mixing.models.Mix;
 
 import com.nimax.nimax_cocktails.R;
 import com.synnapps.carouselview.CarouselView;
@@ -79,24 +77,24 @@ public class MixingActivity extends AppCompatActivity {
     private void setupCarousel() {
         // The anti alc carousel
         CarouselView antiAlcCarousel = findViewById(R.id.carousel_anti_alc);
-        antiAlcCarousel.setPageCount(Bar.ANTI_ALC.drinks.length);
-        antiAlcCarousel.setViewListener(new MixingViewListener(Bar.ANTI_ALC, this));
+        antiAlcCarousel.setPageCount(Drinks.NON_ALC.drinks.length);
+        antiAlcCarousel.setViewListener(new MixingViewListener(Drinks.NON_ALC, this));
         antiAlcCarousel.setImageClickListener(new ImageClickListener() {
             @Override
             public void onClick(int position) {
-                mix.addDrink(Bar.ANTI_ALC.drinks[position], addAmountNonAlc, activity);
+                mix.addDrink(Drinks.NON_ALC.drinks[position], addAmountNonAlc, activity);
                 refreshTable();
             }
         });
 
         // The alc carousel
         CarouselView alcCarousel = findViewById(R.id.carousel_alc);
-        alcCarousel.setPageCount(Bar.ALC.drinks.length);
-        alcCarousel.setViewListener(new MixingViewListener(Bar.ALC, this));
+        alcCarousel.setPageCount(Drinks.ALC.drinks.length);
+        alcCarousel.setViewListener(new MixingViewListener(Drinks.ALC, this));
         alcCarousel.setImageClickListener(new ImageClickListener() {
             @Override
             public void onClick(int position) {
-                mix.addDrink(Bar.ALC.drinks[position], addAmountAlc, activity);
+                mix.addDrink(Drinks.ALC.drinks[position], addAmountAlc, activity);
                 refreshTable();
             }
         });
@@ -113,7 +111,7 @@ public class MixingActivity extends AppCompatActivity {
         }
         // Get and modify the non alc spinner
         Spinner antiAlc = findViewById(R.id.spinner_amount_non_alc);
-        antiAlc.setAdapter(new ArrayAdapter<>(this, R.layout.amount_spinner_item, values));
+        antiAlc.setAdapter(new ArrayAdapter<>(this, R.layout.adapter_amount, values));
         antiAlc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -127,7 +125,7 @@ public class MixingActivity extends AppCompatActivity {
 
         // Get and modify the non alc spinner
         Spinner alc = findViewById(R.id.spinner_amount_alc);
-        alc.setAdapter(new ArrayAdapter<>(this, R.layout.amount_spinner_item, values));
+        alc.setAdapter(new ArrayAdapter<>(this, R.layout.adapter_amount, values));
         alc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

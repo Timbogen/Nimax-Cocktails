@@ -1,4 +1,6 @@
-package de.nimax.nimax_cocktails.models;
+package de.nimax.nimax_cocktails.mixing.models;
+
+import androidx.annotation.NonNull;
 
 public class Drink {
 
@@ -23,10 +25,32 @@ public class Drink {
      */
     public int level;
 
+    /**
+     * Normal constructor
+     */
     public Drink(String name, int image, double alcohol, int level) {
         this.image = image;
         this.alcohol = alcohol;
         this.name = name;
         this.level = level;
+    }
+
+    /**
+     * Copy-Constructor
+     */
+    public Drink(Drink drink) {
+        this.image = drink.image;
+        this.alcohol = drink.alcohol;
+        this.name = drink.name;
+        this.level = drink.level;
+    }
+
+    /**
+     * For debugging purposes
+     */
+    @NonNull
+    @Override
+    public String toString() {
+        return "Name: " + name + ", Amount: " + amount;
     }
 }

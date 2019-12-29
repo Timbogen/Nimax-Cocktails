@@ -10,8 +10,13 @@ import android.view.View;
 
 import com.nimax.nimax_cocktails.R;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 import de.nimax.nimax_cocktails.drinkers.DrinkersActivity;
 import de.nimax.nimax_cocktails.mixing.MixingActivity;
+import de.nimax.nimax_cocktails.mixing.models.Bar;
 import de.nimax.nimax_cocktails.recipes.RecipesActivity;
 import de.nimax.nimax_cocktails.settings.SettingsActivity;
 
@@ -21,6 +26,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        loadRecipes();
+    }
+
+    /**
+     * Method to load the recipes
+     */
+    private void loadRecipes() {
+        // Load the recipes
+        try {
+            // Set the standard recipe file path
+            Bar.setupPath(getApplicationContext().getFilesDir().getPath() + "/recipes.json");
+            // Create input stream
+            InputStream is = new FileInputStream(Bar.path);
+            // Load Recipes
+            Bar.loadMixes(is);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

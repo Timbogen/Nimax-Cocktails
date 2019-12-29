@@ -26,7 +26,6 @@
         app:layout_constraintRight_toLeftOf="@id/drinkers_logo"
         android:layout_margin="16dp"
         android:text="@string/menu_drinkers"
-        android:textColor="@color/black"
         android:textSize="32sp"
         tools:layout_editor_absoluteX="222dp"
         tools:layout_editor_absoluteY="16dp" />
@@ -51,7 +50,7 @@
         android:layout_marginLeft="140dp"
         app:layout_constraintTop_toBottomOf="@id/drinkers_logo"
         app:layout_constraintRight_toRightOf="parent"
-        android:background="#FF909090"
+        android:background="@color/grey"
         android:layout_marginStart="140dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

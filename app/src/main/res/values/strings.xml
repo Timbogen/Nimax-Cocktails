@@ -1,55 +1,72 @@
 <resources>
 
+    <!--               -->
     <!-- Main Activity -->
+    <!--               -->
     <string name="app_name"> Nimax-Cocktails</string>
     <string name="menu_title"> Nimax </string>
 
-        <!-- Image description -->
-        <string name="image_recipes"> Image of lens </string>
-        <string name="image_mixing"> Image of cocktail </string>
-        <string name="image_drinkers"> Image of person </string>
-        <string name="image_settings"> Image of gear </string>
+    <!-- Image description -->
+    <string name="image_recipes"> Image of lens </string>
+    <string name="image_mixing"> Image of cocktail </string>
+    <string name="image_drinkers"> Image of person </string>
+    <string name="image_settings"> Image of gear </string>
 
-        <!-- Transition names -->
-        <string name="transition_recipes_layout"> recipesLayout </string>
-        <string name="transition_recipes_logo"> recipesLogo </string>
-        <string name="transition_recipes_title"> recipesTitle </string>
-        <string name="transition_mixing_layout"> mixingLayout </string>
-        <string name="transition_mixing_logo"> mixingLogo </string>
-        <string name="transition_mixing_title"> mixingTitle </string>
-        <string name="transition_drinkers_layout"> drinkersLayout </string>
-        <string name="transition_drinkers_logo"> drinkersLogo </string>
-        <string name="transition_drinkers_title"> drinkersTitle </string>
-        <string name="transition_settings_layout"> settingsLayout </string>
-        <string name="transition_settings_logo"> settingsLogo </string>
-        <string name="transition_settings_title"> settingsTitle </string>
+    <!-- Transition names -->
+    <string name="transition_recipes_layout"> recipesLayout </string>
+    <string name="transition_recipes_logo"> recipesLogo </string>
+    <string name="transition_recipes_title"> recipesTitle </string>
+    <string name="transition_mixing_layout"> mixingLayout </string>
+    <string name="transition_mixing_logo"> mixingLogo </string>
+    <string name="transition_mixing_title"> mixingTitle </string>
+    <string name="transition_drinkers_layout"> drinkersLayout </string>
+    <string name="transition_drinkers_logo"> drinkersLogo </string>
+    <string name="transition_drinkers_title"> drinkersTitle </string>
+    <string name="transition_settings_layout"> settingsLayout </string>
+    <string name="transition_settings_logo"> settingsLogo </string>
+    <string name="transition_settings_title"> settingsTitle </string>
 
+    <!--                  -->
     <!-- Recipes Activity -->
+    <!--                  -->
     <string name="menu_recipes"> Recipes </string>
 
+    <!-- Content -->
+    <string name="recipes_search"> Search </string>
+    <string name="recipes_delete"> Delete </string>
+    <string name="recipes_load"> Load </string>
+    <string name="recipes_recipe"> Recipe </string>
 
+    <!-- Notifications -->
+    <string name="recipes_recipes_load"> A pre-made set of recipes was loaded! </string>
 
+    <!--                 -->
     <!-- Mixing Activity -->
+    <!--                 -->
     <string name="menu_mixing"> Mixing </string>
 
-        <!-- Content -->
-        <string name="mixing_anti_alc"> Non-alcoholic drinks </string>
-        <string name="mixing_level"> Level </string>
-        <string name="mixing_alc"> Alcoholic drinks </string>
-        <string name="mixing_add_drink"> How much of the drink: </string>
-        <string name="mixing_ml"> ml </string>
+    <!-- Content -->
+    <string name="mixing_anti_alc"> Non-alcoholic drinks </string>
+    <string name="mixing_level"> Level </string>
+    <string name="mixing_alc"> Alcoholic drinks </string>
+    <string name="mixing_add_drink"> How much of the drink: </string>
+    <string name="mixing_ml"> ml </string>
 
-        <!-- Notifications -->
-        <string name="mixing_max_amount"> This amount would expand the maximum size of </string>
+    <!-- Notifications -->
+    <string name="mixing_max_amount"> This amount would expand the maximum size of </string>
 
-        <!-- Image description -->
-        <string name="mixing_image_drinks"> Image of bottle </string>
-        <string name="mixing_image_trashcan"> Image of trashcan </string>
+    <!-- Image description -->
+    <string name="mixing_image_drinks"> Image of bottle </string>
+    <string name="mixing_image_trashcan"> Image of trashcan </string>
 
+    <!--                   -->
     <!-- Drinkers Activity -->
+    <!--                   -->
     <string name="menu_drinkers"> Drinkers </string>
 
+    <!--                   -->
     <!-- Settings Activity -->
+    <!--                   -->
     <string name="menu_settings"> Settings </string>
 
 </resources>

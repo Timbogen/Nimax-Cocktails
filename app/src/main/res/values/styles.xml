@@ -1,13 +1,24 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
         <!-- Colors -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
+        <item name="android:editTextStyle">@style/editText</item>
+        <item name="android:textViewStyle">@style/textView</item>
+
+    </style>
+
+    <style name="editText" parent="@android:style/Widget.EditText">
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="textView" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/black</item>
     </style>
 
 </resources>

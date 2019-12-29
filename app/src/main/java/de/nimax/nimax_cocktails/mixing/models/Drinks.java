@@ -1,15 +1,13 @@
-package de.nimax.nimax_cocktails.models;
+package de.nimax.nimax_cocktails.mixing.models;
 
 
 import com.nimax.nimax_cocktails.R;
 
-import de.nimax.nimax_cocktails.models.Drink;
-
 /**
  * Type of drinks you want to display
  */
-public enum Bar {
-    ANTI_ALC(new Drink[]{
+public enum Drinks {
+    NON_ALC(new Drink[]{
             new Drink("Bitter Lemon", R.drawable.anti_alc_bitter_lemon, 0, 1000),
             new Drink("Coca Cola", R.drawable.anti_alc_coca_cola, 0, 1500),
             new Drink("Energy Drink", R.drawable.anti_alc_energy_drink, 0, 1500),
@@ -36,7 +34,29 @@ public enum Bar {
      * Constructor
      * @param drinks defined for the enum
      */
-    Bar(Drink[] drinks) {
+    Drinks(Drink[] drinks) {
         this.drinks = drinks;
+    }
+
+    /**
+     * Method to search for a drink by its name
+     * @param name of the drink
+     * @return the matching drink
+     */
+    public static Drink getDrink(String name) {
+        // Iterate through the non alcoholic drinks
+        for (Drink d : NON_ALC.drinks) {
+            if (d.name.equals(name)) {
+                return d;
+            }
+        }
+        // Iterate through the alcoholic drinks
+        for (Drink d : ALC.drinks) {
+            if (d.name.equals(name)) {
+                return d;
+            }
+        }
+        // If the name wasn't found return the first drink
+        return NON_ALC.drinks[0];
     }
 }

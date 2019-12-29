@@ -27,7 +27,6 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
                 android:textSize="20sp"
-                android:textColor="@color/black"
                 android:layout_marginLeft="20dp" />
 
             <TextView
@@ -37,7 +36,6 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
                 android:textSize="20sp"
-                android:textColor="@color/black"
                 android:layout_marginLeft="20dp" />
 
             <TextView
@@ -47,7 +45,6 @@
                 android:layout_marginTop="15dp"
                 android:text="@string/mixing_level"
                 android:textSize="20sp"
-                android:textColor="@color/black"
                 android:layout_marginLeft="20dp" />
 
             <TextView
@@ -57,7 +54,6 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
                 android:textSize="20sp"
-                android:textColor="@color/black"
                 android:layout_marginLeft="20dp" />
 
         </LinearLayout>

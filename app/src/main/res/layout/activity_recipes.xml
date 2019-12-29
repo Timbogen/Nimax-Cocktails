@@ -1,59 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
-    tools:context="de.nimax.nimax_cocktails.recipes.RecipesActivity"
-    android:background="@color/colorPrimary">
+    tools:context="de.nimax.nimax_cocktails.recipes.RecipesActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/recipes_layout"
-        android:transitionName="@string/transition_recipes_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/menu_button"
-        android:elevation="-1dp">
+        android:elevation="-1dp"
+        android:transitionName="@string/transition_recipes_layout"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/mixing_save"
+        android:layout_width="32dp"
+        android:layout_height="56dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/image_mixing"
+        android:onClick="loadRecipes"
+        android:src="@drawable/recipes_button_download"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/recipes_title"
-        android:transitionName="@string/transition_recipes_title"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/recipes_logo"
         android:layout_margin="16dp"
         android:text="@string/menu_recipes"
-        android:textColor="@color/black"
         android:textSize="32sp"
+        android:transitionName="@string/transition_recipes_title"
+        app:layout_constraintRight_toLeftOf="@id/recipes_logo"
+        app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="222dp"
         tools:layout_editor_absoluteY="16dp" />
 
     <ImageView
         android:id="@+id/recipes_logo"
-        android:transitionName="@string/transition_recipes_logo"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         android:layout_margin="16dp"
         android:contentDescription="@string/image_recipes"
         android:src="@drawable/menu_button_recipes"
+        android:transitionName="@string/transition_recipes_logo"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:layout_editor_absoluteX="347dp"
         tools:layout_editor_absoluteY="16dp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
+        android:layout_marginStart="140dp"
         android:layout_marginLeft="140dp"
-        app:layout_constraintTop_toBottomOf="@id/recipes_logo"
+        android:background="@color/grey"
         app:layout_constraintRight_toRightOf="parent"
-        android:background="#FF909090"
-        android:layout_marginStart="140dp" />
+        app:layout_constraintTop_toBottomOf="@id/recipes_logo" />
+
+    <ListView
+        android:id="@+id/recipes_list"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipes_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,5 @@
     android:paddingLeft="8dp"
     android:textAlignment="center"
     android:textSize="18sp"
-    android:textColor="@color/black"
     android:gravity="end">
 </TextView>
