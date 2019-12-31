@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nimax.nimax_cocktails">
 
     <application
@@ -11,22 +12,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name="de.nimax.nimax_cocktails.MenuActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="de.nimax.nimax_cocktails.recipes.RecipeEditActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name="de.nimax.nimax_cocktails.drinkers.DrinkersActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name="de.nimax.nimax_cocktails.mixing.MixingActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name="de.nimax.nimax_cocktails.recipes.RecipesActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name="de.nimax.nimax_cocktails.settings.SettingsActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
-            android:name="de.nimax.nimax_cocktails.MainActivity"
+            android:name="de.nimax.nimax_cocktails.StartActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

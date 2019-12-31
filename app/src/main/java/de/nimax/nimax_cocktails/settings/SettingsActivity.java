@@ -8,7 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import de.nimax.nimax_cocktails.MainActivity;
+import de.nimax.nimax_cocktails.ActivityHelper;
+import de.nimax.nimax_cocktails.MenuActivity;
 import com.nimax.nimax_cocktails.R;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -17,6 +18,8 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        // Deactivate the old transition
+        ActivityHelper.disableDefaultTransition(this);
     }
 
     /**
@@ -24,7 +27,7 @@ public class SettingsActivity extends AppCompatActivity {
      */
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MenuActivity.class);
         // The layout
         Pair<View, String> layout = new Pair<>(
                 findViewById(R.id.settings_layout), getString(R.string.transition_settings_layout));

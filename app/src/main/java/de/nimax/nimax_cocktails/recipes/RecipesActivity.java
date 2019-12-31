@@ -10,7 +10,8 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import de.nimax.nimax_cocktails.MainActivity;
+import de.nimax.nimax_cocktails.ActivityHelper;
+import de.nimax.nimax_cocktails.MenuActivity;
 import de.nimax.nimax_cocktails.mixing.models.Bar;
 
 import com.nimax.nimax_cocktails.R;
@@ -26,6 +27,8 @@ public class RecipesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipes);
+        // Deactivate the old transition
+        ActivityHelper.disableDefaultTransition(this);
         setupList();
     }
 
@@ -34,7 +37,7 @@ public class RecipesActivity extends AppCompatActivity {
      */
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MenuActivity.class);
         // The layout
         Pair<View, String> layout = new Pair<>(
                 findViewById(R.id.recipes_layout), getString(R.string.transition_recipes_layout));

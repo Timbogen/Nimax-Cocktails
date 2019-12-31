@@ -17,7 +17,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import de.nimax.nimax_cocktails.MainActivity;
+import de.nimax.nimax_cocktails.ActivityHelper;
+import de.nimax.nimax_cocktails.MenuActivity;
 import de.nimax.nimax_cocktails.mixing.models.Drinks;
 import de.nimax.nimax_cocktails.mixing.models.Mix;
 
@@ -47,6 +48,8 @@ public class MixingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mixing);
+        // Deactivate the old transition
+        ActivityHelper.disableDefaultTransition(this);
         setupCarousel();
         setupSelection();
     }
@@ -56,7 +59,7 @@ public class MixingActivity extends AppCompatActivity {
      */
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MenuActivity.class);
         // The layout
         Pair<View, String> layout = new Pair<>(
                 findViewById(R.id.mixing_layout), getString(R.string.transition_mixing_layout));

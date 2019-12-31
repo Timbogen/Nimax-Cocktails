@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorPrimary"
     tools:context="de.nimax.nimax_cocktails.settings.SettingsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,8 +11,17 @@
         android:transitionName="@string/transition_settings_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/menu_button"
-        android:elevation="-1dp">
+        android:background="@color/colorPrimary">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="64dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@color/grey"
+            android:layout_marginStart="140dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -43,14 +51,5 @@
         android:src="@drawable/menu_button_settings"
         tools:layout_editor_absoluteX="347dp"
         tools:layout_editor_absoluteY="16dp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginLeft="140dp"
-        app:layout_constraintTop_toBottomOf="@id/settings_logo"
-        app:layout_constraintRight_toRightOf="parent"
-        android:background="@color/grey"
-        android:layout_marginStart="100dp" />
     
 </androidx.constraintlayout.widget.ConstraintLayout>
