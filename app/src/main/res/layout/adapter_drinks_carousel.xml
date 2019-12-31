@@ -11,8 +11,7 @@
             android:layout_height="200dp"
             android:layout_marginStart="50dp"
             android:layout_marginTop="25dp"
-            android:contentDescription="@string/mixing_image_drinks"
-            android:layout_marginLeft="50dp" />
+            android:contentDescription="@string/mixing_image_drinks"/>
 
         <LinearLayout
             android:layout_margin="24dp"
@@ -26,8 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
-                android:textSize="20sp"
-                android:layout_marginLeft="20dp" />
+                android:textSize="20sp"/>
 
             <TextView
                 android:id="@+id/text_drink_alcohol"
@@ -35,8 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
-                android:textSize="20sp"
-                android:layout_marginLeft="20dp" />
+                android:textSize="20sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -44,8 +41,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
                 android:text="@string/mixing_level"
-                android:textSize="20sp"
-                android:layout_marginLeft="20dp" />
+                android:textSize="20sp"/>
 
             <TextView
                 android:id="@+id/text_drink_level"
@@ -53,8 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
-                android:textSize="20sp"
-                android:layout_marginLeft="20dp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 

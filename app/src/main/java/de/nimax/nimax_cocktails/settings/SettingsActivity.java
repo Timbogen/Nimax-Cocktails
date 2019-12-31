@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import de.nimax.nimax_cocktails.ActivityHelper;
 import de.nimax.nimax_cocktails.MenuActivity;
 import com.nimax.nimax_cocktails.R;
 
@@ -19,7 +18,8 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         // Deactivate the old transition
-        ActivityHelper.disableDefaultTransition(this);
+        getWindow().setEnterTransition(null);
+        getWindow().setExitTransition(null);
     }
 
     /**

@@ -22,7 +22,8 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         // Deactivate the old transition
-        ActivityHelper.disableDefaultTransition(this);
+        getWindow().setEnterTransition(null);
+        getWindow().setExitTransition(null);
     }
 
     /**

@@ -37,6 +37,8 @@
     <string name="recipes_delete"> Delete </string>
     <string name="recipes_load"> Load </string>
     <string name="recipes_recipe"> Recipe </string>
+    <string name="recipes_no_recipes"> No recipes found! </string>
+    <string name="recipes_no_recipes_info"> Click on the download button in the upper left corner to load a prepared set of recipes. </string>
 
     <!-- Notifications -->
     <string name="recipes_recipes_load"> A pre-made set of recipes was loaded! </string>

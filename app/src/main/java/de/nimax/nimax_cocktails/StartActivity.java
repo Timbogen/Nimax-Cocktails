@@ -5,7 +5,6 @@ import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.util.Pair;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -25,7 +24,8 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         // Deactivate the old transition
-        ActivityHelper.disableDefaultTransition(this);
+        getWindow().setEnterTransition(null);
+        getWindow().setExitTransition(null);
         loadRecipes();
         // Show the menu
         Handler handler = new Handler();

@@ -1,6 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
         <!-- Colors -->
@@ -8,12 +8,15 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
-        <item name="android:editTextStyle">@style/editText</item>
+        <!-- Enable window content transitions -->
+        <item name="android:windowContentTransitions">true</item>
+
+        <item name="android:editTextStyle">@style/et</item>
         <item name="android:textViewStyle">@style/textView</item>
 
     </style>
 
-    <style name="editText" parent="@android:style/Widget.EditText">
+    <style name="et" parent="@android:style/Widget.EditText">
         <item name="android:textColor">@color/grey</item>
     </style>
 
