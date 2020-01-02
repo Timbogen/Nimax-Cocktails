@@ -15,7 +15,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-import de.nimax.nimax_cocktails.mixing.models.Bar;
+import de.nimax.nimax_cocktails.recipes.data.Bar;
 
 public class StartActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package de.nimax.nimax_cocktails.mixing.models;
+package de.nimax.nimax_cocktails.recipes.data;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -27,7 +27,7 @@ public class Mix {
     /**
      * Max volume of a glass used for the machine
      */
-    public static final int MAX_AMOUNT = 350;
+    public static final int MAX_AMOUNT = 360;
     /**
      * Name of the mix
      */
@@ -53,7 +53,7 @@ public class Mix {
      * Constructor for evaluating a json object
      * @param mix json object of a mix
      */
-    public Mix(JSONObject mix) {
+    Mix(JSONObject mix) {
         try {
             // Get name property
             this.name = mix.getString(NAME);

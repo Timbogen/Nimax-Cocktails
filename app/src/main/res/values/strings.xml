@@ -52,7 +52,7 @@
     <string name="mixing_anti_alc"> Non-alcoholic drinks </string>
     <string name="mixing_level"> Level </string>
     <string name="mixing_alc"> Alcoholic drinks </string>
-    <string name="mixing_add_drink"> How much of the drink: </string>
+    <string name="mixing_add_drink"> Click to add: </string>
     <string name="mixing_ml"> ml </string>
 
     <!-- Notifications -->

@@ -40,13 +40,6 @@
             app:layout_constraintVertical_chainStyle="packed"
             tools:layout_editor_absoluteX="347dp"
             tools:layout_editor_absoluteY="16dp" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginStart="140dp"
-            android:background="@color/grey"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mixing_save" />
 
         <ScrollView
             android:id="@+id/mixing_table_scroll"
@@ -66,6 +59,14 @@
                 android:stretchColumns="0"/>
 
         </ScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="140dp"
+            android:background="@color/grey"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mixing_save" />
 
         <View
             android:id="@+id/mixing_table_underline"
@@ -116,9 +117,7 @@
                     app:layout_constraintTop_toBottomOf="@id/mixing_title"
                     app:radius="3dp"
                     app:strokeColor="@color/black"
-                    app:strokeWidth="1dp">
-
-                </com.synnapps.carouselview.CarouselView>
+                    app:strokeWidth="1dp" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -126,6 +125,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/text_amount_non_alc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
@@ -134,23 +134,19 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <Spinner
-                        android:id="@+id/spinner_amount_non_alc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:popupBackground="@color/colorPrimary"
+                    <com.synnapps.carouselview.CarouselView
+                        android:id="@+id/carousel_amount_non_alc"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:autoPlay="false"
+                        app:layout_constraintLeft_toRightOf="@id/text_amount_non_alc"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="25dp"
-                        android:text="@string/mixing_ml"
-                        android:textSize="18sp"
-                        app:layout_constraintRight_toRightOf="@id/spinner_amount_non_alc"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:strokeColor="@color/black"
+                        app:indicatorVisibility="gone"
+                        app:slideInterval="10"
+                        app:strokeWidth="1dp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -191,6 +187,7 @@
                     app:layout_constraintTop_toBottomOf="@id/carousel_alc">
 
                     <TextView
+                        android:id="@+id/text_amount_alc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
@@ -199,23 +196,19 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <Spinner
-                        android:id="@+id/spinner_amount_alc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:popupBackground="@color/colorPrimary"
+                    <com.synnapps.carouselview.CarouselView
+                        android:id="@+id/carousel_amount_alc"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:autoPlay="false"
+                        app:layout_constraintLeft_toRightOf="@id/text_amount_alc"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="25dp"
-                        android:text="@string/mixing_ml"
-                        android:textSize="18sp"
-                        app:layout_constraintRight_toRightOf="@id/spinner_amount_alc"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:strokeColor="@color/black"
+                        app:indicatorVisibility="gone"
+                        app:slideInterval="10"
+                        app:strokeWidth="1dp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

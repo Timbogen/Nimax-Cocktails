@@ -8,10 +8,10 @@ import android.widget.TextView;
 import com.nimax.nimax_cocktails.R;
 import com.synnapps.carouselview.ViewListener;
 
-import de.nimax.nimax_cocktails.mixing.models.Drinks;
+import de.nimax.nimax_cocktails.recipes.data.Drinks;
 
 
-public class MixingViewListener implements ViewListener {
+public class DrinkViewListener implements ViewListener {
 
     /**
      * Type of drinks
@@ -22,7 +22,7 @@ public class MixingViewListener implements ViewListener {
      */
     private Activity activity;
 
-    public MixingViewListener(Drinks type, Activity activity) {
+    DrinkViewListener(Drinks type, Activity activity) {
         this.type = type;
         this.activity = activity;
     }
@@ -41,7 +41,7 @@ public class MixingViewListener implements ViewListener {
 
         // Set the alcohol content
         TextView alcohol = drink_item.findViewById(R.id.text_drink_alcohol);
-        String alcoholContent =type.drinks[position].alcohol + "%";
+        String alcoholContent = type.drinks[position].alcohol + "%";
         alcohol.setText(alcoholContent);
 
         // Set the level

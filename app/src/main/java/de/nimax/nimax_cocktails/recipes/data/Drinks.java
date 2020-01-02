@@ -1,4 +1,4 @@
-package de.nimax.nimax_cocktails.mixing.models;
+package de.nimax.nimax_cocktails.recipes.data;
 
 
 import com.nimax.nimax_cocktails.R;

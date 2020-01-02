@@ -1,4 +1,4 @@
-package de.nimax.nimax_cocktails.mixing.models;
+package de.nimax.nimax_cocktails.recipes.data;
 
 import androidx.annotation.NonNull;
 

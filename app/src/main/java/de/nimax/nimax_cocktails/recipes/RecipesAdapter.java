@@ -15,8 +15,8 @@ import com.nimax.nimax_cocktails.R;
 
 import java.util.ArrayList;
 
-import de.nimax.nimax_cocktails.mixing.models.Drink;
-import de.nimax.nimax_cocktails.mixing.models.Mix;
+import de.nimax.nimax_cocktails.recipes.data.Drink;
+import de.nimax.nimax_cocktails.recipes.data.Mix;
 
 public class RecipesAdapter extends ArrayAdapter<Mix> {
 
@@ -33,7 +33,7 @@ public class RecipesAdapter extends ArrayAdapter<Mix> {
      * Custom Array Adapter for the list and the spinners
      * @param context of the adapter
      */
-    public RecipesAdapter(@NonNull Context context, ArrayList<Mix> drinks) {
+    RecipesAdapter(@NonNull Context context, ArrayList<Mix> drinks) {
         super(context, 0, drinks);
         this.context = context;
         this.mixes = drinks;
