@@ -64,6 +64,46 @@ public class MixingActivity extends AppCompatActivity {
     }
 
     /**
+     * Method to higher the selected item of the carousel
+     * @param v view
+     */
+    public void higherAmountNonAlc(View v) {
+        CarouselView carousel = findViewById(R.id.carousel_amount_non_alc);
+        if (carousel.getCurrentItem() + 10 >= carousel.getPageCount()) carousel.setCurrentItem(carousel.getPageCount() - 1);
+        else carousel.setCurrentItem(carousel.getCurrentItem() + 10);
+    }
+
+    /**
+     * Method to lower the selected item of the carousel
+     * @param v view
+     */
+    public void lowerAmountNonAlc(View v) {
+        CarouselView carousel = findViewById(R.id.carousel_amount_non_alc);
+        if (carousel.getCurrentItem() - 10 < 0) carousel.setCurrentItem(0);
+        else carousel.setCurrentItem(carousel.getCurrentItem() - 10);
+    }
+
+    /**
+     * Method to higher the selected item of the carousel
+     * @param v view
+     */
+    public void higherAmountAlc(View v) {
+        CarouselView carousel = findViewById(R.id.carousel_amount_alc);
+        if (carousel.getCurrentItem() + 10 >= carousel.getPageCount()) carousel.setCurrentItem(carousel.getPageCount() - 1);
+        else carousel.setCurrentItem(carousel.getCurrentItem() + 10);
+    }
+
+    /**
+     * Method to lower the selected item of the carousel
+     * @param v
+     */
+    public void lowerAmountAlc(View v) {
+        CarouselView carousel = findViewById(R.id.carousel_amount_alc);
+        if (carousel.getCurrentItem() - 10 < 0) carousel.setCurrentItem(0);
+        else carousel.setCurrentItem(carousel.getCurrentItem() - 10);
+    }
+
+    /**
      * Method to setup the carousel
      */
     private void setupCarousel() {
@@ -75,7 +115,7 @@ public class MixingActivity extends AppCompatActivity {
             @Override
             public void onClick(int position) {
                 CarouselView carousel = findViewById(R.id.carousel_amount_non_alc);
-                mix.addDrink(Drinks.NON_ALC.drinks[position], (carousel.getCurrentItem() + 1) * 20, activity);
+                mix.addDrink(Drinks.NON_ALC.drinks[position], (carousel.getCurrentItem() + 1) * 10, activity);
                 refreshTable();
             }
         });
@@ -88,7 +128,7 @@ public class MixingActivity extends AppCompatActivity {
             @Override
             public void onClick(int position) {
                 CarouselView carousel = findViewById(R.id.carousel_amount_alc);
-                mix.addDrink(Drinks.ALC.drinks[position], (carousel.getCurrentItem() + 1) * 20, activity);
+                mix.addDrink(Drinks.ALC.drinks[position], (carousel.getCurrentItem() + 1) * 10, activity);
                 refreshTable();
             }
         });
@@ -99,9 +139,9 @@ public class MixingActivity extends AppCompatActivity {
      */
     private void setupSelection() {
         // Generate the possible values for the spinners
-        int[] values = new int[Mix.MAX_AMOUNT / 20];
+        int[] values = new int[Mix.MAX_AMOUNT / 10];
         for (int i = 0; i < values.length; i++) {
-            values[i] = (i + 1) * 20;
+            values[i] = (i + 1) * 10;
         }
         // Get and modify the non alc spinner
         CarouselView nonAlc = findViewById(R.id.carousel_amount_non_alc);

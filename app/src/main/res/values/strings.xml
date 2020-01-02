@@ -61,6 +61,8 @@
     <!-- Image description -->
     <string name="mixing_image_drinks"> Image of bottle </string>
     <string name="mixing_image_trashcan"> Image of trashcan </string>
+    <string name="mixing_image_add"> Add </string>
+    <string name="mixing_image_remove"> Remove </string>
 
     <!--                   -->
     <!-- Drinkers Activity -->
