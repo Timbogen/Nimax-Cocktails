@@ -50,6 +50,18 @@ public class Mix {
     }
 
     /**
+     * Copy constructor
+     * @param mix to be copied
+     */
+    Mix(Mix mix) {
+        this.name = mix.name;
+        this.image = mix.image;
+        for (Drink d : mix.drinks) {
+            drinks.add(new Drink(d));
+        }
+    }
+
+    /**
      * Constructor for evaluating a json object
      * @param mix json object of a mix
      */
@@ -77,7 +89,7 @@ public class Mix {
      * Method to transform a mix to a json
      * @return mix in json format
      */
-    public JSONObject toJson() {
+    JSONObject toJson() {
         JSONObject json = new JSONObject();
         JSONArray recipe = new JSONArray();
         try {

@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -47,7 +48,7 @@ public class Bar {
             }
         }
         // Only add if new mix
-        mixes.add(mix);
+        mixes.add(new Mix(mix));
         // Sort the mixes
         sortMixes();
         return true;
@@ -95,14 +96,14 @@ public class Bar {
      */
     public static void loadMixes(InputStream is) {
         try {
-            JSONArray json = null;
+            JSONArray json;
             int size = is.available();
             byte[] buffer = new byte[size];
             // Read in the file
             is.read(buffer);
             is.close();
             // Convert the read in bytecode to json string
-            String jsonString = new String(buffer, "UTF-8");
+            String jsonString = new String(buffer, StandardCharsets.UTF_8);
             // Convert the string to an object
             json = new JSONArray(jsonString);
             // Get the json objects

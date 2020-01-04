@@ -41,7 +41,7 @@
     <string name="recipes_no_recipes_info"> Click on the download button in the upper left corner to load a prepared set of recipes. </string>
 
     <!-- Notifications -->
-    <string name="recipes_recipes_load"> A pre-made set of recipes was loaded! </string>
+    <string name="recipes_recipes_load"> A prepared set of recipes was loaded! </string>
 
     <!--                 -->
     <!-- Mixing Activity -->
@@ -54,6 +54,12 @@
     <string name="mixing_alc"> Alcoholic drinks </string>
     <string name="mixing_add_drink"> Click to add: </string>
     <string name="mixing_ml"> ml </string>
+    <string name="mixing_add_recipe"> Add Recipe </string>
+    <string name="mixing_name"> Name of the recipe </string>
+    <string name="mixing_save"> Save </string>
+    <string name="mixing_no_name"> Your recipe needs a name! </string>
+    <string name="mixing_no_drinks"> Your recipe is empty! </string>
+    <string name="mixing_known_name"> This name is already taken! </string>
 
     <!-- Notifications -->
     <string name="mixing_max_amount"> This amount would expand the maximum size of </string>

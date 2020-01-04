@@ -26,7 +26,7 @@ public class MixingActivity extends AppCompatActivity {
     /**
      * The current mix
      */
-    private Mix mix = new Mix("Unnamed");
+    public static Mix mix = new Mix("");
     /**
      * The current activity
      */
@@ -64,6 +64,14 @@ public class MixingActivity extends AppCompatActivity {
     }
 
     /**
+     * Method for opening a dialog to save recipes
+     */
+    public void saveRecipe(View v) {
+        SavingDialog dialog = new SavingDialog(this);
+        dialog.show();
+    }
+
+    /**
      * Method to higher the selected item of the carousel
      * @param v view
      */
@@ -95,7 +103,7 @@ public class MixingActivity extends AppCompatActivity {
 
     /**
      * Method to lower the selected item of the carousel
-     * @param v
+     * @param v view
      */
     public void lowerAmountAlc(View v) {
         CarouselView carousel = findViewById(R.id.carousel_amount_alc);
