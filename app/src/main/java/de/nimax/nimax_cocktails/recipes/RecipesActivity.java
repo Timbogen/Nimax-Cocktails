@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import de.nimax.nimax_cocktails.MenuActivity;
 import de.nimax.nimax_cocktails.recipes.data.Bar;
-import de.nimax.nimax_cocktails.recipes.recipeedit.RecipeEditActivity;
+import de.nimax.nimax_cocktails.recipes.edit.RecipeEditActivity;
 
 import com.nimax.nimax_cocktails.R;
 

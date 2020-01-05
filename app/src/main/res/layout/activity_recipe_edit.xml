@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="de.nimax.nimax_cocktails.recipes.recipeedit.RecipeEditActivity">
+    tools:context="de.nimax.nimax_cocktails.recipes.edit.RecipeEditActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/list_image"

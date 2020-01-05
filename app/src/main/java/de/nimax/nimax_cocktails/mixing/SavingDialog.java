@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -78,6 +79,13 @@ public class SavingDialog extends Dialog {
             Bar.saveRecipes();
             // Close the dialog
             this.dismiss();
+            // Notify the user
+            Toast toast = Toast.makeText(
+                    context,
+                    context.getString(R.string.mixing_recipe_saved) + " " + MixingActivity.recipe.name,
+                    Toast.LENGTH_SHORT
+            );
+            toast.show();
 
         // If it wasn't successful
         } else {

@@ -1,4 +1,4 @@
-package de.nimax.nimax_cocktails.recipes.recipeedit;
+package de.nimax.nimax_cocktails.recipes.edit;
 
 import android.content.Context;
 import android.view.LayoutInflater;

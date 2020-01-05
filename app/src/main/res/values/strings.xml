@@ -67,6 +67,7 @@
 
     <!-- Notifications -->
     <string name="mixing_max_amount"> This amount would expand the maximum size of </string>
+    <string name="mixing_recipe_saved"> Successfully saved the recipe </string>
 
     <!-- Image description -->
     <string name="mixing_image_drinks"> Image of bottle </string>

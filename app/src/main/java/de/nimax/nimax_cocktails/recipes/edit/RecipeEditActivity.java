@@ -1,4 +1,4 @@
-package de.nimax.nimax_cocktails.recipes.recipeedit;
+package de.nimax.nimax_cocktails.recipes.edit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
