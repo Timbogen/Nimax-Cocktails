@@ -43,6 +43,10 @@
     <!-- Notifications -->
     <string name="recipes_recipes_load"> A prepared set of recipes was loaded! </string>
 
+    <!--- Image description -->
+    <string name="recipes_image_download"> Image of download </string>
+    <string name="recipes_image_photo"> Image of camera </string>
+
     <!--                 -->
     <!-- Mixing Activity -->
     <!--                 -->

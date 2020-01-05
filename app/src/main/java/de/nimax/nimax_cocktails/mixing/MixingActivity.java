@@ -15,8 +15,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import de.nimax.nimax_cocktails.MenuActivity;
-import de.nimax.nimax_cocktails.recipes.data.Drinks;
-import de.nimax.nimax_cocktails.recipes.data.Mix;
+import de.nimax.nimax_cocktails.recipes.data.Bar;
+import de.nimax.nimax_cocktails.recipes.data.Recipe;
 
 import com.nimax.nimax_cocktails.R;
 import com.synnapps.carouselview.CarouselView;
@@ -24,9 +24,9 @@ import com.synnapps.carouselview.ImageClickListener;
 public class MixingActivity extends AppCompatActivity {
 
     /**
-     * The current mix
+     * The current recipe
      */
-    public static Mix mix = new Mix("");
+    public static Recipe recipe = new Recipe("");
     /**
      * The current activity
      */
@@ -36,6 +36,7 @@ public class MixingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mixing);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         // Deactivate the old transition
         getWindow().setEnterTransition(null);
         getWindow().setExitTransition(null);
@@ -117,26 +118,26 @@ public class MixingActivity extends AppCompatActivity {
     private void setupCarousel() {
         // The anti alc carousel
         CarouselView nonAlcCarousel = findViewById(R.id.carousel_anti_alc);
-        nonAlcCarousel.setPageCount(Drinks.NON_ALC.drinks.length);
-        nonAlcCarousel.setViewListener(new DrinkViewListener(Drinks.NON_ALC, this));
+        nonAlcCarousel.setPageCount(Bar.Drinks.NON_ALC.drinks.length);
+        nonAlcCarousel.setViewListener(new DrinkViewListener(Bar.Drinks.NON_ALC, this));
         nonAlcCarousel.setImageClickListener(new ImageClickListener() {
             @Override
             public void onClick(int position) {
                 CarouselView carousel = findViewById(R.id.carousel_amount_non_alc);
-                mix.addDrink(Drinks.NON_ALC.drinks[position], (carousel.getCurrentItem() + 1) * 10, activity);
+                recipe.addDrink(Bar.Drinks.NON_ALC.drinks[position], (carousel.getCurrentItem() + 1) * 10, activity);
                 refreshTable();
             }
         });
 
         // The alc carousel
         CarouselView alcCarousel = findViewById(R.id.carousel_alc);
-        alcCarousel.setPageCount(Drinks.ALC.drinks.length);
-        alcCarousel.setViewListener(new DrinkViewListener(Drinks.ALC, this));
+        alcCarousel.setPageCount(Bar.Drinks.ALC.drinks.length);
+        alcCarousel.setViewListener(new DrinkViewListener(Bar.Drinks.ALC, this));
         alcCarousel.setImageClickListener(new ImageClickListener() {
             @Override
             public void onClick(int position) {
                 CarouselView carousel = findViewById(R.id.carousel_amount_alc);
-                mix.addDrink(Drinks.ALC.drinks[position], (carousel.getCurrentItem() + 1) * 10, activity);
+                recipe.addDrink(Bar.Drinks.ALC.drinks[position], (carousel.getCurrentItem() + 1) * 10, activity);
                 refreshTable();
             }
         });
@@ -147,7 +148,7 @@ public class MixingActivity extends AppCompatActivity {
      */
     private void setupSelection() {
         // Generate the possible values for the spinners
-        int[] values = new int[Mix.MAX_AMOUNT / 10];
+        int[] values = new int[Recipe.MAX_AMOUNT / 10];
         for (int i = 0; i < values.length; i++) {
             values[i] = (i + 1) * 10;
         }
@@ -170,15 +171,15 @@ public class MixingActivity extends AppCompatActivity {
         // Get the table
         TableLayout table = findViewById(R.id.mixing_table);
         table.removeAllViews();
-        // Check if the mix is empty
+        // Check if the recipe is empty
         View underline = findViewById(R.id.mixing_table_underline);
-        if (mix.isEmpty()) {
+        if (recipe.isEmpty()) {
             underline.setVisibility(View.INVISIBLE);
             return;
         }
         underline.setVisibility(View.VISIBLE);
         // Fill the table
-        for (int i = 0; i < mix.drinks.size(); i++) {
+        for (int i = 0; i < recipe.drinks.size(); i++) {
             // Declare the variables
             final int which = i;
 
@@ -192,11 +193,11 @@ public class MixingActivity extends AppCompatActivity {
 
             // Modify the drink text view
             drink.setTextSize(20);
-            drink.setText(mix.drinks.get(i).name);
+            drink.setText(recipe.drinks.get(i).name);
 
             // Modify the amount text view
             amount.setTextSize(20);
-            String text = mix.drinks.get(i).amount + " " + getString(R.string.mixing_ml);
+            String text = recipe.drinks.get(i).amount + " " + getString(R.string.mixing_ml);
             amount.setText(text);
 
             // Modify the delete button
@@ -204,7 +205,7 @@ public class MixingActivity extends AppCompatActivity {
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mix.removeDrink(which);
+                    recipe.removeDrink(which);
                     refreshTable();
                 }
             });

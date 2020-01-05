@@ -48,7 +48,7 @@ public class StartActivity extends AppCompatActivity {
             // Create input stream
             InputStream is = new FileInputStream(Bar.path);
             // Load Recipes
-            Bar.loadMixes(is);
+            Bar.loadRecipes(is);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

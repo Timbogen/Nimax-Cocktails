@@ -16,49 +16,49 @@ import com.nimax.nimax_cocktails.R;
 import java.util.ArrayList;
 
 import de.nimax.nimax_cocktails.recipes.data.Drink;
-import de.nimax.nimax_cocktails.recipes.data.Mix;
+import de.nimax.nimax_cocktails.recipes.data.Recipe;
 
-public class RecipesAdapter extends ArrayAdapter<Mix> {
+public class RecipesAdapter extends ArrayAdapter<Recipe> {
 
     /**
      * The context of the activity
      */
     private Context context;
     /**
-     * The mixes that should be shown in the list
+     * The recipes that should be shown in the list
      */
-    private ArrayList<Mix> mixes;
+    private ArrayList<Recipe> recipes;
 
     /**
      * Custom Array Adapter for the list and the spinners
      * @param context of the adapter
      */
-    RecipesAdapter(@NonNull Context context, ArrayList<Mix> drinks) {
+    RecipesAdapter(@NonNull Context context, ArrayList<Recipe> drinks) {
         super(context, 0, drinks);
         this.context = context;
-        this.mixes = drinks;
+        this.recipes = drinks;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View item, @NonNull ViewGroup parent) {
         // Check if the item is null
-        if (item == null) item = LayoutInflater.from(context).inflate(R.layout.adapter_recipes_list, parent, false);
+        if (item == null) item = LayoutInflater.from(context).inflate(R.layout.adapter_big_list, parent, false);
 
-        // Update the flag icon
-        if (mixes.get(position).image != null) {
+        // Specify the icon
+        if (recipes.get(position).image != null) {
             ImageView image = item.findViewById(R.id.list_image);
-            image.setImageBitmap(mixes.get(position).image);
+            image.setImageBitmap(recipes.get(position).image);
         }
 
-        // Update the currency name
+        // Specify the name
         TextView name = item.findViewById(R.id.list_name);
-        name.setText(mixes.get(position).name);
+        name.setText(recipes.get(position).name);
 
-        // Update the currency value
+        // Specify the ingredients
         TextView value = item.findViewById(R.id.list_ingredients);
         StringBuilder ingredients = new StringBuilder();
-        for (Drink d : mixes.get(position).drinks) {
+        for (Drink d : recipes.get(position).drinks) {
             ingredients.append(d.name).append(", ");
         }
         value.setText(ingredients.substring(0, ingredients.length() - 2));

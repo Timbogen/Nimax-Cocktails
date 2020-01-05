@@ -15,7 +15,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Mix {
+public class Recipe {
 
     /**
      * Attribute names for the json format
@@ -29,54 +29,54 @@ public class Mix {
      */
     public static final int MAX_AMOUNT = 360;
     /**
-     * Name of the mix
+     * Name of the recipe
      */
     public String name;
     /**
-     * Image of the mix
+     * Image of the recipe
      */
     public Bitmap image;
     /**
-     * The drinks that the mix is containing
+     * The drinks that the recipe is containing
      */
     public ArrayList<Drink> drinks = new ArrayList<>();
 
     /**
      * Normal constructor
      */
-    public Mix(String name, Drink... drinks) {
+    public Recipe(String name, Drink... drinks) {
         this.name = name;
         this.drinks = new ArrayList<>(Arrays.asList(drinks));
     }
 
     /**
      * Copy constructor
-     * @param mix to be copied
+     * @param recipe to be copied
      */
-    Mix(Mix mix) {
-        this.name = mix.name;
-        this.image = mix.image;
-        for (Drink d : mix.drinks) {
+    Recipe(Recipe recipe) {
+        this.name = recipe.name;
+        this.image = recipe.image;
+        for (Drink d : recipe.drinks) {
             drinks.add(new Drink(d));
         }
     }
 
     /**
      * Constructor for evaluating a json object
-     * @param mix json object of a mix
+     * @param recipe json object of a recipe
      */
-    Mix(JSONObject mix) {
+    Recipe(JSONObject recipe) {
         try {
             // Get name property
-            this.name = mix.getString(NAME);
+            this.name = recipe.getString(NAME);
 
             // Get the ingredients
-            JSONArray ingredients = mix.getJSONArray(INGREDIENTS);
+            JSONArray ingredients = recipe.getJSONArray(INGREDIENTS);
 
             // Extract the single drinks
             for (int i = 0; i < ingredients.length(); i++) {
                 String name = ingredients.getJSONObject(i).getString(NAME);
-                Drink drink = new Drink(Drinks.getDrink(name));
+                Drink drink = new Drink(Bar.Drinks.getDrink(name));
                 drink.amount = ingredients.getJSONObject(i).getInt(AMOUNT);
                 drinks.add(drink);
             }
@@ -86,8 +86,8 @@ public class Mix {
     }
 
     /**
-     * Method to transform a mix to a json
-     * @return mix in json format
+     * Method to transform a recipe to a json
+     * @return recipe in json format
      */
     JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -116,8 +116,8 @@ public class Mix {
     }
 
     /**
-     * Method to check whether a mix is mixable
-     * @return true if the mix is mixable
+     * Method to check whether a recipe is recipeable
+     * @return true if the recipe is recipeable
      */
     public boolean isMixable() {
         for (Drink drink : drinks) {
@@ -127,8 +127,8 @@ public class Mix {
     }
 
     /**
-     * Method to check whether the mix is empty
-     * @return true if mix is empty
+     * Method to check whether the recipe is empty
+     * @return true if recipe is empty
      */
     public boolean isEmpty() {
         return drinks.size() == 0;
@@ -154,7 +154,7 @@ public class Mix {
 
         // Add or update the drink
         for (Drink d : drinks) {
-            // If the mix already contains the drink update the amount
+            // If the recipe already contains the drink update the amount
             if (drink.name.equals(d.name)) {
                 d.amount = amount;
                 return;
@@ -180,7 +180,7 @@ public class Mix {
     @Override
     public String toString() {
         StringBuilder string = new StringBuilder();
-        string.append("Mix: ").append(name).append("\n");
+        string.append("Recipe: ").append(name).append("\n");
         for (Drink d : drinks) {
             string.append(d).append("\n");
         }

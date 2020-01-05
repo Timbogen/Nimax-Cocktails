@@ -17,6 +17,7 @@ public class DrinkersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drinkers);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         // Deactivate the old transition
         getWindow().setEnterTransition(null);
         getWindow().setExitTransition(null);

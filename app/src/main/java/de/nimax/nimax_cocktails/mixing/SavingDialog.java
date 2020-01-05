@@ -2,13 +2,9 @@ package de.nimax.nimax_cocktails.mixing;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -69,17 +65,17 @@ public class SavingDialog extends Dialog {
         }
 
         // If order / recipe is empty
-        if (MixingActivity.mix.drinks.size() == 0) {
+        if (MixingActivity.recipe.drinks.size() == 0) {
             // Set the hint for the input field
             error.setText(context.getResources().getString(R.string.mixing_no_drinks));
             return;
         }
 
         // If it was successful
-        MixingActivity.mix.name = nameEdit.getText().toString();
-        if (Bar.addNewMix(MixingActivity.mix)) {
+        MixingActivity.recipe.name = nameEdit.getText().toString();
+        if (Bar.addRecipe(MixingActivity.recipe)) {
             // Save the recipes
-            Bar.saveMixes();
+            Bar.saveRecipes();
             // Close the dialog
             this.dismiss();
 

@@ -8,21 +8,20 @@ import android.widget.TextView;
 import com.nimax.nimax_cocktails.R;
 import com.synnapps.carouselview.ViewListener;
 
-import de.nimax.nimax_cocktails.recipes.data.Drinks;
-
+import de.nimax.nimax_cocktails.recipes.data.Bar;
 
 public class DrinkViewListener implements ViewListener {
 
     /**
      * Type of drinks
      */
-    private Drinks type;
+    private Bar.Drinks type;
     /**
      * Active activity
      */
     private Activity activity;
 
-    DrinkViewListener(Drinks type, Activity activity) {
+    DrinkViewListener(Bar.Drinks type, Activity activity) {
         this.type = type;
         this.activity = activity;
     }

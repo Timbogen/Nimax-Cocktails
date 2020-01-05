@@ -3,6 +3,8 @@ package de.nimax.nimax_cocktails.recipes.data;
 
 import androidx.annotation.NonNull;
 
+import com.nimax.nimax_cocktails.R;
+
 import org.json.JSONArray;
 
 import java.io.BufferedWriter;
@@ -18,62 +20,65 @@ import java.util.Comparator;
 public class Bar {
 
     /**
-     *  The path to the data
+     * The path to the data
      */
     public static String path = "";
     /**
-     *  The mixes that the bar provides
+     * The recipes that the bar provides
      */
-    public static ArrayList<Mix> mixes = new ArrayList<>();
+    public static ArrayList<Recipe> recipes = new ArrayList<>();
 
     /**
-     * Set the path, where the mixes are stored at
-     * @param Path expects the mix file path
+     * Set the path, where the recipes are stored at
+     *
+     * @param Path expects the recipe file path
      */
     public static void setupPath(String Path) {
         path = Path;
     }
 
     /**
-     * Adds a new mix
-     * @param mix expects the new mix
-     * @return returns false if mix is known and true if its a knew mix
+     * Adds a new recipe
+     *
+     * @param recipe expects the new recipe
+     * @return returns false if recipe is known and true if its a knew recipe
      */
-    public static boolean addNewMix(Mix mix) {
+    public static boolean addRecipe(Recipe recipe) {
 
-        // Check if mix is new
-        for (int i=0; i<mixes.size(); i++) {
-            if (mixes.get(i).name.equals(mix.name)) {
-               return false;
+        // Check if recipe is new
+        for (int i = 0; i < recipes.size(); i++) {
+            if (recipes.get(i).name.equals(recipe.name)) {
+                return false;
             }
         }
-        // Only add if new mix
-        mixes.add(new Mix(mix));
-        // Sort the mixes
-        sortMixes();
+        // Only add if new recipe
+        recipes.add(new Recipe(recipe));
+        // Sort the recipes
+        sortRecipes();
         return true;
     }
 
     /**
-     * Removes a mix
-     * @param which expects the id of the mix to be removed
+     * Removes a recipe
+     *
+     * @param which expects the id of the recipe to be removed
      */
-    public static void removeMix(Mix which) {
-        // Remove mix
-        mixes.remove(which);
-        // Save the mixes
-        saveMixes();
+    public static void removeRecipe(Recipe which) {
+        // Remove recipe
+        recipes.remove(which);
+        // Save the recipes
+        saveRecipes();
     }
 
     /**
-     * Saves the mixes
+     * Saves the recipes
      */
-    public static void saveMixes() {
+    public static void saveRecipes() {
 
         // Convert to json object
         JSONArray json = new JSONArray();
-        for(int i=0; i<mixes.size(); i++) {
-            json.put(mixes.get(i).toJson());
+        for (int i = 0; i < recipes.size(); i++) {
+            json.put(recipes.get(i).toJson());
         }
 
         // Write json object into target file
@@ -91,10 +96,11 @@ public class Bar {
     }
 
     /**
-     * Load all the mixes that are stored in a json
+     * Load all the recipes that are stored in a json
+     *
      * @param is expects an input stream
      */
-    public static void loadMixes(InputStream is) {
+    public static void loadRecipes(InputStream is) {
         try {
             JSONArray json;
             int size = is.available();
@@ -107,8 +113,8 @@ public class Bar {
             // Convert the string to an object
             json = new JSONArray(jsonString);
             // Get the json objects
-            for(int i=0; i<json.length(); i++){
-                addNewMix(new Mix(json.getJSONObject(i)));
+            for (int i = 0; i < json.length(); i++) {
+                addRecipe(new Recipe(json.getJSONObject(i)));
             }
 
         } catch (Exception e) {
@@ -117,13 +123,13 @@ public class Bar {
     }
 
     /**
-     * Method to sort the mixes
+     * Method to sort the recipes
      */
-    private static void sortMixes() {
-        // Sort the mix list
-        Collections.sort(mixes, new Comparator<Mix>() {
+    private static void sortRecipes() {
+        // Sort the recipe list
+        Collections.sort(recipes, new Comparator<Recipe>() {
             @Override
-            public int compare(Mix r1, Mix r2) {
+            public int compare(Recipe r1, Recipe r2) {
                 return r1.name.toUpperCase().compareTo(r2.name.toUpperCase());
             }
         });
@@ -136,9 +142,69 @@ public class Bar {
     @Override
     public String toString() {
         StringBuilder string = new StringBuilder();
-        for (Mix mix : mixes) {
-            string.append(mix);
+        for (Recipe recipe : recipes) {
+            string.append(recipe);
         }
         return string.toString();
+    }
+
+    /**
+     * Type of drinks you want to display
+     */
+    public enum Drinks {
+        NON_ALC(new Drink[]{
+                new Drink("Bitter Lemon", R.drawable.anti_alc_bitter_lemon, 0, 1000),
+                new Drink("Coca Cola", R.drawable.anti_alc_coca_cola, 0, 1500),
+                new Drink("Energy Drink", R.drawable.anti_alc_energy_drink, 0, 1500),
+                new Drink("Orange Juice", R.drawable.anti_alc_orange_juice, 0, 1000),
+                new Drink("Tonic Water", R.drawable.anti_alc_tonic_water, 0, 1000),
+                new Drink("Wild Berry", R.drawable.anti_alc_wild_berry, 0, 1000)
+        }),
+        ALC(new Drink[]{
+                new Drink("Asbach", R.drawable.alc_asbach, 38, 750),
+                new Drink("Bacardi", R.drawable.alc_bacardi, 37.5, 750),
+                new Drink("Captain Morgan", R.drawable.alc_captain_morgan, 35, 750),
+                new Drink("Gin", R.drawable.alc_gin, 40, 750),
+                new Drink("Havana", R.drawable.alc_havana, 40, 750),
+                new Drink("Lillet", R.drawable.alc_lillet, 17, 750),
+                new Drink("Vodka", R.drawable.alc_vodka, 37.5, 750)
+        });
+
+        /**
+         * Image ids stored in the type
+         */
+        public Drink[] drinks;
+
+        /**
+         * Constructor
+         *
+         * @param drinks defined for the enum
+         */
+        Drinks(Drink[] drinks) {
+            this.drinks = drinks;
+        }
+
+        /**
+         * Method to search for a drink by its name
+         *
+         * @param name of the drink
+         * @return the matching drink
+         */
+        public static Drink getDrink(String name) {
+            // Iterate through the non alcoholic drinks
+            for (Drink d : NON_ALC.drinks) {
+                if (d.name.equals(name)) {
+                    return d;
+                }
+            }
+            // Iterate through the alcoholic drinks
+            for (Drink d : ALC.drinks) {
+                if (d.name.equals(name)) {
+                    return d;
+                }
+            }
+            // If the name wasn't found return the first drink
+            return NON_ALC.drinks[0];
+        }
     }
 }
