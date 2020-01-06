@@ -67,5 +67,6 @@ public class StartActivity extends AppCompatActivity {
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 this, layout);
         startActivity(intent, options.toBundle());
+        finish();
     }
 }

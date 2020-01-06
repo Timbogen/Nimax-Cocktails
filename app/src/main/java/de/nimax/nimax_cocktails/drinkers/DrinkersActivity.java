@@ -41,5 +41,6 @@ public class DrinkersActivity extends AppCompatActivity {
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 this, layout, logo, title);
         startActivity(intent, options.toBundle());
+        finishAffinity();
     }
 }

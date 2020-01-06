@@ -41,5 +41,6 @@ public class SettingsActivity extends AppCompatActivity {
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 this, layout, logo, title);
         startActivity(intent, options.toBundle());
+        finishAffinity();
     }
 }

@@ -2,6 +2,8 @@ package de.nimax.nimax_cocktails.recipes.data;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,22 +14,23 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Recipe {
 
     /**
+     * Max volume of a glass used for the machine
+     */
+    public static final int MAX_AMOUNT = 360;
+    /**
      * Attribute names for the json format
      */
     private static final String NAME = "name";
     private static final String AMOUNT = "amount";
-    private static final String IMAGE= "image";
+    private static final String IMAGE = "image";
     private static final String INGREDIENTS = "ingredients";
-    /**
-     * Max volume of a glass used for the machine
-     */
-    public static final int MAX_AMOUNT = 360;
     /**
      * Name of the recipe
      */
@@ -51,11 +54,14 @@ public class Recipe {
 
     /**
      * Copy constructor
+     *
      * @param recipe to be copied
      */
     public Recipe(Recipe recipe) {
         this.name = recipe.name;
-        this.image = recipe.image;
+        if (image != null) {
+            this.image = recipe.image.copy(recipe.image.getConfig(), true);
+        }
         for (Drink d : recipe.drinks) {
             drinks.add(new Drink(d));
         }
@@ -63,6 +69,7 @@ public class Recipe {
 
     /**
      * Constructor for evaluating a json object
+     *
      * @param recipe json object of a recipe
      */
     Recipe(JSONObject recipe) {
@@ -80,13 +87,19 @@ public class Recipe {
                 drink.amount = ingredients.getJSONObject(i).getInt(AMOUNT);
                 drinks.add(drink);
             }
+
+            // Get the image
+            String encodedImage = recipe.getString(IMAGE);
+            byte[] bytes = Base64.decode(encodedImage, Base64.DEFAULT);
+            image = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         } catch (JSONException e) {
-            e.printStackTrace();
+            image = null;
         }
     }
 
     /**
      * Method to transform a recipe to a json
+     *
      * @return recipe in json format
      */
     JSONObject toJson() {
@@ -103,10 +116,20 @@ public class Recipe {
                 // Add to array
                 recipe.put(ingredients);
             }
-
-            // Add Array to the main object
+            // Save the name
             json.put(NAME, name);
-            json.put(IMAGE, image);
+
+            // Compress the image
+            if (image != null) {
+                ByteArrayOutputStream os = new ByteArrayOutputStream();
+                image.compress(Bitmap.CompressFormat.PNG, 100, os);
+                byte[] bytes = os.toByteArray();
+                String encodedImage = Base64.encodeToString(bytes, Base64.DEFAULT);
+                // Save the image
+                json.put(IMAGE, encodedImage);
+            }
+
+            // Save the ingredients
             json.put(INGREDIENTS, recipe);
 
         } catch (JSONException e) {
@@ -117,6 +140,7 @@ public class Recipe {
 
     /**
      * Method to check whether a recipe is recipeable
+     *
      * @return true if the recipe is recipeable
      */
     public boolean isMixable() {
@@ -128,6 +152,7 @@ public class Recipe {
 
     /**
      * Method to check whether the recipe is empty
+     *
      * @return true if recipe is empty
      */
     public boolean isEmpty() {
@@ -136,8 +161,9 @@ public class Recipe {
 
     /**
      * Method to add a drink
-     * @param drink to be added
-     * @param amount of the drink
+     *
+     * @param drink    to be added
+     * @param amount   of the drink
      * @param activity the current activity
      */
     public void addDrink(Drink drink, int amount, Activity activity) {
@@ -167,6 +193,7 @@ public class Recipe {
 
     /**
      * Method to remove a drink
+     *
      * @param i to be removed
      */
     public void removeDrink(int i) {

@@ -63,6 +63,7 @@ public class MixingActivity extends AppCompatActivity {
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 this, layout, logo, title);
         startActivity(intent, options.toBundle());
+        finishAffinity();
     }
 
     /**
@@ -238,10 +239,8 @@ public class MixingActivity extends AppCompatActivity {
      * @return returns the dp
      */
     private int getDP(int pixels) {
-
         // Get the scale
         final float scale = this.getResources().getDisplayMetrics().density;
-
         // Return the value
         return (int) (pixels * scale + 0.5f);
     }
