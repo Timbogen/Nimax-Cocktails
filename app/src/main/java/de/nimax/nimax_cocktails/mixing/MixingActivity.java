@@ -26,7 +26,7 @@ public class MixingActivity extends AppCompatActivity {
     /**
      * The current recipe
      */
-    public static Recipe recipe = new Recipe("");
+    public static Recipe recipe = new Recipe("Mix");
     /**
      * The current activity
      */
@@ -42,6 +42,7 @@ public class MixingActivity extends AppCompatActivity {
         getWindow().setExitTransition(null);
         setupCarousel();
         setupSelection();
+        refreshTable();
     }
 
     /**

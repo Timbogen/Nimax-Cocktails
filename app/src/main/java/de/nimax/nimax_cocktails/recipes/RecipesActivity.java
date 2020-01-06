@@ -74,7 +74,6 @@ public class RecipesActivity extends AppCompatActivity {
     public void loadRecipes(View v) {
         // Let the bar load the pre made recipes
         Bar.loadRecipes(getResources().openRawResource(R.raw.recipes));
-        System.out.println(new Bar());
         // Save the recipes
         Bar.saveRecipes();
         // If list wasn't setup yet do it now

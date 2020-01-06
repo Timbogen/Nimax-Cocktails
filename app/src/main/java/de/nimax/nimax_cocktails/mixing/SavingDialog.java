@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +51,9 @@ public class SavingDialog extends Dialog {
                 addRecipe();
             }
         });
+        // Set the name
+        EditText name = findViewById(R.id.input_recipe_name);
+        name.setText(MixingActivity.recipe.name);
     }
 
     /**

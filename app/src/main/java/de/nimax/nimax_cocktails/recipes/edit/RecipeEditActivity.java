@@ -2,6 +2,7 @@ package de.nimax.nimax_cocktails.recipes.edit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.nimax.nimax_cocktails.R;
 
+import de.nimax.nimax_cocktails.mixing.MixingActivity;
 import de.nimax.nimax_cocktails.recipes.data.Bar;
 import de.nimax.nimax_cocktails.recipes.data.Recipe;
 
@@ -51,5 +53,15 @@ public class RecipeEditActivity extends AppCompatActivity {
     public void deleteRecipe(View v) {
         Bar.removeRecipe(recipe);
         finish();
+    }
+
+    /**
+     * Method to load the currently edited recipe
+     */
+    public void loadRecipe(View v) {
+        MixingActivity.recipe = new Recipe(recipe);
+        Intent intent = new Intent(this, MixingActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 }
