@@ -42,6 +42,12 @@ public class RecipesActivity extends AppCompatActivity {
         setupList();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        adapter.notifyDataSetChanged();
+    }
+
     /**
      * Override the back buttons function
      */
@@ -68,6 +74,7 @@ public class RecipesActivity extends AppCompatActivity {
     public void loadRecipes(View v) {
         // Let the bar load the pre made recipes
         Bar.loadRecipes(getResources().openRawResource(R.raw.recipes));
+        System.out.println(new Bar());
         // Save the recipes
         Bar.saveRecipes();
         // If list wasn't setup yet do it now
@@ -94,16 +101,6 @@ public class RecipesActivity extends AppCompatActivity {
             // Get the list view
             final ListView list = findViewById(R.id.recipes_list);
             list.setAdapter(adapter);
-            // Add a click listener
-            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    RecipeEditActivity.recipe = Bar.recipes.get(position);
-                    Intent intent = new Intent(context, RecipeEditActivity.class);
-                    context.startActivity(intent);
-                    overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
-                }
-            });
         }
     }
 }

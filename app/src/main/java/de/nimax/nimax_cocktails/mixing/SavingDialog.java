@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import com.nimax.nimax_cocktails.R;
 
 import de.nimax.nimax_cocktails.recipes.data.Bar;
+import de.nimax.nimax_cocktails.recipes.data.Recipe;
 
 public class SavingDialog extends Dialog {
 
@@ -74,7 +75,7 @@ public class SavingDialog extends Dialog {
 
         // If it was successful
         MixingActivity.recipe.name = nameEdit.getText().toString();
-        if (Bar.addRecipe(MixingActivity.recipe)) {
+        if (Bar.addRecipe(new Recipe(MixingActivity.recipe))) {
             // Save the recipes
             Bar.saveRecipes();
             // Close the dialog

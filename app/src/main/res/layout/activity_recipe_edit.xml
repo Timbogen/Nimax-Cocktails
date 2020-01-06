@@ -81,6 +81,7 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/menu_button_accent"
         android:text="@string/recipes_delete"
+        android:onClick="deleteRecipe"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />

@@ -43,6 +43,7 @@ public class Drink {
         this.alcohol = drink.alcohol;
         this.name = drink.name;
         this.level = drink.level;
+        this.amount = drink.amount;
     }
 
     /**

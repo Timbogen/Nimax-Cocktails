@@ -52,7 +52,7 @@ public class Bar {
             }
         }
         // Only add if new recipe
-        recipes.add(new Recipe(recipe));
+        recipes.add(recipe);
         // Sort the recipes
         sortRecipes();
         return true;
@@ -61,11 +61,11 @@ public class Bar {
     /**
      * Removes a recipe
      *
-     * @param which expects the id of the recipe to be removed
+     * @param recipe expects the id of the recipe to be removed
      */
-    public static void removeRecipe(Recipe which) {
+    public static void removeRecipe(Recipe recipe) {
         // Remove recipe
-        recipes.remove(which);
+        recipes.remove(recipe);
         // Save the recipes
         saveRecipes();
     }
@@ -74,7 +74,6 @@ public class Bar {
      * Saves the recipes
      */
     public static void saveRecipes() {
-
         // Convert to json object
         JSONArray json = new JSONArray();
         for (int i = 0; i < recipes.size(); i++) {

@@ -44,6 +44,11 @@ public class RecipeEditAdapter extends ArrayAdapter<Drink> {
         // Check if the item is null
         if (item == null) item = LayoutInflater.from(context).inflate(R.layout.adapter_small_list, parent, false);
 
+        // Specify the amount
+        TextView amount = item.findViewById(R.id.list_amount);
+        String amountText = drinks.get(position).amount + " ml";
+        amount.setText(amountText);
+
         // Specify the image
         ImageView image = item.findViewById(R.id.list_image);
         image.setImageResource(drinks.get(position).image);

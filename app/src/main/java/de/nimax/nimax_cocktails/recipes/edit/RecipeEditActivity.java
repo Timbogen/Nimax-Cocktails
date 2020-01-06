@@ -3,11 +3,13 @@ package de.nimax.nimax_cocktails.recipes.edit;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.nimax.nimax_cocktails.R;
 
+import de.nimax.nimax_cocktails.recipes.data.Bar;
 import de.nimax.nimax_cocktails.recipes.data.Recipe;
 
 public class RecipeEditActivity extends AppCompatActivity {
@@ -41,5 +43,13 @@ public class RecipeEditActivity extends AppCompatActivity {
         // Setup the list
         ListView list = findViewById(R.id.list_ingredients);
         list.setAdapter(new RecipeEditAdapter(this, recipe.drinks));
+    }
+
+    /**
+     * Method to delete the currently edited recipe
+     */
+    public void deleteRecipe(View v) {
+        Bar.removeRecipe(recipe);
+        finish();
     }
 }

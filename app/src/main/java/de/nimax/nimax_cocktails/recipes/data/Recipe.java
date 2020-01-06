@@ -53,7 +53,7 @@ public class Recipe {
      * Copy constructor
      * @param recipe to be copied
      */
-    Recipe(Recipe recipe) {
+    public Recipe(Recipe recipe) {
         this.name = recipe.name;
         this.image = recipe.image;
         for (Drink d : recipe.drinks) {
@@ -93,12 +93,12 @@ public class Recipe {
         JSONObject json = new JSONObject();
         JSONArray recipe = new JSONArray();
         try {
-            for (int i = 0; i < drinks.size(); i++) {
+            for (Drink drink : drinks) {
                 JSONObject ingredients = new JSONObject();
 
                 // Define the content
-                ingredients.put(NAME, drinks.get(i).name);
-                ingredients.put(AMOUNT, drinks.get(i).amount);
+                ingredients.put(NAME, drink.name);
+                ingredients.put(AMOUNT, drink.amount);
 
                 // Add to array
                 recipe.put(ingredients);
