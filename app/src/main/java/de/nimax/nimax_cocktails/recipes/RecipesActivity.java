@@ -4,11 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.util.Pair;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,16 +22,11 @@ public class RecipesActivity extends AppCompatActivity {
      * The custom adapter for the list view
      */
     private RecipesAdapter adapter;
-    /**
-     * Current context
-     */
-    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipes);
-        context = this;
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         // Deactivate the old transition
         getWindow().setEnterTransition(null);

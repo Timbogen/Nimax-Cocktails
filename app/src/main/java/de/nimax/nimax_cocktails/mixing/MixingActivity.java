@@ -24,7 +24,7 @@ import com.synnapps.carouselview.ImageClickListener;
 public class MixingActivity extends AppCompatActivity {
 
     /**
-     * The current recipe
+     * The current drinker
      */
     public static Recipe recipe = new Recipe("Mix");
     /**
@@ -173,7 +173,7 @@ public class MixingActivity extends AppCompatActivity {
         // Get the table
         TableLayout table = findViewById(R.id.mixing_table);
         table.removeAllViews();
-        // Check if the recipe is empty
+        // Check if the drinker is empty
         View underline = findViewById(R.id.mixing_table_underline);
         if (recipe.isEmpty()) {
             underline.setVisibility(View.INVISIBLE);

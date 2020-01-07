@@ -15,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+import de.nimax.nimax_cocktails.drinkers.data.Administration;
 import de.nimax.nimax_cocktails.recipes.data.Bar;
 
 public class StartActivity extends AppCompatActivity {
@@ -26,7 +27,7 @@ public class StartActivity extends AppCompatActivity {
         // Deactivate the old transition
         getWindow().setEnterTransition(null);
         getWindow().setExitTransition(null);
-        loadRecipes();
+        loadData();
         // Show the menu
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -40,16 +41,24 @@ public class StartActivity extends AppCompatActivity {
     /**
      * Method to load the recipes
      */
-    private void loadRecipes() {
+    private void loadData() {
         // Load the recipes
         try {
-            // Set the standard recipe file path
+            // Set the standard drinker file path
             Bar.setupPath(getApplicationContext().getFilesDir().getPath() + "/recipes.json");
-            // Create input stream
+            // Load the recipes
             InputStream is = new FileInputStream(Bar.path);
-            // Load Recipes
             Bar.loadRecipes(is);
-
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        // Load the drinkers
+        try {
+            // Set the standard drinker file path
+            Administration.setupPath(getApplicationContext().getFilesDir().getPath() + "/drinkers.json");
+            // Load the drinkers
+            InputStream is = new FileInputStream(Administration.path);
+            Administration.loadDrinkers(is);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

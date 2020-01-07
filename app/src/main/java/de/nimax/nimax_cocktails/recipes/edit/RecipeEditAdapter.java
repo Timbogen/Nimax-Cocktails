@@ -42,7 +42,7 @@ public class RecipeEditAdapter extends ArrayAdapter<Drink> {
     @Override
     public View getView(int position, @Nullable View item, @NonNull ViewGroup parent) {
         // Check if the item is null
-        if (item == null) item = LayoutInflater.from(context).inflate(R.layout.adapter_small_list, parent, false);
+        if (item == null) item = LayoutInflater.from(context).inflate(R.layout.adapter_recipe_edit, parent, false);
 
         // Specify the amount
         TextView amount = item.findViewById(R.id.list_amount);

@@ -58,7 +58,7 @@ public class RecipeEditActivity extends AppCompatActivity {
     }
 
     /**
-     * Method to delete the currently edited recipe
+     * Method to delete the currently edited drinker
      */
     public void deleteRecipe(View v) {
         Bar.removeRecipe(recipe);
@@ -66,7 +66,7 @@ public class RecipeEditActivity extends AppCompatActivity {
     }
 
     /**
-     * Method to load the currently edited recipe
+     * Method to load the currently edited drinker
      */
     public void loadRecipe(View v) {
         MixingActivity.recipe = new Recipe(recipe);

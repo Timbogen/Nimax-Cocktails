@@ -46,7 +46,7 @@ public class RecipesAdapter extends ArrayAdapter<Recipe> {
     @Override
     public View getView(final int position, @Nullable View item, @NonNull ViewGroup parent) {
         // Check if the item is null
-        if (item == null) item = LayoutInflater.from(activity).inflate(R.layout.adapter_big_list, parent, false);
+        if (item == null) item = LayoutInflater.from(activity).inflate(R.layout.adapter_recipes, parent, false);
 
         // Specify the icon
         if (recipes.get(position).image != null) {

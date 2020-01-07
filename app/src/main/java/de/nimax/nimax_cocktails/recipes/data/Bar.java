@@ -31,27 +31,26 @@ public class Bar {
     /**
      * Set the path, where the recipes are stored at
      *
-     * @param Path expects the recipe file path
+     * @param Path expects the drinker file path
      */
     public static void setupPath(String Path) {
         path = Path;
     }
 
     /**
-     * Adds a new recipe
+     * Adds a new drinker
      *
-     * @param recipe expects the new recipe
-     * @return returns false if recipe is known and true if its a knew recipe
+     * @param recipe expects the new drinker
+     * @return returns false if drinker is known and true if its a knew drinker
      */
     public static boolean addRecipe(Recipe recipe) {
-
-        // Check if recipe is new
+        // Check if drinker is new
         for (int i = 0; i < recipes.size(); i++) {
             if (recipes.get(i).name.equals(recipe.name)) {
                 return false;
             }
         }
-        // Only add if new recipe
+        // Only add if new drinker
         recipes.add(recipe);
         // Sort the recipes
         sortRecipes();
@@ -59,12 +58,12 @@ public class Bar {
     }
 
     /**
-     * Removes a recipe
+     * Removes a drinker
      *
-     * @param recipe expects the id of the recipe to be removed
+     * @param recipe to be removed
      */
     public static void removeRecipe(Recipe recipe) {
-        // Remove recipe
+        // Remove drinker
         recipes.remove(recipe);
         // Save the recipes
         saveRecipes();
@@ -125,7 +124,7 @@ public class Bar {
      * Method to sort the recipes
      */
     private static void sortRecipes() {
-        // Sort the recipe list
+        // Sort the drinker list
         Collections.sort(recipes, new Comparator<Recipe>() {
             @Override
             public int compare(Recipe r1, Recipe r2) {

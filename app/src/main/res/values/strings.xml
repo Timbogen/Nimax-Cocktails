@@ -13,19 +13,19 @@
     <string name="image_settings"> Image of gear </string>
 
     <!-- Transition names -->
-    <string name="transition_start_logo"> startLogo </string>
-    <string name="transition_recipes_layout"> recipesLayout </string>
-    <string name="transition_recipes_logo"> recipesLogo </string>
-    <string name="transition_recipes_title"> recipesTitle </string>
-    <string name="transition_mixing_layout"> mixingLayout </string>
-    <string name="transition_mixing_logo"> mixingLogo </string>
-    <string name="transition_mixing_title"> mixingTitle </string>
-    <string name="transition_drinkers_layout"> drinkersLayout </string>
-    <string name="transition_drinkers_logo"> drinkersLogo </string>
-    <string name="transition_drinkers_title"> drinkersTitle </string>
-    <string name="transition_settings_layout"> settingsLayout </string>
-    <string name="transition_settings_logo"> settingsLogo </string>
-    <string name="transition_settings_title"> settingsTitle </string>
+    <string name="transition_start_logo" translatable="false"> startLogo </string>
+    <string name="transition_recipes_layout" translatable="false"> recipesLayout </string>
+    <string name="transition_recipes_logo" translatable="false"> recipesLogo </string>
+    <string name="transition_recipes_title" translatable="false"> recipesTitle </string>
+    <string name="transition_mixing_layout" translatable="false"> mixingLayout </string>
+    <string name="transition_mixing_logo" translatable="false"> mixingLogo </string>
+    <string name="transition_mixing_title" translatable="false"> mixingTitle </string>
+    <string name="transition_drinkers_layout" translatable="false"> drinkersLayout </string>
+    <string name="transition_drinkers_logo" translatable="false"> drinkersLogo </string>
+    <string name="transition_drinkers_title" translatable="false"> drinkersTitle </string>
+    <string name="transition_settings_layout" translatable="false"> settingsLayout </string>
+    <string name="transition_settings_logo" translatable="false"> settingsLogo </string>
+    <string name="transition_settings_title" translatable="false"> settingsTitle </string>
 
     <!--                  -->
     <!-- Recipes Activity -->
@@ -44,7 +44,7 @@
     <string name="recipes_recipes_load"> A prepared set of recipes was loaded! </string>
 
     <!--- Image description -->
-    <string name="recipes_image_download"> Image of download </string>
+    <string name="recipes_image_download">" Image of arrow "</string>
     <string name="recipes_image_photo"> Image of camera </string>
 
     <!--                 -->
@@ -79,6 +79,18 @@
     <!-- Drinkers Activity -->
     <!--                   -->
     <string name="menu_drinkers"> Drinkers </string>
+
+    <!-- Content -->
+    <string name="drinkers_no_drinkers"> No drinkers found! </string>
+    <string name="drinkers_no_drinkers_info">" Click on the button in the upper left corner to add a first drinker. "</string>
+    <string name="drinkers_add_drinker"> Add Drinker </string>
+    <string name="drinkers_name"> Name of the drinker </string>
+    <string name="drinkers_save"> Save </string>
+    <string name="drinkers_no_name"> The drinker needs a name! </string>
+    <string name="drinkers_drinker_saved"> Successfully added the drinker </string>
+    <string name="drinkers_known_name"> This name is already taken! </string>
+    <string name="drinkers_last_drink"> Last drink: </string>
+    <string name="drinkers_no_last_drink"> Did not order yet </string>
 
     <!--                   -->
     <!-- Settings Activity -->

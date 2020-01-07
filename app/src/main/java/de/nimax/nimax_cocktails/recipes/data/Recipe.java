@@ -21,10 +21,6 @@ import java.util.Arrays;
 public class Recipe {
 
     /**
-     * Max volume of a glass used for the machine
-     */
-    public static final int MAX_AMOUNT = 360;
-    /**
      * Attribute names for the json format
      */
     private static final String NAME = "name";
@@ -32,15 +28,19 @@ public class Recipe {
     private static final String IMAGE = "image";
     private static final String INGREDIENTS = "ingredients";
     /**
-     * Name of the recipe
+     * Max volume of a glass used for the machine
+     */
+    public static final int MAX_AMOUNT = 360;
+    /**
+     * Name of the drinker
      */
     public String name;
     /**
-     * Image of the recipe
+     * Image of the drinker
      */
     public Bitmap image;
     /**
-     * The drinks that the recipe is containing
+     * The drinks that the drinker is containing
      */
     public ArrayList<Drink> drinks = new ArrayList<>();
 
@@ -70,7 +70,7 @@ public class Recipe {
     /**
      * Constructor for evaluating a json object
      *
-     * @param recipe json object of a recipe
+     * @param recipe json object of a drinker
      */
     Recipe(JSONObject recipe) {
         try {
@@ -98,23 +98,23 @@ public class Recipe {
     }
 
     /**
-     * Method to transform a recipe to a json
+     * Method to transform a drinker to a json
      *
-     * @return recipe in json format
+     * @return drinker in json format
      */
     JSONObject toJson() {
         JSONObject json = new JSONObject();
-        JSONArray recipe = new JSONArray();
+        JSONArray ingredients = new JSONArray();
         try {
             for (Drink drink : drinks) {
-                JSONObject ingredients = new JSONObject();
+                JSONObject ingredient = new JSONObject();
 
                 // Define the content
-                ingredients.put(NAME, drink.name);
-                ingredients.put(AMOUNT, drink.amount);
+                ingredient.put(NAME, drink.name);
+                ingredient.put(AMOUNT, drink.amount);
 
                 // Add to array
-                recipe.put(ingredients);
+                ingredients.put(ingredient);
             }
             // Save the name
             json.put(NAME, name);
@@ -130,7 +130,7 @@ public class Recipe {
             }
 
             // Save the ingredients
-            json.put(INGREDIENTS, recipe);
+            json.put(INGREDIENTS, ingredients);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -139,9 +139,9 @@ public class Recipe {
     }
 
     /**
-     * Method to check whether a recipe is recipeable
+     * Method to check whether a drinker is recipeable
      *
-     * @return true if the recipe is recipeable
+     * @return true if the drinker is recipeable
      */
     public boolean isMixable() {
         for (Drink drink : drinks) {
@@ -151,9 +151,9 @@ public class Recipe {
     }
 
     /**
-     * Method to check whether the recipe is empty
+     * Method to check whether the drinker is empty
      *
-     * @return true if recipe is empty
+     * @return true if drinker is empty
      */
     public boolean isEmpty() {
         return drinks.size() == 0;
@@ -180,7 +180,7 @@ public class Recipe {
 
         // Add or update the drink
         for (Drink d : drinks) {
-            // If the recipe already contains the drink update the amount
+            // If the drinker already contains the drink update the amount
             if (drink.name.equals(d.name)) {
                 d.amount = amount;
                 return;
@@ -189,6 +189,28 @@ public class Recipe {
         // Otherwise add the drink
         drink.amount = amount;
         drinks.add(drink);
+    }
+
+    /**
+     * @return the amount of liquid
+     */
+    public int getAmount() {
+        int amount = 0;
+        for (Drink d : drinks) {
+            amount += d.amount;
+        }
+        return amount;
+    }
+
+    /**
+     * @return the alcohol percentage of the drinker
+     */
+    public double getAlcohol() {
+        double alcohol = 0;
+        for (Drink d : drinks) {
+            alcohol += d.amount * d.alcohol / 100;
+        }
+        return alcohol / getAmount();
     }
 
     /**
