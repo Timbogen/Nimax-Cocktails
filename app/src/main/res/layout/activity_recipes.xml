@@ -87,7 +87,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_margin="16dp"
-        android:contentDescription="@string/image_recipes"
+        android:contentDescription="@string/image_menu"
         android:src="@drawable/menu_button_recipes"
         android:transitionName="@string/transition_recipes_logo"
         app:layout_constraintRight_toRightOf="parent"

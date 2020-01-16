@@ -11,10 +11,6 @@
     <string name="drinkers_no_last_drink">Hat noch nichts bestellt</string>
     <string name="drinkers_no_name">Der Trinker braucht einen Namen!</string>
     <string name="drinkers_save">Speichern</string>
-    <string name="image_drinkers">Bild einer Person</string>
-    <string name="image_mixing">Bild eines Cocktails</string>
-    <string name="image_recipes">Bild einer Lupe</string>
-    <string name="image_settings">Bild eines Zahnrades</string>
     <string name="menu_drinkers">Trinker</string>
     <string name="menu_mixing">Mixing</string>
     <string name="menu_recipes">Rezepte</string>
@@ -46,4 +42,5 @@
     <string name="recipes_recipe">Rezept</string>
     <string name="recipes_recipes_load">Ein paar vorbereitete Rezepte wurden geladen!</string>
     <string name="recipes_search">Suche</string>
+    <string name="image_menu">Menübild</string>
 </resources>

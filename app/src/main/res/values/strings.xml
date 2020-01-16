@@ -7,10 +7,7 @@
     <string name="menu_title"> Nimax </string>
 
     <!-- Image description -->
-    <string name="image_recipes"> Image of lens </string>
-    <string name="image_mixing"> Image of cocktail </string>
-    <string name="image_drinkers"> Image of person </string>
-    <string name="image_settings"> Image of gear </string>
+    <string name="image_menu"> Menu image </string>
 
     <!-- Transition names -->
     <string name="transition_start_logo" translatable="false"> startLogo </string>

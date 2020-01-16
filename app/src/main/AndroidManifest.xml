@@ -14,7 +14,7 @@
             android:name="de.nimax.nimax_cocktails.drinkers.edit.DrinkerEditActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="de.nimax.nimax_cocktails.MenuActivity"
+            android:name="de.nimax.nimax_cocktails.menu.MenuActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="de.nimax.nimax_cocktails.recipes.edit.RecipeEditActivity"

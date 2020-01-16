@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import de.nimax.nimax_cocktails.MenuActivity;
+import de.nimax.nimax_cocktails.menu.MenuActivity;
 import com.nimax.nimax_cocktails.R;
 
 public class SettingsActivity extends AppCompatActivity {

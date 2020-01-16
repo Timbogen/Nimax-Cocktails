@@ -46,7 +46,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_margin="16dp"
-        android:contentDescription="@string/image_settings"
+        android:contentDescription="@string/image_menu"
         android:src="@drawable/menu_button_settings"
         tools:layout_editor_absoluteX="347dp"
         tools:layout_editor_absoluteY="16dp" />
