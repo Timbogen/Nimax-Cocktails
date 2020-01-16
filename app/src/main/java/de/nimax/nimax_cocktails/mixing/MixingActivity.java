@@ -14,7 +14,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import de.nimax.nimax_cocktails.MenuActivity;
+import de.nimax.nimax_cocktails.menu.MenuActivity;
 import de.nimax.nimax_cocktails.recipes.data.Bar;
 import de.nimax.nimax_cocktails.recipes.data.Recipe;
 

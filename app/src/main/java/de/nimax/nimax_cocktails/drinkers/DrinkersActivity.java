@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import de.nimax.nimax_cocktails.MenuActivity;
+import de.nimax.nimax_cocktails.menu.MenuActivity;
 import de.nimax.nimax_cocktails.drinkers.data.Administration;
 
 import com.nimax.nimax_cocktails.R;

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MenuButton">
+        <attr name="menuLogo" format="reference"/>
+        <attr name="menuTitle" format="string"/>
+        <attr name="menuLayoutTransition" format="string"/>
+        <attr name="menuLogoTransition" format="string"/>
+        <attr name="menuTitleTransition" format="string"/>
+    </declare-styleable>
+</resources>
