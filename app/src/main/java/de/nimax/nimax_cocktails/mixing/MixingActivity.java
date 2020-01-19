@@ -15,6 +15,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import de.nimax.nimax_cocktails.menu.MenuActivity;
+import de.nimax.nimax_cocktails.menu.Showcase;
 import de.nimax.nimax_cocktails.recipes.data.Bar;
 import de.nimax.nimax_cocktails.recipes.data.Recipe;
 
@@ -43,6 +44,29 @@ public class MixingActivity extends AppCompatActivity {
         setupCarousel();
         setupSelection();
         refreshTable();
+        // Setup the showcases for first use
+        setupShowcases();
+    }
+
+    /**
+     * Method to setup the showcases
+     */
+    private void setupShowcases() {
+        // Setup the delete showcase
+        final Showcase.Next mix = new Showcase.Next() {
+            @Override
+            public void show() {
+                Showcase.setupShowcase(activity, null, findViewById(R.id.mixing_play), getString(R.string.showcase_mixing_mix), null);
+            }
+        };
+        // Setup the photo showcase
+        Showcase.Next save = new Showcase.Next() {
+            @Override
+            public void show() {
+                Showcase.setupShowcase(activity, null, findViewById(R.id.mixing_save), getString(R.string.showcase_mixing_save), mix);
+            }
+        };
+        Showcase.setupShowcase(this, Showcase.MIXING, findViewById(R.id.carousel_anti_alc), getString(R.string.showcase_mixing_add), save);
     }
 
     /**

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.util.Pair;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,45 @@ public class MenuActivity extends AppCompatActivity {
         // Deactivate the old transition
         getWindow().setEnterTransition(null);
         getWindow().setExitTransition(null);
+        // Setup the showcases for first use
+        setupShowcases();
+    }
+
+    /**
+     * Method to setup the showcases
+     */
+    private void setupShowcases() {
+        final Activity activity = this;
+        // Setup the settings showcase
+        final Showcase.Next settings = new Showcase.Next() {
+            @Override
+            public void show() {
+                Showcase.setupShowcase(activity, null, findViewById(R.id.menu_button_settings), getString(R.string.showcase_menu_settings), null);
+            }
+        };
+        // Setup the drinkers showcase
+        final Showcase.Next drinkers = new Showcase.Next() {
+            @Override
+            public void show() {
+                Showcase.setupShowcase(activity, null, findViewById(R.id.menu_button_drinkers), getString(R.string.showcase_menu_drinkers), settings);
+            }
+        };
+        // Setup the mixing showcase
+        final Showcase.Next mixing = new Showcase.Next() {
+            @Override
+            public void show() {
+                Showcase.setupShowcase(activity, null, findViewById(R.id.menu_button_mixing), getString(R.string.showcase_menu_mixing), drinkers);
+            }
+        };
+        // Setup the recipes showcase
+        Showcase.Next recipes = new Showcase.Next() {
+            @Override
+            public void show() {
+                Showcase.setupShowcase(activity, null, findViewById(R.id.menu_button_recipes), getString(R.string.showcase_menu_recipes), mixing);
+            }
+        };
+        // Show the introduction
+        Showcase.setupShowcase(this, Showcase.MENU, null, getString(R.string.showcase_menu_intro), recipes);
     }
 
     /**

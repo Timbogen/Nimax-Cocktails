@@ -114,8 +114,6 @@
                     android:layout_height="290dp"
                     app:autoPlay="false"
                     app:fillColor="#000000"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/mixing_title"
                     app:radius="3dp"
                     app:strokeColor="@color/black"
                     app:strokeWidth="1dp" />
@@ -198,8 +196,6 @@
                     android:layout_height="290dp"
                     app:autoPlay="false"
                     app:fillColor="#000000"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/mixing_title"
                     app:radius="3dp"
                     app:strokeColor="@color/black"
                     app:strokeWidth="1dp">

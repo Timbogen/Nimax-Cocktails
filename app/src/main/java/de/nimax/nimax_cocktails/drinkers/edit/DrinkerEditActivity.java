@@ -2,6 +2,7 @@ package de.nimax.nimax_cocktails.drinkers.edit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import com.nimax.nimax_cocktails.R;
 
 import de.nimax.nimax_cocktails.drinkers.data.Administration;
 import de.nimax.nimax_cocktails.drinkers.data.Drinker;
+import de.nimax.nimax_cocktails.menu.Showcase;
 
 public class DrinkerEditActivity extends AppCompatActivity {
 
@@ -29,6 +31,23 @@ public class DrinkerEditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_drinker_edit);
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         setupViews();
+        // Setup the showcases for first use
+        setupShowcases();
+    }
+
+    /**
+     * Method to setup the showcases
+     */
+    private void setupShowcases() {
+        final Activity activity = this;
+        // Setup the delete showcase
+        Showcase.Next delete = new Showcase.Next() {
+            @Override
+            public void show() {
+                Showcase.setupShowcase(activity, null, null, getString(R.string.showcase_drinkers_edit_delete), null);
+            }
+        };
+        Showcase.setupShowcase(this, Showcase.DRINKERS_EDIT, findViewById(R.id.image_photo), getString(R.string.showcase_drinkers_edit_photo), delete);
     }
 
     @Override

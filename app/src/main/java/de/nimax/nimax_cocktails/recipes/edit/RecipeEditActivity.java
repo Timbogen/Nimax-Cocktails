@@ -2,6 +2,7 @@ package de.nimax.nimax_cocktails.recipes.edit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.nimax.nimax_cocktails.R;
 
+import de.nimax.nimax_cocktails.menu.Showcase;
 import de.nimax.nimax_cocktails.mixing.MixingActivity;
 import de.nimax.nimax_cocktails.recipes.data.Bar;
 import de.nimax.nimax_cocktails.recipes.data.Recipe;
@@ -30,6 +32,30 @@ public class RecipeEditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recipe_edit);
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         setupViews();
+        // Setup the showcases for first use
+        setupShowcases();
+    }
+
+    /**
+     * Method to setup the showcases
+     */
+    private void setupShowcases() {
+        final Activity activity = this;
+        // Setup the delete showcase
+        final Showcase.Next delete = new Showcase.Next() {
+            @Override
+            public void show() {
+                Showcase.setupShowcase(activity, null, null, getString(R.string.showcase_recipes_edit_delete), null);
+            }
+        };
+        // Setup the photo showcase
+        Showcase.Next photo = new Showcase.Next() {
+            @Override
+            public void show() {
+                Showcase.setupShowcase(activity, null, findViewById(R.id.image_photo), getString(R.string.showcase_recipes_edit_photo), delete);
+            }
+        };
+        Showcase.setupShowcase(this, Showcase.RECIPES_EDIT, findViewById(R.id.image_download), getString(R.string.showcase_recipes_edit_load), photo);
     }
 
     @Override

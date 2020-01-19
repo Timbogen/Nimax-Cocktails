@@ -37,6 +37,7 @@
             android:weightSum="2">
 
             <de.nimax.nimax_cocktails.menu.MenuButton
+                android:id="@+id/menu_button_recipes"
                 android:layout_height="match_parent"
                 android:layout_width="0dp"
                 android:layout_margin="12dp"
@@ -51,6 +52,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <de.nimax.nimax_cocktails.menu.MenuButton
+                android:id="@+id/menu_button_mixing"
                 android:layout_height="match_parent"
                 android:layout_width="0dp"
                 android:layout_margin="12dp"
@@ -73,6 +75,7 @@
             android:weightSum="2">
 
             <de.nimax.nimax_cocktails.menu.MenuButton
+                android:id="@+id/menu_button_drinkers"
                 android:layout_height="match_parent"
                 android:layout_width="0dp"
                 android:layout_margin="12dp"
@@ -87,6 +90,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <de.nimax.nimax_cocktails.menu.MenuButton
+                android:id="@+id/menu_button_settings"
                 android:layout_height="match_parent"
                 android:layout_width="0dp"
                 android:layout_margin="12dp"

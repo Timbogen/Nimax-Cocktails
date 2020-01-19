@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import de.nimax.nimax_cocktails.menu.MenuActivity;
+import de.nimax.nimax_cocktails.menu.Showcase;
+
 import com.nimax.nimax_cocktails.R;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -21,6 +23,8 @@ public class SettingsActivity extends AppCompatActivity {
         // Deactivate the old transition
         getWindow().setEnterTransition(null);
         getWindow().setExitTransition(null);
+        // Showcase
+        Showcase.setupShowcase(this, Showcase.SETTINGS, null, getString(R.string.showcase_settings_start), null);
     }
 
     /**

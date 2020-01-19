@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.util.Pair;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import de.nimax.nimax_cocktails.menu.MenuActivity;
 import de.nimax.nimax_cocktails.drinkers.data.Administration;
+import de.nimax.nimax_cocktails.menu.Showcase;
 
 import com.nimax.nimax_cocktails.R;
 
@@ -32,6 +34,23 @@ public class DrinkersActivity extends AppCompatActivity {
         getWindow().setEnterTransition(null);
         getWindow().setExitTransition(null);
         setupList();
+        // Setup the showcases for first use
+        setupShowcases();
+    }
+
+    /**
+     * Method to setup the showcases
+     */
+    private void setupShowcases() {
+        final Activity activity = this;
+        // Setup the list showcase
+        Showcase.Next list = new Showcase.Next() {
+            @Override
+            public void show() {
+                Showcase.setupShowcase(activity, null, null, getString(R.string.showcase_drinkers_list), null);
+            }
+        };
+        Showcase.setupShowcase(this, Showcase.DRINKERS, findViewById(R.id.drinker_add), getString(R.string.showcase_drinkers_add), list);
     }
 
     @Override

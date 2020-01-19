@@ -24,6 +24,13 @@
     <string name="transition_settings_logo" translatable="false"> settingsLogo </string>
     <string name="transition_settings_title" translatable="false"> settingsTitle </string>
 
+    <!-- Showcase titles -->
+    <string name="showcase_menu_intro"> Hello and welcome to the Nimax-Cocktails app. </string>
+    <string name="showcase_menu_recipes"> Here you can find and load all of your recipes. </string>
+    <string name="showcase_menu_mixing">"  Here you can create new cocktails."</string>
+    <string name="showcase_menu_drinkers">" Here you can manage your friends and monitor what they drink. "</string>
+    <string name="showcase_menu_settings"> Here you can configure the machine so that it knows which drinks are available. </string>
+
     <!--                  -->
     <!-- Recipes Activity -->
     <!--                  -->
@@ -43,6 +50,13 @@
     <!--- Image description -->
     <string name="recipes_image_download">" Image of arrow "</string>
     <string name="recipes_image_photo"> Image of camera </string>
+
+    <!-- Showcase titles -->
+    <string name="showcase_recipes_load"> Click this button to load a prepared set of cocktails. </string>
+    <string name="showcase_recipes_list">" Click on a cocktail to open a detailed view. "</string>
+    <string name="showcase_recipes_edit_load"> Click on this button to load this cocktail. </string>
+    <string name="showcase_recipes_edit_photo"> Click on this button to take a photo for this cocktail. </string>
+    <string name="showcase_recipes_edit_delete"> Once a cocktail is deleted it cannot be restored. </string>
 
     <!--                 -->
     <!-- Mixing Activity -->
@@ -72,6 +86,11 @@
     <string name="mixing_image_add"> Add </string>
     <string name="mixing_image_remove"> Remove </string>
 
+    <!-- Showcase titles -->
+    <string name="showcase_mixing_add"> Click on the drink view to add the amount you specified below. </string>
+    <string name="showcase_mixing_save"> Click on this button to save the cocktail. </string>
+    <string name="showcase_mixing_mix">" Click on this button to start mixing the cocktail.  (not implemented yet)"</string>
+
     <!--                   -->
     <!-- Drinkers Activity -->
     <!--                   -->
@@ -89,9 +108,18 @@
     <string name="drinkers_last_drink"> Last drink: </string>
     <string name="drinkers_no_last_drink"> Did not order yet </string>
 
+    <!-- Showcase titles -->
+    <string name="showcase_drinkers_add"> Click this button to add a new drinker. </string>
+    <string name="showcase_drinkers_list"> Click on a person to open a detailed view. </string>
+    <string name="showcase_drinkers_edit_photo"> Click on this button to take a photo for this person. </string>
+    <string name="showcase_drinkers_edit_delete"> Once a person is deleted it cannot be restored. </string>
+
     <!--                   -->
     <!-- Settings Activity -->
     <!--                   -->
     <string name="menu_settings"> Settings </string>
+
+    <!-- Showcase titles -->
+    <string name="showcase_settings_start"> Since the machine is not finished yet, the settings activity does not contain any functionality. </string>
 
 </resources>
