@@ -29,7 +29,7 @@
     <string name="showcase_menu_recipes"> Here you can find and load all of your recipes. </string>
     <string name="showcase_menu_mixing">"  Here you can create new cocktails."</string>
     <string name="showcase_menu_drinkers">" Here you can manage your friends and monitor what they drink. "</string>
-    <string name="showcase_menu_settings"> Here you can configure the machine so that it knows which drinks are available. </string>
+    <string name="showcase_menu_settings"> Here you can configure the machine so that the machine knows which drinks are available. </string>
 
     <!--                  -->
     <!-- Recipes Activity -->
