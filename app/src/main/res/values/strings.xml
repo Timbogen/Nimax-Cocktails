@@ -6,6 +6,9 @@
     <string name="app_name"> Nimax-Cocktails</string>
     <string name="menu_title"> Nimax </string>
 
+    <!-- Globals -->
+    <string name="point">"•"</string>
+
     <!-- Image description -->
     <string name="image_menu"> Menu image </string>
 
@@ -119,7 +122,19 @@
     <!--                   -->
     <string name="menu_settings"> Settings </string>
 
+    <!-- Image description -->
+    <string name="settings_bluetooth"> Bluetooth </string>
+
     <!-- Showcase titles -->
-    <string name="showcase_settings_start"> Since the machine is not finished yet, the settings activity does not contain any functionality. </string>
+    <string name="showcase_settings_start"> In the settings you can connect the device with the cocktail machine and also modify the state of it. </string>
+
+    <!-- Bluetooth -->
+    <string name="bluetooth_no_bluetooth"> Your device probably does not support bluetooth. </string>
+    <string name="bluetooth_pair_device"> You have to pair your device with HC-05 first. </string>
+    <string name="bluetooth_connected"> Device is connected. </string>
+    <string name="bluetooth_connect"> Click to connect </string>
+    <string name="bluetooth_connection"> Bluetooth Connection </string>
+    <string name="bluetooth_status_connected"> Connected </string>
+    <string name="bluetooth_status_disconnected"> Disconnected </string>
 
 </resources>

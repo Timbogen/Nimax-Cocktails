@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import de.nimax.nimax_cocktails.BluetoothService;
 import de.nimax.nimax_cocktails.menu.MenuActivity;
 import de.nimax.nimax_cocktails.menu.Showcase;
 
@@ -46,5 +47,12 @@ public class SettingsActivity extends AppCompatActivity {
                 this, layout, logo, title);
         startActivity(intent, options.toBundle());
         finishAffinity();
+    }
+
+    /**
+     * Method to open the bluetooth connect activity
+     */
+    public void connectToBluetooth(View v) {
+        BluetoothService.connectDevice(this, v);
     }
 }

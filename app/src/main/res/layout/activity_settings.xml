@@ -14,6 +14,7 @@
         android:background="@color/colorPrimary">
 
         <View
+            android:id="@+id/settings_underline"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginTop="64dp"
@@ -21,6 +22,78 @@
             app:layout_constraintRight_toRightOf="parent"
             android:background="@color/grey"
             android:layout_marginStart="140dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/settings_bluetooth"
+            app:layout_constraintTop_toBottomOf="@id/settings_underline"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:padding="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="connectToBluetooth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/settings_bluetooth_logo"
+                android:contentDescription="@string/settings_bluetooth"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:src="@drawable/menu_button_bluetooth"
+                android:layout_width="32dp"
+                android:layout_height="32dp"/>
+
+            <TextView
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toTopOf="@id/settings_bluetooth_logo"
+                app:layout_constraintBottom_toBottomOf="@id/settings_bluetooth_logo"
+                app:layout_constraintLeft_toRightOf="@id/settings_bluetooth_logo"
+                android:layout_width="wrap_content"
+                android:textSize="18sp"
+                android:text="@string/bluetooth_connection"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/settings_bluetooth_status"
+                android:layout_margin="8dp"
+                android:textColor="@color/grey"
+                app:layout_constraintLeft_toLeftOf="@id/settings_bluetooth_logo"
+                app:layout_constraintTop_toBottomOf="@id/settings_bluetooth_logo"
+                android:text="@string/bluetooth_status_disconnected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/settings_bluetooth_point"
+                android:layout_margin="8dp"
+                android:textColor="@color/grey"
+                app:layout_constraintLeft_toRightOf="@id/settings_bluetooth_status"
+                app:layout_constraintTop_toBottomOf="@id/settings_bluetooth_logo"
+                android:text="@string/point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_margin="8dp"
+                android:textColor="@color/grey"
+                app:layout_constraintLeft_toRightOf="@id/settings_bluetooth_point"
+                app:layout_constraintTop_toBottomOf="@id/settings_bluetooth_logo"
+                android:text="@string/bluetooth_connect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ProgressBar
+                android:id="@+id/settings_bluetooth_progress"
+                android:visibility="gone"
+                app:layout_constraintRight_toRightOf="parent"
+                style="?android:attr/progressBarStyle"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -50,5 +123,5 @@
         android:src="@drawable/menu_button_settings"
         tools:layout_editor_absoluteX="347dp"
         tools:layout_editor_absoluteY="16dp" />
-    
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,6 +35,7 @@
 
     <TextView
         android:id="@+id/list_info"
+        android:textColor="@color/grey"
         app:layout_constraintTop_toBottomOf="@id/list_name"
         app:layout_constraintLeft_toRightOf="@id/list_image"
         app:layout_constraintRight_toRightOf="parent"
