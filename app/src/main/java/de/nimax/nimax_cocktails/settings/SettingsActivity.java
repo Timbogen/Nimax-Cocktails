@@ -7,6 +7,7 @@ import androidx.core.util.Pair;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import de.nimax.nimax_cocktails.BluetoothService;
 import de.nimax.nimax_cocktails.menu.MenuActivity;
@@ -24,6 +25,10 @@ public class SettingsActivity extends AppCompatActivity {
         // Deactivate the old transition
         getWindow().setEnterTransition(null);
         getWindow().setExitTransition(null);
+        // Update the text of the bluetooth settings state
+        TextView status = findViewById(R.id.settings_bluetooth_status);
+        String text = BluetoothService.isConnected() ? getString(R.string.bluetooth_status_connected) : getString(R.string.bluetooth_status_disconnected);
+        status.setText(text);
         // Showcase
         Showcase.setupShowcase(this, Showcase.SETTINGS, null, getString(R.string.showcase_settings_start), null);
     }
