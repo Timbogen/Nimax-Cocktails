@@ -131,6 +131,7 @@
     <!-- Bluetooth -->
     <string name="bluetooth_no_bluetooth"> Your device probably does not support bluetooth. </string>
     <string name="bluetooth_pair_device"> You have to pair your device with HC-05 first. </string>
+    <string name="bluetooth_no_connection"> Could not connect to the machine. </string>
     <string name="bluetooth_connected"> Device is connected. </string>
     <string name="bluetooth_connect"> Click to connect </string>
     <string name="bluetooth_connection"> Bluetooth Connection </string>

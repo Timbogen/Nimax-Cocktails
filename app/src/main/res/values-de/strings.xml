@@ -70,4 +70,5 @@
     <string name="bluetooth_status_disconnected">Nicht verbunden</string>
     <string name="point">"•"</string>
     <string name="settings_bluetooth">Bluetooth</string>
+    <string name="bluetooth_no_connection">Es konnte keine Verbindung zur Maschine hergestellt werden.</string>
 </resources>

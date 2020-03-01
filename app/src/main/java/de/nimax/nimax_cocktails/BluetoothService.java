@@ -120,7 +120,7 @@ public class BluetoothService {
      *
      * @param activity that is currently active
      */
-    private static boolean connectToArduino(Activity activity) {
+    private static void connectToArduino(Activity activity) {
         // Retrieve the information of the bluetooth devices
         Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
 
@@ -138,28 +138,20 @@ public class BluetoothService {
         // If the module wasn't found just return and give a notice to the user
         if (name == null || name.equals("")) {
             makeToast(activity, activity.getString(R.string.bluetooth_pair_device));
-            return false;
+            return;
         }
 
         // Give a notice to the user and create the device
         BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(address);
-
-        // Create the socket
-        try {
-            bluetoothSocket = bluetoothDevice.createInsecureRfcommSocketToServiceRecord(uuid);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         // Cancel the adapter
         bluetoothAdapter.cancelDiscovery();
 
-        // Let the socket connect
+        // Create the socket and try to connect with it
         try {
+            bluetoothSocket = bluetoothDevice.createInsecureRfcommSocketToServiceRecord(uuid);
             bluetoothSocket.connect();
-            return true;
         } catch (IOException e) {
-            return false;
+            makeToast(activity, activity.getString(R.string.bluetooth_no_connection));
         }
     }
 
