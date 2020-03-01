@@ -60,7 +60,7 @@
     <string name="showcase_drinkers_edit_delete">Sobald eine Person gelöscht wurde, kann Sie nicht wiederhergestellt werden.</string>
     <string name="showcase_drinkers_edit_photo">Klicken Sie auf diesen Button, um ein Photo von der Person zu machen.</string>
     <string name="showcase_drinkers_list">Klicken Sie auf eine Person, um eine detaillierte Sicht zu erhalten.</string>
-    <string name="showcase_settings_start">Da die Maschine noch nicht fertig gebaut ist, enthält diese Activity noch keine Funktionalität.</string>
+    <string name="showcase_settings_start">In den Einstellungen kannst du dich mit der Maschine verbinden und den Stand der Maschine verändern.</string>
     <string name="bluetooth_connected">Gerät ist verbunden.</string>
     <string name="bluetooth_no_bluetooth">Ihr Gerät unterstützt vermutlich kein Bluetooth.</string>
     <string name="bluetooth_pair_device">Sie müssen ihr Gerät zuerst mit HC-05 verbinden.</string>
