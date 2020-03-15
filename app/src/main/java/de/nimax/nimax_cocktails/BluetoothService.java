@@ -216,7 +216,7 @@ public class BluetoothService {
                 connectToArduino(activity);
             }
             // If connection was built successfully load the data
-            if (sendData("SETUP")) {
+            if (isConnected() && sendData("SETUP")) {
                 String res = readData();
                 // First get the non alcoholic drinks
                 while (!res.equals("ALC")) {
