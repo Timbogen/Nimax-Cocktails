@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +15,11 @@ import com.nimax.nimax_cocktails.R;
 import java.io.IOException;
 import java.util.Set;
 import java.util.UUID;
+
+import de.nimax.nimax_cocktails.recipes.data.Bar;
+import de.nimax.nimax_cocktails.recipes.data.Drink;
+import de.nimax.nimax_cocktails.recipes.edit.RecipeEditAdapter;
+import de.nimax.nimax_cocktails.settings.SettingsActivity;
 
 public class BluetoothService {
 
@@ -66,21 +72,21 @@ public class BluetoothService {
      *
      * @param data expects the data to be sent
      */
-    public static String sendData(String data) {
+    public static boolean sendData(String data) {
         try {
             bluetoothSocket.getOutputStream().write(("<" + data + ">").getBytes());
-            return readData();
+            return true;
         } catch (IOException e) {
             // Restart bluetooth socket
             bluetoothSocket = null;
-            return null;
+            return false;
         }
     }
 
     /**
      * Method to read a command of the arduino
      */
-    private static String readData() {
+    public static String readData() {
         try {
             StringBuilder command = new StringBuilder();
             while (true) {
@@ -96,7 +102,7 @@ public class BluetoothService {
         } catch (IOException e) {
             // Restart bluetooth socket
             bluetoothSocket = null;
-            return null;
+            return "END";
         }
     }
 
@@ -209,6 +215,33 @@ public class BluetoothService {
                 // Connect to arduino
                 connectToArduino(activity);
             }
+            // If connection was built successfully load the data
+            if (sendData("SETUP")) {
+                String res = readData();
+                // First get the non alcoholic drinks
+                while (!res.equals("ALC")) {
+                    // Get the right drink
+                    int i = Integer.parseInt(res);
+                    Drink drink = Bar.Drinks.values()[0].drinks[i];
+                    // Get the amount
+                    drink.amount = Integer.parseInt(readData());
+                    SettingsActivity.nonAlcDrinks.add(drink);
+                    // Get the next response
+                    res = readData();
+                }
+                // Now get the alcoholic drinks
+                res = readData();
+                while (!res.equals("END")) {
+                    // Get the right drink
+                    int i = Integer.parseInt(res);
+                    Drink drink = Bar.Drinks.values()[1].drinks[i];
+                    // Get the amount
+                    drink.amount = Integer.parseInt(readData());
+                    SettingsActivity.alcDrinks.add(drink);
+                    // Get the next response
+                    res = readData();
+                }
+            }
             // Enable view
             activity.runOnUiThread(new Runnable() {
                 @Override
@@ -220,7 +253,11 @@ public class BluetoothService {
                     TextView status = view.findViewById(R.id.settings_bluetooth_status);
                     if (isConnected()) {
                         status.setText(activity.getString(R.string.bluetooth_status_connected));
+                        // Notify the user
                         makeToast(activity, activity.getString(R.string.bluetooth_connected));
+                        // Make the other settings visible
+                        activity.findViewById(R.id.settings_non).setVisibility(View.VISIBLE);
+                        activity.findViewById(R.id.settings_alc).setVisibility(View.VISIBLE);
                     } else {
                         status.setText(activity.getString(R.string.bluetooth_status_disconnected));
                     }

@@ -65,10 +65,16 @@
     <string name="bluetooth_no_bluetooth">Ihr Gerät unterstützt vermutlich kein Bluetooth.</string>
     <string name="bluetooth_pair_device">Sie müssen ihr Gerät zuerst mit HC-05 verbinden.</string>
     <string name="bluetooth_connect">Klicke um zu verbinden</string>
-    <string name="bluetooth_connection">Bluetooth Verbindung</string>
+    <string name="settings_bluetooth">Bluetooth Verbindung</string>
     <string name="bluetooth_status_connected">Verbunden</string>
     <string name="bluetooth_status_disconnected">Nicht verbunden</string>
     <string name="point">"•"</string>
-    <string name="settings_bluetooth">Bluetooth</string>
     <string name="bluetooth_no_connection">Es konnte keine Verbindung zur Maschine hergestellt werden.</string>
+    <string name="settings_image_alc">Drink</string>
+    <string name="settings_image_bluetooth">Bluetooth</string>
+    <string name="settings_non">Alkoholfreie Getränke</string>
+    <string name="settings_non_description">Klicken Sie hier um das Setup der alkoholfreien Drinks zu sehen.</string>
+    <string name="settings_alc">Alkoholische Getränke</string>
+    <string name="settings_alc_description">Klicken Sie hier um das Setup der alkoholischen Drinks zu sehen.</string>
+    <string name="settings_setup_title">Setup</string>
 </resources>

@@ -32,7 +32,7 @@ public class RecipeEditAdapter extends ArrayAdapter<Drink> {
      * Custom Array Adapter for the list and the spinners
      * @param context of the adapter
      */
-    RecipeEditAdapter(@NonNull Context context, ArrayList<Drink> drinks) {
+    public RecipeEditAdapter(@NonNull Context context, ArrayList<Drink> drinks) {
         super(context, 0, drinks);
         this.context = context;
         this.drinks = drinks;

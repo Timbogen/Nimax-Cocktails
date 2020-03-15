@@ -121,9 +121,16 @@
     <!-- Settings Activity -->
     <!--                   -->
     <string name="menu_settings"> Settings </string>
+    <string name="settings_bluetooth"> Bluetooth Connection </string>
+    <string name="settings_non"> Non alcoholic drinks </string>
+    <string name="settings_alc"> Alcoholic drinks </string>
+    <string name="settings_non_description">" Click here to show the setup of the non alcoholic drinks "</string>
+    <string name="settings_alc_description">" Click here to show the setup of the alcoholic drinks "</string>
+    <string name="settings_setup_title">" Setup "</string>
 
     <!-- Image description -->
-    <string name="settings_bluetooth"> Bluetooth </string>
+    <string name="settings_image_bluetooth"> Bluetooth </string>
+    <string name="settings_image_alc"> Drink </string>
 
     <!-- Showcase titles -->
     <string name="showcase_settings_start"> In the settings you can connect the device with the cocktail machine and also modify the state of it. </string>
@@ -134,7 +141,6 @@
     <string name="bluetooth_no_connection"> Could not connect to the machine. </string>
     <string name="bluetooth_connected"> Device is connected. </string>
     <string name="bluetooth_connect"> Click to connect </string>
-    <string name="bluetooth_connection"> Bluetooth Connection </string>
     <string name="bluetooth_status_connected"> Connected </string>
     <string name="bluetooth_status_disconnected"> Disconnected </string>
 
