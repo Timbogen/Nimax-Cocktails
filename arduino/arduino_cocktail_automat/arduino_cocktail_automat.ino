@@ -4,12 +4,8 @@
 /**
  * The bluetooth serial
  */
-SoftwareSerial btSerial(10, 11); // (TX, RX) 
-/**
- * The send command
- */
-String command; 
- 
+SoftwareSerial btSerial(10, 11); // (TX, RX)
+
 
 /**
  * Setup routine
@@ -27,25 +23,44 @@ void setup() {
 void loop() {
   // Check if there is data available
   if (btSerial.available()) {
-    char received = btSerial.read();
-    // Check if the command begins
-    if (received == '<') {
-      command = "";
-    } else if (received == '>') {
-      handleCommand();
-    } else {
-      command += received;
-    }
-    
+    // Handle the incoming command
+    handleCommand(getCommand());
   }
+}
+
+/**
+ * Method to put together a string
+ */
+String getCommand() {
+  bool commandOK = false;
+  String command = "";
+  // Listen for input until command is complete
+  while(!commandOK) {
+    if (btSerial.available()) {
+      char received = btSerial.read();
+      // Check if the command begins
+      if (received == '<') {
+        command = "";
+      } else if (received == '>') {
+        commandOK = true;
+      } else {
+        command += received;
+      }
+    }
+  }
+  // Return the command
+  Serial.println(command);
+  return command;
 }
 
 /**
  * Method to handle a command
  */
-void handleCommand() {
+void handleCommand(String command) {
   if(command == "SETUP") {
     sendSetup();
+  } else if (command == "MODIFY") {
+    modifyDrink();
   }
 }
 
@@ -63,6 +78,21 @@ void sendSetup() {
     sendData(String(readInt(i)));
   }
   sendData("END");
+}
+
+/**
+ * Method to modify a drink
+ */
+void modifyDrink() {
+  // First get the position
+  int position = getCommand().toInt();
+  // Then the drink id
+  int id = getCommand().toInt();
+  // And finally the amount
+  int amount = getCommand().toInt();
+  // Save the result
+  saveInt(position, id);
+  saveInt(position + 1, amount);
 }
 
 /**
@@ -101,6 +131,5 @@ int readInt(int address) {
 }
 
 
-  
 
-  
+
