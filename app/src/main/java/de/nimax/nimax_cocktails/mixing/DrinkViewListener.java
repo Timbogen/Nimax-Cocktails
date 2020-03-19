@@ -21,7 +21,7 @@ public class DrinkViewListener implements ViewListener {
      */
     private Activity activity;
 
-    DrinkViewListener(Bar.Drinks type, Activity activity) {
+    public DrinkViewListener(Bar.Drinks type, Activity activity) {
         this.type = type;
         this.activity = activity;
     }

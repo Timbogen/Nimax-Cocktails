@@ -77,4 +77,15 @@
     <string name="settings_alc">Alkoholische Getränke</string>
     <string name="settings_alc_description">Klicken Sie hier um das Setup der alkoholischen Drinks zu sehen.</string>
     <string name="settings_setup_title">Setup</string>
+    <string name="settings_setup_list_title">Wähle den Drink aus den du ändern willst:</string>
+    <string name="settings_setup_pause_description">Klicken Sie hier um die Pumpe manuell zu stoppen.</string>
+    <string name="settings_setup_play_description">Klicken Sie hier um die Pumpe manuell zu starten.</string>
+    <string name="settings_setup_pause_title">Stoppe Pumpe</string>
+    <string name="settings_setup_play_title">Starte Pumpe</string>
+    <string name="settings_setup_selection">Das gewählte Getränk</string>
+    <string name="settings_setup_actions">Aktionen</string>
+    <string name="settings_setup_modification">Ändere das Getränk</string>
+    <string name="settings_setup_amount">Menge</string>
+    <string name="settings_setup_confirm">Bestätigen</string>
+    <string name="settings_setup_value_changed">Das Getränk wurde geändert!</string>
 </resources>

@@ -66,7 +66,7 @@ public class MixingActivity extends AppCompatActivity {
                 Showcase.setupShowcase(activity, null, findViewById(R.id.mixing_save), getString(R.string.showcase_mixing_save), mix);
             }
         };
-        Showcase.setupShowcase(this, Showcase.MIXING, findViewById(R.id.carousel_anti_alc), getString(R.string.showcase_mixing_add), save);
+        Showcase.setupShowcase(this, Showcase.MIXING, findViewById(R.id.setup_modify_carousel), getString(R.string.showcase_mixing_add), save);
     }
 
     /**
@@ -143,7 +143,7 @@ public class MixingActivity extends AppCompatActivity {
      */
     private void setupCarousel() {
         // The anti alc carousel
-        CarouselView nonAlcCarousel = findViewById(R.id.carousel_anti_alc);
+        CarouselView nonAlcCarousel = findViewById(R.id.carousel_non_alc);
         nonAlcCarousel.setPageCount(Bar.Drinks.NON_ALC.drinks.length);
         nonAlcCarousel.setViewListener(new DrinkViewListener(Bar.Drinks.NON_ALC, this));
         nonAlcCarousel.setImageClickListener(new ImageClickListener() {

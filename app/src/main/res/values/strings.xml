@@ -127,6 +127,18 @@
     <string name="settings_non_description">" Click here to show the setup of the non alcoholic drinks "</string>
     <string name="settings_alc_description">" Click here to show the setup of the alcoholic drinks "</string>
     <string name="settings_setup_title">" Setup "</string>
+    <string name="settings_setup_selection">" The selected drink "</string>
+    <string name="settings_setup_list_title">" Select the drink you want to modify: "</string>
+    <string name="settings_setup_actions">" Actions "</string>
+    <string name="settings_setup_play_title">" Start pump "</string>
+    <string name="settings_setup_pause_title">" Stop pump "</string>
+    <string name="settings_setup_play_description">" Click here to manually start the pump. "</string>
+    <string name="settings_setup_pause_description">" Click here to manually stop the pump."</string>
+    <string name="settings_setup_modification">" Modify the drink"</string>
+    <string name="settings_setup_amount">" Amount "</string>
+    <string name="settings_setup_confirm">" Confirm "</string>
+    <string name="settings_setup_value_changed">" Drink was modified! "</string>
+
 
     <!-- Image description -->
     <string name="settings_image_bluetooth"> Bluetooth </string>

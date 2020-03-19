@@ -22,7 +22,6 @@ public class MenuActivity extends AppCompatActivity {
     /**
      * All the external libraries are documented in build.gradle (Module: app)
      */
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

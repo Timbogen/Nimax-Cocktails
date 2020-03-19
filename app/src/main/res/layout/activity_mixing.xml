@@ -97,8 +97,8 @@
                     android:id="@+id/mixing_title_anti_alc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="18dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/mixing_anti_alc"
                     android:textSize="28sp" />
 
@@ -109,7 +109,7 @@
                     android:background="@color/grey" />
 
                 <com.synnapps.carouselview.CarouselView
-                    android:id="@+id/carousel_anti_alc"
+                    android:id="@+id/carousel_non_alc"
                     android:layout_width="match_parent"
                     android:layout_height="290dp"
                     app:autoPlay="false"
@@ -127,7 +127,7 @@
                         android:id="@+id/text_amount_non_alc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
+                        android:layout_marginStart="16dp"
                         android:text="@string/mixing_add_drink"
                         android:textSize="18sp"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -179,8 +179,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/mixing_alc"
                     android:textSize="28sp" />
 
@@ -214,7 +214,7 @@
                         android:id="@+id/text_amount_alc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
+                        android:layout_marginStart="16dp"
                         android:text="@string/mixing_add_drink"
                         android:textSize="18sp"
                         app:layout_constraintLeft_toLeftOf="parent"
