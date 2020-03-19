@@ -7,4 +7,9 @@
         <attr name="menuLogoTransition" format="string"/>
         <attr name="menuTitleTransition" format="string"/>
     </declare-styleable>
+    <declare-styleable name="SettingsButton">
+        <attr name="settingLogo" format="reference"/>
+        <attr name="settingTitle" format="string"/>
+        <attr name="settingDescription" format="string"/>
+    </declare-styleable>
 </resources>

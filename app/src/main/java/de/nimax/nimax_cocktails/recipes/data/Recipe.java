@@ -32,6 +32,10 @@ public class Recipe {
      */
     public static final int MAX_AMOUNT = 360;
     /**
+     * Max volume of a bottle
+     */
+    public static final int MAX_BOTTLE = 3000;
+    /**
      * Name of the drinker
      */
     public String name;

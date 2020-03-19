@@ -4,16 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.util.Pair;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import de.nimax.nimax_cocktails.BluetoothService;
-import de.nimax.nimax_cocktails.drinkers.data.Administration;
-import de.nimax.nimax_cocktails.drinkers.edit.DrinkerEditActivity;
 import de.nimax.nimax_cocktails.menu.MenuActivity;
 import de.nimax.nimax_cocktails.menu.Showcase;
+import de.nimax.nimax_cocktails.recipes.data.Bar;
 import de.nimax.nimax_cocktails.recipes.data.Drink;
 import de.nimax.nimax_cocktails.settings.setup.SetupActivity;
 
@@ -40,16 +39,7 @@ public class SettingsActivity extends AppCompatActivity {
         // Deactivate the old transition
         getWindow().setEnterTransition(null);
         getWindow().setExitTransition(null);
-
-        // Update the text of the bluetooth settings state
-        if (BluetoothService.isConnected()) {
-            TextView status = findViewById(R.id.settings_bluetooth_status);
-            status.setText(getString(R.string.bluetooth_status_connected));
-            // Make the other settings visible
-            findViewById(R.id.settings_non).setVisibility(View.VISIBLE);
-            findViewById(R.id.settings_alc).setVisibility(View.VISIBLE);
-        }
-
+        setupSettings(this);
         // Showcase
         Showcase.setupShowcase(this, Showcase.SETTINGS, null, getString(R.string.showcase_settings_start), null);
     }
@@ -76,6 +66,23 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     /**
+     * Method to setup settings
+     * @param activity that is currently active
+     */
+    public static void setupSettings(Activity activity) {
+        SettingsButton bluetooth = activity.findViewById(R.id.settings_bluetooth);
+        // Update the text of the bluetooth settings state
+        if (BluetoothService.isConnected()) {
+            bluetooth.setDescription(activity.getString(R.string.bluetooth_status_connected) + "  " + activity.getString(R.string.point) + "  " + activity.getString(R.string.bluetooth_connect));
+            // Make the other settings visible
+            activity.findViewById(R.id.settings_non).setVisibility(View.VISIBLE);
+            activity.findViewById(R.id.settings_alc).setVisibility(View.VISIBLE);
+        } else {
+            bluetooth.setDescription(activity.getString(R.string.bluetooth_status_disconnected) + "  " + activity.getString(R.string.point) + "  " + activity.getString(R.string.bluetooth_connect));
+        }
+    }
+
+    /**
      * Method to open the bluetooth connect activity
      */
     public void connectToBluetooth(View v) {
@@ -89,6 +96,8 @@ public class SettingsActivity extends AppCompatActivity {
     public void showNonAlcoholicSetup(View v) {
         // Set the right data set
         SetupActivity.drinks = nonAlcDrinks;
+        SetupActivity.modificationDrinks = Bar.Drinks.NON_ALC;
+        System.out.println(Bar.Drinks.NON_ALC.drinks[0]);
         // Start the intent
         Intent intent = new Intent(this, SetupActivity.class);
         startActivity(intent);
@@ -102,6 +111,7 @@ public class SettingsActivity extends AppCompatActivity {
     public void showAlcoholicSetup(View v) {
         // Set the right data set
         SetupActivity.drinks = alcDrinks;
+        SetupActivity.modificationDrinks = Bar.Drinks.ALC;
         // Start the intent
         Intent intent = new Intent(this, SetupActivity.class);
         startActivity(intent);

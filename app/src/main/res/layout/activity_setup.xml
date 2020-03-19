@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
     tools:context="de.nimax.nimax_cocktails.settings.setup.SetupActivity">
 
@@ -42,14 +42,207 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <ListView
-        android:id="@+id/setup_drinks"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/setup_underline">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginBottom="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/setup_selection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/settings_setup_selection"
+                android:textSize="28sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/setup_selection_underline"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginEnd="100dp"
+                android:background="@color/grey"
+                app:layout_constraintTop_toBottomOf="@id/setup_selection" />
+
+            <TextView
+                android:id="@+id/setup_list_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/settings_setup_list_title"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/setup_selection_underline" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/setup_drinks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:popupBackground="@color/colorPrimary"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/setup_list_title" />
+
+            <TextView
+                android:id="@+id/setup_actions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/settings_setup_actions"
+                android:textSize="28sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/setup_drinks" />
+
+            <View
+                android:id="@+id/setup_actions_underline"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginEnd="100dp"
+                android:background="@color/grey"
+                app:layout_constraintTop_toBottomOf="@id/setup_actions" />
+
+            <de.nimax.nimax_cocktails.settings.SettingsButton
+                android:id="@+id/setup_play"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="startPump"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/setup_actions_underline"
+                app:settingDescription="@string/settings_setup_play_description"
+                app:settingLogo="@drawable/mixing_button_play"
+                app:settingTitle="@string/settings_setup_play_title" />
+
+            <de.nimax.nimax_cocktails.settings.SettingsButton
+                android:id="@+id/setup_pause"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="stopPump"
+                android:visibility="invisible"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/setup_actions_underline"
+                app:settingDescription="@string/settings_setup_pause_description"
+                app:settingLogo="@drawable/mixing_button_pause"
+                app:settingTitle="@string/settings_setup_pause_title" />
+
+            <TextView
+                android:id="@+id/setup_modification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/settings_setup_modification"
+                android:textSize="28sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/setup_play" />
+
+            <View
+                android:id="@+id/setup_modification_underline"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginEnd="100dp"
+                android:background="@color/grey"
+                app:layout_constraintTop_toBottomOf="@id/setup_modification" />
+
+            <com.synnapps.carouselview.CarouselView
+                android:id="@+id/setup_modify_carousel"
+                android:layout_width="match_parent"
+                android:layout_height="290dp"
+                app:autoPlay="false"
+                app:fillColor="#000000"
+                app:layout_constraintTop_toBottomOf="@id/setup_modification_underline"
+                app:radius="3dp"
+                app:strokeColor="@color/black"
+                app:strokeWidth="1dp"
+                tools:layout_editor_absoluteX="-31dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/setup_modify_amount"
+                app:layout_constraintTop_toBottomOf="@id/setup_modify_carousel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_amount_non_alc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/settings_setup_amount"
+                    android:textSize="18sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.synnapps.carouselview.CarouselView
+                    android:id="@+id/setup_modify_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:autoPlay="false"
+                    app:layout_constraintLeft_toRightOf="@id/text_amount_non_alc"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/text_amount_remove"
+                    app:strokeColor="@color/black"
+                    app:indicatorVisibility="gone"
+                    app:slideInterval="10"
+                    app:strokeWidth="1dp" />
+
+                <ImageView
+                    app:layout_constraintLeft_toRightOf="@id/setup_modify_spinner"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/text_amount_add"
+                    android:id="@+id/text_amount_remove"
+                    android:layout_width="40dp"
+                    android:layout_height="0dp"
+                    android:contentDescription="@string/mixing_image_remove"
+                    android:src="@drawable/button_remove"
+                    android:onClick="lowerAmount"
+                    android:textSize="18sp"/>
+
+                <ImageView
+                    app:layout_constraintLeft_toRightOf="@id/text_amount_remove"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:id="@+id/text_amount_add"
+                    android:layout_width="40dp"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@string/mixing_image_add"
+                    android:onClick="higherAmount"
+                    android:src="@drawable/button_add"
+                    android:textSize="18sp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/setup_confirm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@drawable/menu_button_dark"
+                android:text="@string/settings_setup_confirm"
+                android:onClick="confirmModification"
+                app:layout_constraintTop_toBottomOf="@id/setup_modify_amount"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <View
+                app:layout_constraintTop_toBottomOf="@id/setup_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="16dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,6 +24,11 @@ public class MenuButton extends ConstraintLayout {
      */
     public String transitionTitle;
 
+    /**
+     * Button for the menu selection
+     * @param context that is given
+     * @param attributeSet that modify the button
+     */
     public MenuButton(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         inflate(context, R.layout.menu_button, this);

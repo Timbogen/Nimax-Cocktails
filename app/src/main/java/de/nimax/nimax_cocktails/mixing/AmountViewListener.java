@@ -18,7 +18,7 @@ public class AmountViewListener implements ViewListener {
      */
     private Activity activity;
 
-    AmountViewListener(int[] amounts, Activity activity) {
+    public AmountViewListener(int[] amounts, Activity activity) {
         this.amounts = amounts;
         this.activity = activity;
     }

@@ -23,169 +23,55 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <de.nimax.nimax_cocktails.settings.SettingsButton
             android:id="@+id/settings_bluetooth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
+            app:settingLogo="@drawable/menu_button_bluetooth"
             android:onClick="connectToBluetooth"
-            android:padding="8dp"
+            app:settingTitle="@string/settings_bluetooth"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/settings_underline">
-
-            <ImageView
-                android:id="@+id/settings_bluetooth_logo"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:contentDescription="@string/settings_image_bluetooth"
-                android:src="@drawable/menu_button_bluetooth"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="@string/settings_bluetooth"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@id/settings_bluetooth_logo"
-                app:layout_constraintLeft_toRightOf="@id/settings_bluetooth_logo"
-                app:layout_constraintTop_toTopOf="@id/settings_bluetooth_logo" />
-
-            <TextView
-                android:id="@+id/settings_bluetooth_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="@string/bluetooth_status_disconnected"
-                android:textColor="@color/grey"
-                app:layout_constraintLeft_toLeftOf="@id/settings_bluetooth_logo"
-                app:layout_constraintTop_toBottomOf="@id/settings_bluetooth_logo" />
-
-            <TextView
-                android:id="@+id/settings_bluetooth_point"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="@string/point"
-                android:textColor="@color/grey"
-                app:layout_constraintLeft_toRightOf="@id/settings_bluetooth_status"
-                app:layout_constraintTop_toBottomOf="@id/settings_bluetooth_logo" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="@string/bluetooth_connect"
-                android:textColor="@color/grey"
-                app:layout_constraintLeft_toRightOf="@id/settings_bluetooth_point"
-                app:layout_constraintTop_toBottomOf="@id/settings_bluetooth_logo" />
 
             <ProgressBar
                 android:id="@+id/settings_bluetooth_progress"
                 style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </de.nimax.nimax_cocktails.settings.SettingsButton>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+
+        <de.nimax.nimax_cocktails.settings.SettingsButton
             android:id="@+id/settings_non"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
             android:onClick="showNonAlcoholicSetup"
-            android:padding="8dp"
             android:visibility="invisible"
+            app:settingDescription="@string/settings_non_description"
+            app:settingTitle="@string/settings_non"
+            app:settingLogo="@drawable/button_drink"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/settings_bluetooth">
+            app:layout_constraintTop_toBottomOf="@id/settings_bluetooth"/>
 
-            <ImageView
-                android:id="@+id/settings_non_logo"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:contentDescription="@string/settings_image_alc"
-                android:src="@drawable/button_drink"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="@string/settings_non"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@id/settings_non_logo"
-                app:layout_constraintLeft_toRightOf="@id/settings_non_logo"
-                app:layout_constraintTop_toTopOf="@id/settings_non_logo" />
-
-            <TextView
-                android:id="@+id/settings_non_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="@string/settings_non_description"
-                android:textColor="@color/grey"
-                app:layout_constraintLeft_toLeftOf="@id/settings_non_logo"
-                app:layout_constraintTop_toBottomOf="@id/settings_non_logo" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <de.nimax.nimax_cocktails.settings.SettingsButton
             android:id="@+id/settings_alc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
             android:onClick="showAlcoholicSetup"
-            android:padding="8dp"
             android:visibility="invisible"
+            app:settingDescription="@string/settings_alc_description"
+            app:settingTitle="@string/settings_alc"
+            app:settingLogo="@drawable/button_drink"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/settings_non">
+            app:layout_constraintTop_toBottomOf="@id/settings_non"/>
 
-            <ImageView
-                android:id="@+id/settings_alc_logo"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:contentDescription="@string/settings_image_alc"
-                android:src="@drawable/button_drink"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="@string/settings_alc"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@id/settings_alc_logo"
-                app:layout_constraintLeft_toRightOf="@id/settings_alc_logo"
-                app:layout_constraintTop_toTopOf="@id/settings_alc_logo" />
-
-            <TextView
-                android:id="@+id/settings_alc_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="@string/settings_alc_description"
-                android:textColor="@color/grey"
-                app:layout_constraintLeft_toLeftOf="@id/settings_alc_logo"
-                app:layout_constraintTop_toBottomOf="@id/settings_alc_logo" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
