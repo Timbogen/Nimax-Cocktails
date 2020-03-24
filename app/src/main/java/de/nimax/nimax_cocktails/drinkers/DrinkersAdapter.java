@@ -50,9 +50,11 @@ public class DrinkersAdapter extends ArrayAdapter<Drinker> {
         if (item == null) item = LayoutInflater.from(activity).inflate(R.layout.adapter_drinkers, parent, false);
 
         // Specify the icon
+        ImageView image = item.findViewById(R.id.list_image);
         if (drinkers.get(position).image != null) {
-            ImageView image = item.findViewById(R.id.list_image);
             image.setImageBitmap(drinkers.get(position).image);
+        } else {
+            image.setImageResource(R.drawable.menu_button_drinkers);
         }
 
         // Specify the name

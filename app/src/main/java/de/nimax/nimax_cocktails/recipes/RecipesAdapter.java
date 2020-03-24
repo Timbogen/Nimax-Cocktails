@@ -49,9 +49,11 @@ public class RecipesAdapter extends ArrayAdapter<Recipe> {
         if (item == null) item = LayoutInflater.from(activity).inflate(R.layout.adapter_recipes, parent, false);
 
         // Specify the icon
+        ImageView image = item.findViewById(R.id.list_image);
         if (recipes.get(position).image != null) {
-            ImageView image = item.findViewById(R.id.list_image);
             image.setImageBitmap(recipes.get(position).image);
+        } else {
+            image.setImageResource(R.drawable.menu_button_mixing);
         }
 
         // Specify the name
