@@ -1,5 +1,5 @@
-#ifndef SHIFT_REGISTRY_H
-#define SHIFT_REGISTRY_H
+#ifndef SHIFT_REGISTER_H
+#define SHIFT_REGISTER_H
 /**
  * The ports for the shift registry
  */
@@ -13,14 +13,14 @@ int MDR = 0, MDL = 1, MRR = 2, MRL = 3, MSR = 4, MSL = 5;
  */
 int PUMPS[] = {6, 7, 8, 9, 10, 11};
 /**
- * The corresponding data array containing the information how the shift registry should be filled
+ * The corresponding data array containing the information how the shift register should be filled
  */
-int input[] = {1, 1, 1, 1, 1, 1, 1, 1}; 
+int input[] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 
 /**
  * Setup the pins
  */
-void setupRegistry() {
+void setupRegister() {
   pinMode(SH_CP, OUTPUT);
   pinMode(ST_CP, OUTPUT);
   pinMode(DS, OUTPUT);
@@ -30,7 +30,8 @@ void setupRegistry() {
  * Update the shift register's outputs
  */
 void updateRegister() {
-  for (int i = 7; i >= 0; i--) {
+  digitalWrite(ST_CP, 0);
+  for (int i = 12; i >= 0; i--) {
     // Initial step
     digitalWrite(DS, LOW);     
     digitalWrite(SH_CP, LOW);
@@ -39,7 +40,7 @@ void updateRegister() {
     digitalWrite(DS, input[i]);
     digitalWrite(SH_CP, HIGH);
   }
-  // Update the shift registry
+  // Update the shift register
   digitalWrite(ST_CP, 1);
 }
 

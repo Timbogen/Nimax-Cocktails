@@ -1,5 +1,5 @@
 
-#include "shift_registry.h"
+#include "shift_register.h"
 #include "bluetooth_interface.h"
 
 /**
@@ -11,8 +11,7 @@ void setup() {
   // Initialize the bluetooth interface
   btSerial.begin(9600);
   // Setup the shift registry
-  setupRegistry();
-  
+  setupRegister();
 }
 
 /**

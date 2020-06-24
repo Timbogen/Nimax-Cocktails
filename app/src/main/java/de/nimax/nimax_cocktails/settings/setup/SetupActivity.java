@@ -116,6 +116,9 @@ public class SetupActivity extends AppCompatActivity {
         view.setVisibility(View.INVISIBLE);
         // Show the pause settings
         findViewById(R.id.setup_pause).setVisibility(View.VISIBLE);
+        // Start pump manually
+        BluetoothService.sendData("START_PUMP");
+        BluetoothService.sendData(Integer.toString(selected));
     }
 
     /**
@@ -127,6 +130,9 @@ public class SetupActivity extends AppCompatActivity {
         view.setVisibility(View.INVISIBLE);
         // Show the pause settings
         findViewById(R.id.setup_play).setVisibility(View.VISIBLE);
+        // Start pump manually
+        BluetoothService.sendData("STOP_PUMP");
+        BluetoothService.sendData(Integer.toString(selected));
     }
 
     /**

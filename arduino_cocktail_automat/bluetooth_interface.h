@@ -3,6 +3,7 @@
 
 #include <SoftwareSerial.h>
 #include "eeprom_handler.h"
+#include "shift_register.h"
 
 /**
  * The bluetooth serial
@@ -74,18 +75,36 @@ void modifyDrink() {
 }
 
 /**
+ * Start the pump manually
+ */
+void startPump() {
+  int position = getCommand().toInt();
+  activatePin(PUMPS[position]);
+}
+
+/**
+ * Stop the pump manually
+ */
+void stopPump() {
+  int position = getCommand().toInt();
+  deactivatePin(PUMPS[position]);
+}
+
+/**
  * Method to handle a command
  */
 void handleCommand(String command) {
-  switch(command) {
-    case "SETUP":
-      sendSetup();
-      break;
-    case "MODIFY":
-      modifySetup();
-      break;
+  if(command == "SETUP") {
+    sendSetup();
+  } else if (command == "MODIFY") {
+    modifyDrink();
+  } else if (command == "START_PUMP") {
+    startPump();
+  } else if (command == "STOP_PUMP") {
+    stopPump();
   }
 }
+ 
 
 /**
  * Wait for the next input and handle it
