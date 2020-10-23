@@ -6,7 +6,6 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
 import android.widget.Toast;
 
 import com.nimax.nimax_cocktails.R;
@@ -38,7 +37,7 @@ public class BluetoothService {
      * Method to guide trough the process of connecting the device
      *
      * @param activity that is currently active
-     * @param view that was clicked
+     * @param view     that was clicked
      */
     public static void connectDevice(Activity activity, final View view) {
         if (isConnected()) {
@@ -59,6 +58,7 @@ public class BluetoothService {
 
     /**
      * Method to tell whether the bluetooth service is connected
+     *
      * @return true if device is connected to arduino
      */
     public static boolean isConnected() {
@@ -84,7 +84,7 @@ public class BluetoothService {
     /**
      * Method to read a command of the arduino
      */
-    private static String readData() {
+    public static String readData() {
         try {
             StringBuilder command = new StringBuilder();
             while (true) {

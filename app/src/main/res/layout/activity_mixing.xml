@@ -36,6 +36,7 @@
             android:layout_margin="16dp"
             android:contentDescription="@string/image_menu"
             android:src="@drawable/mixing_button_play"
+            android:onClick="mixRecipe"
             app:layout_constraintLeft_toRightOf="@id/mixing_save"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"

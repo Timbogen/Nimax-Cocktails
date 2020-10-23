@@ -152,6 +152,7 @@ public class Bar {
     public enum Drinks {
         NON_ALC(new Drink[]{
                 new Drink("Bitter Lemon", R.drawable.anti_alc_bitter_lemon, 0, 0),
+                new Drink("Cherry Juice", R.drawable.anti_alc_cherry_juice, 0, 0),
                 new Drink("Coca Cola", R.drawable.anti_alc_coca_cola, 0, 0),
                 new Drink("Energy Drink", R.drawable.anti_alc_energy_drink, 0, 0),
                 new Drink("Orange Juice", R.drawable.anti_alc_orange_juice, 0, 0),
@@ -161,6 +162,7 @@ public class Bar {
         ALC(new Drink[]{
                 new Drink("Asbach", R.drawable.alc_asbach, 38, 0),
                 new Drink("Bacardi", R.drawable.alc_bacardi, 37.5, 0),
+                new Drink("Campari", R.drawable.alc_campari, 25, 0),
                 new Drink("Captain Morgan", R.drawable.alc_captain_morgan, 35, 0),
                 new Drink("Gin", R.drawable.alc_gin, 40, 0),
                 new Drink("Havana", R.drawable.alc_havana, 40, 0),

@@ -138,6 +138,16 @@
     <string name="settings_setup_amount">" Amount "</string>
     <string name="settings_setup_confirm">" Confirm "</string>
     <string name="settings_setup_value_changed">" Drink was modified! "</string>
+    <string name="settings_mc_play">" Start the motor "</string>
+    <string name="settings_mc_pause">" Stop the motor "</string>
+    <string name="settings_mc_shift_up">" Move Shift Up "</string>
+    <string name="settings_mc_shift_down">" Move Shift Down "</string>
+    <string name="settings_mc_roundel_left">" Rotate Roundel Left "</string>
+    <string name="settings_mc_roundel_right">" Rotate Roundel Right "</string>
+    <string name="settings_mc_cup_left">" Move Cup Left "</string>
+    <string name="settings_mc_cup_right">" Move Cup Right "</string>
+    <string name="settings_general_title">" General "</string>
+    <string name="settings_mc_title">" Control Motors "</string>
 
 
     <!-- Image description -->
@@ -148,6 +158,11 @@
     <string name="showcase_settings_start"> In the settings you can connect the device with the cocktail machine and also modify the state of it. </string>
 
     <!-- Bluetooth -->
+    <string name="bluetooth_no_drink"> The machine does not contain </string>
+    <string name="bluetooth_too_less_1"> There is only </string>
+    <string name="bluetooth_too_less_2"> left. </string>
+    <string name="bluetooth_currently_mixing"> Wait until the machine finished mixing! </string>
+    <string name="bluetooth_no_active_connection"> Connect your device to the machine first! </string>
     <string name="bluetooth_no_bluetooth"> Your device probably does not support bluetooth. </string>
     <string name="bluetooth_pair_device"> You have to pair your device with HC-05 first. </string>
     <string name="bluetooth_no_connection"> Could not connect to the machine. </string>

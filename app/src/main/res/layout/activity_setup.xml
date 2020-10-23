@@ -92,47 +92,56 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/setup_list_title" />
 
-            <TextView
-                android:id="@+id/setup_actions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/settings_setup_actions"
-                android:textSize="28sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/setup_drinks" />
-
-            <View
-                android:id="@+id/setup_actions_underline"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                app:layout_constraintTop_toBottomOf="@id/setup_drinks"
+                android:id="@+id/actions_layout"
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginEnd="100dp"
-                android:background="@color/grey"
-                app:layout_constraintTop_toBottomOf="@id/setup_actions" />
+                android:layout_height="wrap_content">
 
-            <de.nimax.nimax_cocktails.settings.SettingsButton
-                android:id="@+id/setup_play"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="startPump"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/setup_actions_underline"
-                app:settingDescription="@string/settings_setup_play_description"
-                app:settingLogo="@drawable/mixing_button_play"
-                app:settingTitle="@string/settings_setup_play_title" />
 
-            <de.nimax.nimax_cocktails.settings.SettingsButton
-                android:id="@+id/setup_pause"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="stopPump"
-                android:visibility="invisible"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/setup_actions_underline"
-                app:settingDescription="@string/settings_setup_pause_description"
-                app:settingLogo="@drawable/mixing_button_pause"
-                app:settingTitle="@string/settings_setup_pause_title" />
+                <TextView
+                    android:id="@+id/setup_actions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/settings_setup_actions"
+                    android:textSize="28sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <View
+                    android:id="@+id/setup_actions_underline"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginEnd="100dp"
+                    android:background="@color/grey"
+                    app:layout_constraintTop_toBottomOf="@id/setup_actions" />
+
+                <de.nimax.nimax_cocktails.settings.SettingsButton
+                    android:id="@+id/setup_play"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="startPump"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/setup_actions_underline"
+                    app:settingDescription="@string/settings_setup_play_description"
+                    app:settingLogo="@drawable/mixing_button_play"
+                    app:settingTitle="@string/settings_setup_play_title" />
+
+                <de.nimax.nimax_cocktails.settings.SettingsButton
+                    android:id="@+id/setup_pause"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="stopPump"
+                    android:visibility="invisible"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/setup_actions_underline"
+                    app:settingDescription="@string/settings_setup_pause_description"
+                    app:settingLogo="@drawable/mixing_button_pause"
+                    app:settingTitle="@string/settings_setup_pause_title" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/setup_modification"
@@ -143,7 +152,7 @@
                 android:text="@string/settings_setup_modification"
                 android:textSize="28sp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/setup_play" />
+                app:layout_constraintTop_toBottomOf="@id/actions_layout" />
 
             <View
                 android:id="@+id/setup_modification_underline"

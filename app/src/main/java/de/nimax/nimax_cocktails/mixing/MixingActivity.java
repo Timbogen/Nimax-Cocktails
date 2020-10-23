@@ -1,9 +1,5 @@
 package de.nimax.nimax_cocktails.mixing;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.util.Pair;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,15 +9,24 @@ import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import de.nimax.nimax_cocktails.menu.MenuActivity;
-import de.nimax.nimax_cocktails.menu.Showcase;
-import de.nimax.nimax_cocktails.recipes.data.Bar;
-import de.nimax.nimax_cocktails.recipes.data.Recipe;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
 
 import com.nimax.nimax_cocktails.R;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageClickListener;
+
+import de.nimax.nimax_cocktails.BluetoothService;
+import de.nimax.nimax_cocktails.menu.MenuActivity;
+import de.nimax.nimax_cocktails.menu.Showcase;
+import de.nimax.nimax_cocktails.recipes.data.Bar;
+import de.nimax.nimax_cocktails.recipes.data.Drink;
+import de.nimax.nimax_cocktails.recipes.data.Recipe;
+import de.nimax.nimax_cocktails.settings.SettingsActivity;
+
 public class MixingActivity extends AppCompatActivity {
 
     /**
@@ -29,10 +34,21 @@ public class MixingActivity extends AppCompatActivity {
      */
     public static Recipe recipe = new Recipe("Mix");
     /**
+     * The drink format for mixing a cocktail on the machine
+     */
+    private static int[] antiAlc, alc;
+    /**
+     * True if the machine is currently mixing
+     */
+    private static boolean mixing = false;
+    /**
      * The current activity
      */
     private Activity activity = this;
-
+    /**
+     * The drink carousels
+     */
+    private DrinkViewListener alcCarousel, nonAlcCarousel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +62,133 @@ public class MixingActivity extends AppCompatActivity {
         refreshTable();
         // Setup the showcases for first use
         setupShowcases();
+    }
+
+    /**
+     * Mix the recipe
+     */
+    public void mixRecipe(View v) {
+        // Check if the machine is currently mixing
+        if (mixing) {
+            Toast.makeText(
+                    this,
+                    getString(R.string.bluetooth_currently_mixing),
+                    Toast.LENGTH_SHORT
+            ).show();
+            return;
+        }
+
+        // Check if the recipe is empty
+        if (recipe.isEmpty()) {
+            Toast.makeText(
+                    this,
+                    getString(R.string.mixing_no_drinks),
+                    Toast.LENGTH_SHORT
+            ).show();
+            return;
+        }
+
+        // Check if the connection is active
+        if (BluetoothService.isConnected()) {
+            if (isMixable()) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mixing = true;
+                        BluetoothService.sendData("MIX_DRINK");
+                        // Send the cocktail data
+                        for (int i = 0; i < alc.length; i++) {
+                            // Send the data
+                            BluetoothService.sendData(Integer.toString(alc[i]));
+                            // Update the local amounts
+                            SettingsActivity.alcDrinks.get(i).amount -= alc[i];
+                        }
+                        for (int i = 0; i < antiAlc.length; i++) {
+                            BluetoothService.sendData(Integer.toString(antiAlc[i]));
+                            // Update the local amounts
+                            SettingsActivity.nonAlcDrinks.get(i).amount -= antiAlc[i];
+                        }
+
+                        // Update the views
+                        alcCarousel.update();
+                        nonAlcCarousel.update();
+
+                        // Wait for the arduino to respond
+                        if (BluetoothService.readData().equals("FINISHED")) {
+                            mixing = false;
+                        }
+                    }
+                }).start();
+            }
+        } else {
+            Toast.makeText(
+                    this,
+                    getString(R.string.bluetooth_no_active_connection),
+                    Toast.LENGTH_SHORT
+            ).show();
+        }
+    }
+
+    /**
+     * @return true if a cocktail is mixable
+     */
+    private boolean isMixable() {
+        // Empty the previous cocktail
+        antiAlc = new int[]{0, 0, 0, 0, 0, 0};
+        alc = new int[]{0, 0, 0, 0, 0, 0};
+
+        // Check if machine has enough alc
+        for (Drink recipeDrink : recipe.drinks) {
+            // Check if machine contains the drink
+            int position = -1;
+            Drink matchedDrink = null;
+            for (int i = 0; i < SettingsActivity.alcDrinks.size(); i++) {
+                if (SettingsActivity.alcDrinks.get(i).name.equals(recipeDrink.name)) {
+                    position = i;
+                    matchedDrink = SettingsActivity.alcDrinks.get(i);
+                    break;
+                }
+            }
+
+            // Check if the amount can be set
+            if (position > -1 && matchedDrink.amount >= recipeDrink.amount) {
+                alc[position] = recipeDrink.amount;
+                continue;
+            }
+
+            for (int i = 0; i < SettingsActivity.nonAlcDrinks.size(); i++) {
+                if (SettingsActivity.nonAlcDrinks.get(i).name.equals(recipeDrink.name)) {
+                    position = i;
+                    matchedDrink = SettingsActivity.nonAlcDrinks.get(i);
+                    break;
+                }
+            }
+
+            // Check if the amount can be set
+            if (position > -1 && matchedDrink.amount >= recipeDrink.amount) {
+                antiAlc[position] = recipeDrink.amount;
+            }
+
+            // Check if there's enough
+            if (matchedDrink == null) {
+                Toast.makeText(
+                        this,
+                        getString(R.string.bluetooth_no_drink) + " " + recipeDrink.name + ".",
+                        Toast.LENGTH_SHORT
+                ).show();
+                return false;
+            } else if (matchedDrink.amount < recipeDrink.amount) {
+                Toast.makeText(
+                        this,
+                        getString(R.string.bluetooth_too_less_1) + " " + matchedDrink.amount
+                                + " ml " + matchedDrink.name + " "
+                                + getString(R.string.bluetooth_too_less_2),
+                        Toast.LENGTH_SHORT
+                ).show();
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -100,16 +243,19 @@ public class MixingActivity extends AppCompatActivity {
 
     /**
      * Method to higher the selected item of the carousel
+     *
      * @param v view
      */
     public void higherAmountNonAlc(View v) {
         CarouselView carousel = findViewById(R.id.carousel_amount_non_alc);
-        if (carousel.getCurrentItem() + 10 >= carousel.getPageCount()) carousel.setCurrentItem(carousel.getPageCount() - 1);
+        if (carousel.getCurrentItem() + 10 >= carousel.getPageCount())
+            carousel.setCurrentItem(carousel.getPageCount() - 1);
         else carousel.setCurrentItem(carousel.getCurrentItem() + 10);
     }
 
     /**
      * Method to lower the selected item of the carousel
+     *
      * @param v view
      */
     public void lowerAmountNonAlc(View v) {
@@ -120,16 +266,19 @@ public class MixingActivity extends AppCompatActivity {
 
     /**
      * Method to higher the selected item of the carousel
+     *
      * @param v view
      */
     public void higherAmountAlc(View v) {
         CarouselView carousel = findViewById(R.id.carousel_amount_alc);
-        if (carousel.getCurrentItem() + 10 >= carousel.getPageCount()) carousel.setCurrentItem(carousel.getPageCount() - 1);
+        if (carousel.getCurrentItem() + 10 >= carousel.getPageCount())
+            carousel.setCurrentItem(carousel.getPageCount() - 1);
         else carousel.setCurrentItem(carousel.getCurrentItem() + 10);
     }
 
     /**
      * Method to lower the selected item of the carousel
+     *
      * @param v view
      */
     public void lowerAmountAlc(View v) {
@@ -145,7 +294,8 @@ public class MixingActivity extends AppCompatActivity {
         // The anti alc carousel
         CarouselView nonAlcCarousel = findViewById(R.id.carousel_non_alc);
         nonAlcCarousel.setPageCount(Bar.Drinks.NON_ALC.drinks.length);
-        nonAlcCarousel.setViewListener(new DrinkViewListener(Bar.Drinks.NON_ALC, this));
+        this.nonAlcCarousel = new DrinkViewListener(Bar.Drinks.NON_ALC, this);
+        nonAlcCarousel.setViewListener(this.nonAlcCarousel);
         nonAlcCarousel.setImageClickListener(new ImageClickListener() {
             @Override
             public void onClick(int position) {
@@ -158,7 +308,8 @@ public class MixingActivity extends AppCompatActivity {
         // The alc carousel
         CarouselView alcCarousel = findViewById(R.id.carousel_alc);
         alcCarousel.setPageCount(Bar.Drinks.ALC.drinks.length);
-        alcCarousel.setViewListener(new DrinkViewListener(Bar.Drinks.ALC, this));
+        this.alcCarousel = new DrinkViewListener(Bar.Drinks.ALC, this);
+        alcCarousel.setViewListener(this.alcCarousel);
         alcCarousel.setImageClickListener(new ImageClickListener() {
             @Override
             public void onClick(int position) {

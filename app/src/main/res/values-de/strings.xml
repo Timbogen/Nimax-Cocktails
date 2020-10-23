@@ -62,7 +62,6 @@
     <string name="showcase_drinkers_list">Klicken Sie auf eine Person, um eine detaillierte Sicht zu erhalten.</string>
     <string name="showcase_settings_start">In den Einstellungen kannst du dich mit der Maschine verbinden und den Stand der Maschine verändern.</string>
     <string name="bluetooth_connected">Gerät ist verbunden.</string>
-    <string name="bluetooth_no_bluetooth">Ihr Gerät unterstützt vermutlich kein Bluetooth.</string>
     <string name="bluetooth_pair_device">Sie müssen ihr Gerät zuerst mit HC-05 verbinden.</string>
     <string name="bluetooth_connect">Klicke um zu verbinden</string>
     <string name="settings_bluetooth">Bluetooth Verbindung</string>
@@ -88,4 +87,20 @@
     <string name="settings_setup_amount">Menge</string>
     <string name="settings_setup_confirm">Bestätigen</string>
     <string name="settings_setup_value_changed">Das Getränk wurde geändert!</string>
+    <string name="bluetooth_no_active_connection">Verbinden Sie ihr Gerät zuerst mit der Maschine!</string>
+    <string name="bluetooth_currently_mixing">Warten Sie, bis die Maschine fertig ist mit mixen!</string>
+    <string name="bluetooth_no_bluetooth">Ihr Gerät unterstüzt vermutlich kein Bluetooth.</string>
+    <string name="bluetooth_no_drink">Die Maschine beinhaltet aktuell kein</string>
+    <string name="bluetooth_too_less_1">Es sind nur noch</string>
+    <string name="bluetooth_too_less_2">übrig.</string>
+    <string name="settings_mc_play">Motor starten</string>
+    <string name="settings_mc_pause">Motor stoppen</string>
+    <string name="settings_mc_shift_up">Drücker Nach Oben</string>
+    <string name="settings_mc_shift_down">Drücker Nach Unten</string>
+    <string name="settings_mc_roundel_left">Rondell Links Rotieren</string>
+    <string name="settings_mc_roundel_right">Rondell Rechts Rotieren</string>
+    <string name="settings_mc_cup_left">Becher Nach Links</string>
+    <string name="settings_mc_cup_right">Becher Nach Rechts</string>
+    <string name="settings_general_title">Generelles</string>
+    <string name="settings_mc_title">Motoren Steuern</string>
 </resources>

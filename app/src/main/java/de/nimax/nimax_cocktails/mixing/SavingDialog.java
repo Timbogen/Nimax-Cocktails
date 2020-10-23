@@ -71,7 +71,7 @@ public class SavingDialog extends Dialog {
         }
 
         // If order / drinker is empty
-        if (MixingActivity.recipe.drinks.size() == 0) {
+        if (MixingActivity.recipe.drinks.isEmpty()) {
             // Set the hint for the input field
             error.setText(context.getResources().getString(R.string.mixing_no_drinks));
             return;

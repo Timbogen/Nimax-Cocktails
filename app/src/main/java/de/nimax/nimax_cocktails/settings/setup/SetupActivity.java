@@ -1,6 +1,7 @@
 package de.nimax.nimax_cocktails.settings.setup;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +32,10 @@ public class SetupActivity extends AppCompatActivity {
      */
     public static Bar.Drinks modificationDrinks;
     /**
+     * True if the view shall contain the actions section
+     */
+    public static boolean actions = true;
+    /**
      * The spinner adapter
      */
     private RecipeEditAdapter spinnerAdapter;
@@ -45,6 +50,7 @@ public class SetupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setup);
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         setupSpinner();
+        setupActions();
         setupCarousel();
         setupSelection();
     }
@@ -79,6 +85,16 @@ public class SetupActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+    }
+
+    /**
+     * Method to setup the actions tab
+     */
+    private void setupActions() {
+        if (!actions) {
+            ConstraintLayout actions = findViewById(R.id.actions_layout);
+            actions.setVisibility(ConstraintLayout.GONE);
+        }
     }
 
     /**

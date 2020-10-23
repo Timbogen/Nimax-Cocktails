@@ -143,18 +143,6 @@ public class Recipe {
     }
 
     /**
-     * Method to check whether a drinker is recipeable
-     *
-     * @return true if the drinker is recipeable
-     */
-    public boolean isMixable() {
-        for (Drink drink : drinks) {
-            if (drink.amount > drink.level) return false;
-        }
-        return true;
-    }
-
-    /**
      * Method to check whether the drinker is empty
      *
      * @return true if drinker is empty

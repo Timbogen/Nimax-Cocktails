@@ -23,6 +23,25 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/general"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/settings_general_title"
+            android:textSize="28sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/settings_underline" />
+
+        <View
+            android:id="@+id/general_underline"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginEnd="100dp"
+            android:background="@color/grey"
+            app:layout_constraintTop_toBottomOf="@id/general" />
+
         <de.nimax.nimax_cocktails.settings.SettingsButton
             android:id="@+id/settings_bluetooth"
             android:layout_width="match_parent"
@@ -31,7 +50,7 @@
             android:onClick="connectToBluetooth"
             app:settingTitle="@string/settings_bluetooth"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/settings_underline">
+            app:layout_constraintTop_toBottomOf="@id/general_underline">
 
             <ProgressBar
                 android:id="@+id/settings_bluetooth_progress"
@@ -71,6 +90,35 @@
             app:settingLogo="@drawable/button_drink"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/settings_non"/>
+
+        <TextView
+            android:id="@+id/control_motors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:visibility="invisible"
+            android:text="@string/settings_setup_actions"
+            android:textSize="28sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/settings_alc" />
+
+        <View
+            android:id="@+id/control_motors_underline"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:visibility="invisible"
+            android:layout_marginEnd="100dp"
+            android:background="@color/grey"
+            app:layout_constraintTop_toBottomOf="@id/control_motors" />
+
+        <ListView
+            android:id="@+id/list_motors"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/control_motors_underline"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

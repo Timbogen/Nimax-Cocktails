@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 
 import de.nimax.nimax_cocktails.BluetoothService;
 import de.nimax.nimax_cocktails.menu.MenuActivity;
@@ -42,6 +43,11 @@ public class SettingsActivity extends AppCompatActivity {
         setupSettings(this);
         // Showcase
         Showcase.setupShowcase(this, Showcase.SETTINGS, null, getString(R.string.showcase_settings_start), null);
+
+        // Setup the list
+        ListView list = findViewById(R.id.list_motors);
+        list.setAdapter(new MotorControlAdapter(this, "shift_up", "shift_down",
+                "roundel_left", "roundel_right", "cup_left", "cup_right"));
     }
 
     /**
@@ -77,6 +83,9 @@ public class SettingsActivity extends AppCompatActivity {
             // Make the other settings visible
             activity.findViewById(R.id.settings_non).setVisibility(View.VISIBLE);
             activity.findViewById(R.id.settings_alc).setVisibility(View.VISIBLE);
+            activity.findViewById(R.id.control_motors).setVisibility(View.VISIBLE);
+            activity.findViewById(R.id.control_motors_underline).setVisibility(View.VISIBLE);
+            activity.findViewById(R.id.list_motors).setVisibility(View.VISIBLE);
         } else {
             bluetooth.setDescription(activity.getString(R.string.bluetooth_status_disconnected) + "  " + activity.getString(R.string.point) + "  " + activity.getString(R.string.bluetooth_connect));
         }
@@ -96,8 +105,8 @@ public class SettingsActivity extends AppCompatActivity {
     public void showNonAlcoholicSetup(View v) {
         // Set the right data set
         SetupActivity.drinks = nonAlcDrinks;
+        SetupActivity.actions = true;
         SetupActivity.modificationDrinks = Bar.Drinks.NON_ALC;
-        System.out.println(Bar.Drinks.NON_ALC.drinks[0]);
         // Start the intent
         Intent intent = new Intent(this, SetupActivity.class);
         startActivity(intent);
@@ -111,6 +120,7 @@ public class SettingsActivity extends AppCompatActivity {
     public void showAlcoholicSetup(View v) {
         // Set the right data set
         SetupActivity.drinks = alcDrinks;
+        SetupActivity.actions = false;
         SetupActivity.modificationDrinks = Bar.Drinks.ALC;
         // Start the intent
         Intent intent = new Intent(this, SetupActivity.class);
