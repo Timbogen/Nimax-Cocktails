@@ -17,7 +17,6 @@ import com.nimax.nimax_cocktails.R;
 import java.util.ArrayList;
 
 import de.nimax.nimax_cocktails.recipes.data.Bar;
-import de.nimax.nimax_cocktails.recipes.data.Drink;
 import de.nimax.nimax_cocktails.recipes.data.Recipe;
 import de.nimax.nimax_cocktails.recipes.edit.RecipeEditActivity;
 
@@ -26,14 +25,15 @@ public class RecipesAdapter extends ArrayAdapter<Recipe> {
     /**
      * The activity of the activity
      */
-    private Activity activity;
+    private final Activity activity;
     /**
      * The recipes that should be shown in the list
      */
-    private ArrayList<Recipe> recipes;
+    private final ArrayList<Recipe> recipes;
 
     /**
      * Custom Array Adapter for the list and the spinners
+     *
      * @param activity of the adapter
      */
     RecipesAdapter(@NonNull Activity activity, ArrayList<Recipe> drinks) {
@@ -42,11 +42,15 @@ public class RecipesAdapter extends ArrayAdapter<Recipe> {
         this.recipes = drinks;
     }
 
+    /**
+     * Update the view for a given position
+     */
     @NonNull
     @Override
     public View getView(final int position, @Nullable View item, @NonNull ViewGroup parent) {
         // Check if the item is null
-        if (item == null) item = LayoutInflater.from(activity).inflate(R.layout.adapter_recipes, parent, false);
+        if (item == null)
+            item = LayoutInflater.from(activity).inflate(R.layout.adapter_recipes, parent, false);
 
         // Specify the icon
         ImageView image = item.findViewById(R.id.list_image);
@@ -63,8 +67,8 @@ public class RecipesAdapter extends ArrayAdapter<Recipe> {
         // Specify the ingredients
         TextView value = item.findViewById(R.id.list_ingredients);
         StringBuilder ingredients = new StringBuilder();
-        for (Drink d : recipes.get(position).drinks) {
-            ingredients.append(d.name).append(", ");
+        for (Recipe.Drink d : recipes.get(position).drinks) {
+            ingredients.append(getString("drink_" + d.drink.name().toLowerCase())).append(", ");
         }
         value.setText(ingredients.substring(0, ingredients.length() - 2));
 
@@ -83,8 +87,26 @@ public class RecipesAdapter extends ArrayAdapter<Recipe> {
         return item;
     }
 
+    /**
+     * Get the view
+     */
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         return getView(position, convertView, parent);
+    }
+
+    /**
+     * Get a string by name
+     *
+     * @param name of the string
+     * @return the corresponding translation
+     */
+    private String getString(String name) {
+        int resourceId = activity.getResources().getIdentifier(
+                name,
+                "string",
+                activity.getPackageName()
+        );
+        return activity.getString(resourceId);
     }
 }

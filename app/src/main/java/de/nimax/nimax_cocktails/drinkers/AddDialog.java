@@ -20,7 +20,7 @@ public class AddDialog extends Dialog {
     /**
      * Current context
      */
-    private Context context;
+    private final Context context;
 
     /**
      * Dialog for saving a drinker

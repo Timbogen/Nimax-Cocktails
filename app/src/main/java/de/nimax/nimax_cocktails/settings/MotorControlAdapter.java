@@ -20,11 +20,11 @@ public class MotorControlAdapter extends ArrayAdapter<String> {
     /**
      * The activity of the activity
      */
-    private Activity activity;
+    private final Activity activity;
     /**
      * The drinks that should be shown in the list
      */
-    private String[] actions;
+    private final String[] actions;
 
     /**
      * Custom Array Adapter for the list and the spinners
@@ -38,6 +38,9 @@ public class MotorControlAdapter extends ArrayAdapter<String> {
         this.actions = actions;
     }
 
+    /**
+     * Prepare the view for a given position
+     */
     @NonNull
     @Override
     public View getView(final int position, @Nullable View item, @NonNull ViewGroup parent) {

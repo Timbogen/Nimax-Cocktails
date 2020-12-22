@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="de.nimax.nimax_cocktails.menu.MenuActivity"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/colorPrimaryDark"
+    tools:context="de.nimax.nimax_cocktails.menu.MenuActivity">
 
     <ImageView
         android:id="@+id/start_logo"
-        android:transitionName="@string/transition_start_logo"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="32dp"
         android:contentDescription="@string/menu_title"
         android:src="@drawable/logo"
         android:textSize="48sp"
-        android:layout_margin="32dp"
+        android:transitionName="@string/transition_start_logo"
+        app:layout_constraintBottom_toTopOf="@id/menu_buttons"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/menu_buttons"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout
         android:id="@+id/menu_buttons"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="40dp"
-        app:layout_constraintDimensionRatio="1"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1">
 
         <TableRow
             android:layout_width="match_parent"
@@ -38,33 +37,33 @@
 
             <de.nimax.nimax_cocktails.menu.MenuButton
                 android:id="@+id/menu_button_recipes"
-                android:layout_height="match_parent"
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_margin="12dp"
                 android:layout_weight="1"
                 android:onClick="openRecipesActivity"
-                app:menuLogo="@drawable/menu_button_recipes"
-                app:menuTitle="@string/menu_recipes"
-                app:menuLayoutTransition="@string/transition_recipes_layout"
-                app:menuLogoTransition="@string/transition_recipes_logo"
-                app:menuTitleTransition="@string/transition_recipes_title"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:menuLayoutTransition="@string/transition_recipes_layout"
+                app:menuLogo="@drawable/menu_button_recipes"
+                app:menuLogoTransition="@string/transition_recipes_logo"
+                app:menuTitle="@string/menu_recipes"
+                app:menuTitleTransition="@string/transition_recipes_title" />
 
             <de.nimax.nimax_cocktails.menu.MenuButton
                 android:id="@+id/menu_button_mixing"
-                android:layout_height="match_parent"
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_margin="12dp"
                 android:layout_weight="1"
                 android:onClick="openMixingActivity"
-                app:menuLogo="@drawable/menu_button_mixing"
-                app:menuTitle="@string/menu_mixing"
-                app:menuLayoutTransition="@string/transition_mixing_layout"
-                app:menuLogoTransition="@string/transition_mixing_logo"
-                app:menuTitleTransition="@string/transition_mixing_title"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:menuLayoutTransition="@string/transition_mixing_layout"
+                app:menuLogo="@drawable/menu_button_mixing"
+                app:menuLogoTransition="@string/transition_mixing_logo"
+                app:menuTitle="@string/menu_mixing"
+                app:menuTitleTransition="@string/transition_mixing_title" />
 
         </TableRow>
 
@@ -76,33 +75,33 @@
 
             <de.nimax.nimax_cocktails.menu.MenuButton
                 android:id="@+id/menu_button_drinkers"
-                android:layout_height="match_parent"
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_margin="12dp"
                 android:layout_weight="1"
                 android:onClick="openDrinkersActivity"
-                app:menuLogo="@drawable/menu_button_drinkers"
-                app:menuTitle="@string/menu_drinkers"
-                app:menuLayoutTransition="@string/transition_drinkers_layout"
-                app:menuLogoTransition="@string/transition_drinkers_logo"
-                app:menuTitleTransition="@string/transition_drinkers_title"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:menuLayoutTransition="@string/transition_drinkers_layout"
+                app:menuLogo="@drawable/menu_button_drinkers"
+                app:menuLogoTransition="@string/transition_drinkers_logo"
+                app:menuTitle="@string/menu_drinkers"
+                app:menuTitleTransition="@string/transition_drinkers_title" />
 
             <de.nimax.nimax_cocktails.menu.MenuButton
                 android:id="@+id/menu_button_settings"
-                android:layout_height="match_parent"
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_margin="12dp"
                 android:layout_weight="1"
                 android:onClick="openSettingsActivity"
-                app:menuLogo="@drawable/menu_button_settings"
-                app:menuTitle="@string/menu_settings"
-                app:menuLayoutTransition="@string/transition_settings_layout"
-                app:menuLogoTransition="@string/transition_settings_logo"
-                app:menuTitleTransition="@string/transition_settings_title"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:menuLayoutTransition="@string/transition_settings_layout"
+                app:menuLogo="@drawable/menu_button_settings"
+                app:menuLogoTransition="@string/transition_settings_logo"
+                app:menuTitle="@string/menu_settings"
+                app:menuTitleTransition="@string/transition_settings_title" />
 
         </TableRow>
 

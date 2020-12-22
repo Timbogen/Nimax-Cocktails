@@ -35,33 +35,18 @@ int readInt(int address) {
  * 
  * Layout
  * -------------------------------------
- * Anti Alc:      1 | 2 | 3 | 4 | 5 | 6
+ * Pump drinks:   1 | 2 | 3 | 4 | 5 | 6
  * -------------------------------------
- * ID Index:      0 | 2 | 4 | 6 | 8 | 10
- * Amount Index:  1 | 3 | 5 | 7 | 9 | 11
+ * ID Index:      0 | 1 | 2 | 3 | 4 | 5
  * -------------------------------------
- * Anti Alc:      1 | 2 | 3 | 4 | 5 | 6
+ * Roundel:       1 | 2 | 3 | 4 | 5 | 6
  * -------------------------------------
- * ID Index:      12| 14| 16| 18| 20| 22
- * Amount Index:  13| 15| 17| 19| 21| 23
+ * ID Index:      6 | 7 | 8 | 9 | 10| 11
  */
- void setupEEPROM() {
-  // Set the non alc drinks
+void setupEEPROM() {
   for (int i = 0; i < 12; i++) {
-    if (i % 2 == 0) {
-      saveInt(i, i/2);
-    } else {
-      saveInt(i, 1000);
-    }
+    saveInt(i, i);
   }
-  // Set the alc drinks
-  for (int i = 0; i < 12; i++) {
-    if (i % 2 == 0) {
-      saveInt(i + 12, i/2);
-    } else {
-      saveInt(i + 12, 1000);
-    }
-  }
- }
+}
 
 #endif

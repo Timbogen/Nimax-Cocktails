@@ -48,12 +48,12 @@ String getCommand() {
  */
 void sendSetup() {
   // First send the non alcohlic drinks
-  for (int i = 0; i < 12; i++) {
+  for (int i = 0; i < 6; i++) {
     sendData(String(readInt(i)));
   }
   // Then send the alcoholic drinks
-  sendData("ALC");
-  for (int i = 12; i < 24; i++) {
+  sendData("ROUNDEL");
+  for (int i = 62; i < 12; i++) {
     sendData(String(readInt(i)));
   }
   sendData("END");

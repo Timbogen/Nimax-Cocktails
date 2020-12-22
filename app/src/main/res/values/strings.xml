@@ -8,10 +8,54 @@
 
     <!-- Globals -->
     <string name="point">"•"</string>
+    <string name="drag"> Drag </string>
+    <string name="placeholder"> Placeholder</string>
+
+    <!-- Drink names -->
+    <string name="drink_asbach"> Asbach </string>
+    <string name="drink_bacardi"> Bacardi </string>
+    <string name="drink_bitter_lemon"> Bitter Lemon </string>
+    <string name="drink_campari"> Campari </string>
+    <string name="drink_captain_morgan"> Captain Morgan </string>
+    <string name="drink_cherry_juice"> Cherry Juice </string>
+    <string name="drink_coca_cola"> Coca Cola </string>
+    <string name="drink_energy_drink"> Energy Drink </string>
+    <string name="drink_gin"> Gin </string>
+    <string name="drink_grenadine_syrup"> Grenadine Syrup </string>
+    <string name="drink_havana"> Havana</string>
+    <string name="drink_joster"> Joster </string>
+    <string name="drink_lillet"> Lillet </string>
+    <string name="drink_lime_juice"> Lime Juice </string>
+    <string name="drink_orange_juice"> Orange Juice </string>
+    <string name="drink_pineapple_juice"> Pineapple Juice </string>
+    <string name="drink_tonic_water"> Tonic Water </string>
+    <string name="drink_vodka"> Vodka </string>
+    <string name="drink_wild_berry"> Wild Berry </string>
+
+    <!-- Drink information -->
+    <string name="drink_asbach_info"> Origin: Germany </string>
+    <string name="drink_bacardi_info"> Origin: Cuba </string>
+    <string name="drink_bitter_lemon_info"> Origin: Unknown </string>
+    <string name="drink_campari_info"> Origin: Italy </string>
+    <string name="drink_captain_morgan_info"> Origin: Jamaica </string>
+    <string name="drink_cherry_juice_info"> Origin: Unknown </string>
+    <string name="drink_coca_cola_info"> Origin: USA </string>
+    <string name="drink_energy_drink_info"> Origin: Japan </string>
+    <string name="drink_gin_info"> Origin: Holland </string>
+    <string name="drink_grenadine_syrup_info"> Origin: Unknown </string>
+    <string name="drink_havana_info"> Origin: Cuba </string>
+    <string name="drink_joster_info"> Origin: Germany </string>
+    <string name="drink_lillet_info"> Origin: France </string>
+    <string name="drink_lime_juice_info"> Origin: Unknown </string>
+    <string name="drink_orange_juice_info"> Origin: Unknown </string>
+    <string name="drink_pineapple_juice_info"> Origin: Unknown </string>
+    <string name="drink_tonic_water_info"> Origin: Colonial India </string>
+    <string name="drink_vodka_info"> Origin: Poland, Russia, Sweden </string>
+    <string name="drink_wild_berry_info"> Origin: Unknown </string>
 
     <!-- Image description -->
     <string name="image_menu"> Menu image </string>
-
+    
     <!-- Transition names -->
     <string name="transition_start_logo" translatable="false"> startLogo </string>
     <string name="transition_recipes_layout" translatable="false"> recipesLayout </string>
@@ -30,8 +74,8 @@
     <!-- Showcase titles -->
     <string name="showcase_menu_intro"> Hello and welcome to the Nimax-Cocktails app. </string>
     <string name="showcase_menu_recipes"> Here you can find and load all of your recipes. </string>
-    <string name="showcase_menu_mixing">"  Here you can create new cocktails."</string>
-    <string name="showcase_menu_drinkers">" Here you can manage your friends and monitor what they drink. "</string>
+    <string name="showcase_menu_mixing"> Here you can create new cocktails. </string>
+    <string name="showcase_menu_drinkers"> Here you can manage your friends and monitor what they drink. </string>
     <string name="showcase_menu_settings"> Here you can configure the machine so that the machine knows which drinks are available. </string>
 
     <!--                  -->
@@ -51,12 +95,12 @@
     <string name="recipes_recipes_load"> A prepared set of recipes was loaded! </string>
 
     <!--- Image description -->
-    <string name="recipes_image_download">" Image of arrow "</string>
+    <string name="recipes_image_download"> Image of arrow </string>
     <string name="recipes_image_photo"> Image of camera </string>
 
     <!-- Showcase titles -->
     <string name="showcase_recipes_load"> Click this button to load a prepared set of cocktails. </string>
-    <string name="showcase_recipes_list">" Click on a cocktail to open a detailed view. "</string>
+    <string name="showcase_recipes_list"> Click on a cocktail to open a detailed view. </string>
     <string name="showcase_recipes_edit_load"> Click on this button to load this cocktail. </string>
     <string name="showcase_recipes_edit_photo"> Click on this button to take a photo for this cocktail. </string>
     <string name="showcase_recipes_edit_delete"> Once a cocktail is deleted it cannot be restored. </string>
@@ -92,7 +136,7 @@
     <!-- Showcase titles -->
     <string name="showcase_mixing_add"> Click on the drink view to add the amount you specified below. </string>
     <string name="showcase_mixing_save"> Click on this button to save the cocktail. </string>
-    <string name="showcase_mixing_mix">" Click on this button to start mixing the cocktail.  (not implemented yet)"</string>
+    <string name="showcase_mixing_mix"> Click on this button to start mixing the cocktail.  (not implemented yet) </string>
 
     <!--                   -->
     <!-- Drinkers Activity -->
@@ -101,7 +145,7 @@
 
     <!-- Content -->
     <string name="drinkers_no_drinkers"> No drinkers found! </string>
-    <string name="drinkers_no_drinkers_info">" Click on the button in the upper left corner to add a first drinker. "</string>
+    <string name="drinkers_no_drinkers_info"> Click on the button in the upper left corner to add a first drinker. </string>
     <string name="drinkers_add_drinker"> Add Drinker </string>
     <string name="drinkers_name"> Name of the drinker </string>
     <string name="drinkers_save"> Save </string>
@@ -124,30 +168,30 @@
     <string name="settings_bluetooth"> Bluetooth Connection </string>
     <string name="settings_non"> Non alcoholic drinks </string>
     <string name="settings_alc"> Alcoholic drinks </string>
-    <string name="settings_non_description">" Click here to show the setup of the non alcoholic drinks "</string>
-    <string name="settings_alc_description">" Click here to show the setup of the alcoholic drinks "</string>
-    <string name="settings_setup_title">" Setup "</string>
-    <string name="settings_setup_selection">" The selected drink "</string>
-    <string name="settings_setup_list_title">" Select the drink you want to modify: "</string>
-    <string name="settings_setup_actions">" Actions "</string>
-    <string name="settings_setup_play_title">" Start pump "</string>
-    <string name="settings_setup_pause_title">" Stop pump "</string>
-    <string name="settings_setup_play_description">" Click here to manually start the pump. "</string>
-    <string name="settings_setup_pause_description">" Click here to manually stop the pump."</string>
-    <string name="settings_setup_modification">" Modify the drink"</string>
-    <string name="settings_setup_amount">" Amount "</string>
-    <string name="settings_setup_confirm">" Confirm "</string>
-    <string name="settings_setup_value_changed">" Drink was modified! "</string>
-    <string name="settings_mc_play">" Start the motor "</string>
-    <string name="settings_mc_pause">" Stop the motor "</string>
-    <string name="settings_mc_shift_up">" Move Shift Up "</string>
-    <string name="settings_mc_shift_down">" Move Shift Down "</string>
-    <string name="settings_mc_roundel_left">" Rotate Roundel Left "</string>
-    <string name="settings_mc_roundel_right">" Rotate Roundel Right "</string>
-    <string name="settings_mc_cup_left">" Move Cup Left "</string>
-    <string name="settings_mc_cup_right">" Move Cup Right "</string>
-    <string name="settings_general_title">" General "</string>
-    <string name="settings_mc_title">" Control Motors "</string>
+    <string name="settings_non_description"> Click here to show the setup of the non alcoholic drinks </string>
+    <string name="settings_alc_description"> Click here to show the setup of the alcoholic drinks </string>
+    <string name="settings_setup_title"> Setup </string>
+    <string name="settings_setup_selection"> The selected drink </string>
+    <string name="settings_setup_list_title"> Select the drink you want to modify: </string>
+    <string name="settings_setup_actions"> Actions </string>
+    <string name="settings_setup_play_title"> Start pump </string>
+    <string name="settings_setup_pause_title"> Stop pump </string>
+    <string name="settings_setup_play_description"> Click here to manually start the pump. </string>
+    <string name="settings_setup_pause_description"> Click here to manually stop the pump.</string>
+    <string name="settings_setup_modification"> Modify the drink</string>
+    <string name="settings_setup_amount"> Amount </string>
+    <string name="settings_setup_confirm"> Confirm </string>
+    <string name="settings_setup_value_changed"> Drink was modified! </string>
+    <string name="settings_mc_play"> Start the motor </string>
+    <string name="settings_mc_pause"> Stop the motor </string>
+    <string name="settings_mc_shift_up"> Move Shift Up </string>
+    <string name="settings_mc_shift_down"> Move Shift Down </string>
+    <string name="settings_mc_roundel_left"> Rotate Roundel Left </string>
+    <string name="settings_mc_roundel_right"> Rotate Roundel Right </string>
+    <string name="settings_mc_cup_left"> Move Cup Left </string>
+    <string name="settings_mc_cup_right"> Move Cup Right </string>
+    <string name="settings_general_title"> General </string>
+    <string name="settings_mc_title"> Control Motors </string>
 
 
     <!-- Image description -->

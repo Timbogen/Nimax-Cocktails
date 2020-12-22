@@ -46,11 +46,11 @@
             android:id="@+id/settings_bluetooth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:settingLogo="@drawable/menu_button_bluetooth"
             android:onClick="connectToBluetooth"
-            app:settingTitle="@string/settings_bluetooth"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/general_underline">
+            app:layout_constraintTop_toBottomOf="@id/general_underline"
+            app:settingLogo="@drawable/menu_button_bluetooth"
+            app:settingTitle="@string/settings_bluetooth">
 
             <ProgressBar
                 android:id="@+id/settings_bluetooth_progress"
@@ -66,18 +66,17 @@
         </de.nimax.nimax_cocktails.settings.SettingsButton>
 
 
-
         <de.nimax.nimax_cocktails.settings.SettingsButton
             android:id="@+id/settings_non"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="showNonAlcoholicSetup"
             android:visibility="invisible"
-            app:settingDescription="@string/settings_non_description"
-            app:settingTitle="@string/settings_non"
-            app:settingLogo="@drawable/button_drink"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/settings_bluetooth"/>
+            app:layout_constraintTop_toBottomOf="@id/settings_bluetooth"
+            app:settingDescription="@string/settings_non_description"
+            app:settingLogo="@drawable/button_drink"
+            app:settingTitle="@string/settings_non" />
 
         <de.nimax.nimax_cocktails.settings.SettingsButton
             android:id="@+id/settings_alc"
@@ -85,11 +84,11 @@
             android:layout_height="wrap_content"
             android:onClick="showAlcoholicSetup"
             android:visibility="invisible"
-            app:settingDescription="@string/settings_alc_description"
-            app:settingTitle="@string/settings_alc"
-            app:settingLogo="@drawable/button_drink"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/settings_non"/>
+            app:layout_constraintTop_toBottomOf="@id/settings_non"
+            app:settingDescription="@string/settings_alc_description"
+            app:settingLogo="@drawable/button_drink"
+            app:settingTitle="@string/settings_alc" />
 
         <TextView
             android:id="@+id/control_motors"
@@ -97,9 +96,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:visibility="invisible"
             android:text="@string/settings_setup_actions"
             android:textSize="28sp"
+            android:visibility="invisible"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/settings_alc" />
 
@@ -107,18 +106,18 @@
             android:id="@+id/control_motors_underline"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:visibility="invisible"
             android:layout_marginEnd="100dp"
             android:background="@color/grey"
+            android:visibility="invisible"
             app:layout_constraintTop_toBottomOf="@id/control_motors" />
 
         <ListView
             android:id="@+id/list_motors"
-            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/control_motors_underline"/>
+            app:layout_constraintTop_toBottomOf="@id/control_motors_underline" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

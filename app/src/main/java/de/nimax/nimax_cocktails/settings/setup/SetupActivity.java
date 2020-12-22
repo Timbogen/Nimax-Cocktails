@@ -1,12 +1,12 @@
 package de.nimax.nimax_cocktails.settings.setup;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.nimax.nimax_cocktails.R;
 import com.synnapps.carouselview.CarouselView;
@@ -14,31 +14,23 @@ import com.synnapps.carouselview.CarouselView;
 import java.util.ArrayList;
 
 import de.nimax.nimax_cocktails.BluetoothService;
-import de.nimax.nimax_cocktails.mixing.AmountViewListener;
 import de.nimax.nimax_cocktails.mixing.DrinkViewListener;
-import de.nimax.nimax_cocktails.recipes.data.Bar;
-import de.nimax.nimax_cocktails.recipes.data.Drink;
-import de.nimax.nimax_cocktails.recipes.data.Recipe;
-import de.nimax.nimax_cocktails.recipes.edit.RecipeEditAdapter;
+import de.nimax.nimax_cocktails.recipes.data.Drinks;
 
 public class SetupActivity extends AppCompatActivity {
 
     /**
      * The drinks of the setup
      */
-    public static ArrayList<Drink> drinks;
+    public static ArrayList<Drinks> drinks;
     /**
-     * The drinks for modification
+     * True if the view modifies the pumps
      */
-    public static Bar.Drinks modificationDrinks;
-    /**
-     * True if the view shall contain the actions section
-     */
-    public static boolean actions = true;
+    public static boolean pumps = true;
     /**
      * The spinner adapter
      */
-    private RecipeEditAdapter spinnerAdapter;
+    private SetupEditAdapter spinnerAdapter;
     /**
      * The index of the selected drink
      */
@@ -52,7 +44,6 @@ public class SetupActivity extends AppCompatActivity {
         setupSpinner();
         setupActions();
         setupCarousel();
-        setupSelection();
     }
 
     @Override
@@ -67,7 +58,7 @@ public class SetupActivity extends AppCompatActivity {
     private void setupSpinner() {
         // Setup the list
         Spinner list = findViewById(R.id.setup_drinks);
-        spinnerAdapter = new RecipeEditAdapter(this, drinks);
+        spinnerAdapter = new SetupEditAdapter(this, drinks);
         list.setAdapter(spinnerAdapter);
         list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -76,9 +67,7 @@ public class SetupActivity extends AppCompatActivity {
                 selected = position;
                 // Select the right items
                 CarouselView selectionCarousel = findViewById(R.id.setup_modify_carousel);
-                selectionCarousel.setCurrentItem(Bar.Drinks.getPosition(drinks.get(position)));
-                CarouselView amountCarousel = findViewById(R.id.setup_modify_spinner);
-                amountCarousel.setCurrentItem(drinks.get(selected).amount / 10);
+                selectionCarousel.setCurrentItem(drinks.get(position).ordinal());
             }
 
             @Override
@@ -91,7 +80,7 @@ public class SetupActivity extends AppCompatActivity {
      * Method to setup the actions tab
      */
     private void setupActions() {
-        if (!actions) {
+        if (!pumps) {
             ConstraintLayout actions = findViewById(R.id.actions_layout);
             actions.setVisibility(ConstraintLayout.GONE);
         }
@@ -102,29 +91,14 @@ public class SetupActivity extends AppCompatActivity {
      */
     private void setupCarousel() {
         CarouselView selectionCarousel = findViewById(R.id.setup_modify_carousel);
-        selectionCarousel.setPageCount(modificationDrinks.drinks.length);
-        selectionCarousel.setViewListener(new DrinkViewListener(modificationDrinks, this));
-    }
-
-    /**
-     * Method to setup the selection for the spinners
-     */
-    private void setupSelection() {
-        // Generate the possible values for the spinners
-        int[] values = new int[Recipe.MAX_BOTTLE / 10];
-        for (int i = 0; i < values.length; i++) {
-            values[i] = i * 10;
-        }
-        // Get and modify the non alc spinner
-        CarouselView amountCarousel = findViewById(R.id.setup_modify_spinner);
-        amountCarousel.setPageCount(values.length);
-        amountCarousel.setCurrentItem(drinks.get(selected).amount / 10);
-        amountCarousel.setViewListener(new AmountViewListener(values, this));
+        selectionCarousel.setPageCount(Drinks.ALL.size());
+        selectionCarousel.setViewListener(new DrinkViewListener(Drinks.ALL, this));
     }
 
 
     /**
      * Method to start the selected pump
+     *
      * @param view that was clicked
      */
     public void startPump(View view) {
@@ -139,6 +113,7 @@ public class SetupActivity extends AppCompatActivity {
 
     /**
      * Method to stop the selected pump
+     *
      * @param view that was clicked
      */
     public void stopPump(View view) {
@@ -152,27 +127,8 @@ public class SetupActivity extends AppCompatActivity {
     }
 
     /**
-     * Method to lower the selected item of the carousel
-     * @param v view
-     */
-    public void lowerAmount(View v) {
-        CarouselView carousel = findViewById(R.id.setup_modify_spinner);
-        if (carousel.getCurrentItem() - 10 < 0) carousel.setCurrentItem(0);
-        else carousel.setCurrentItem(carousel.getCurrentItem() - 10);
-    }
-
-    /**
-     * Method to higher the selected item of the carousel
-     * @param v view
-     */
-    public void higherAmount(View v) {
-        CarouselView carousel = findViewById(R.id.setup_modify_spinner);
-        if (carousel.getCurrentItem() + 10 >= carousel.getPageCount()) carousel.setCurrentItem(carousel.getPageCount() - 1);
-        else carousel.setCurrentItem(carousel.getCurrentItem() + 10);
-    }
-
-    /**
      * Method to confirm the modification
+     *
      * @param v view
      */
     public void confirmModification(View v) {
@@ -183,25 +139,13 @@ public class SetupActivity extends AppCompatActivity {
         BluetoothService.sendData("MODIFY");
 
         // Send the position
-        if (drinks.get(selected).alcohol <= 0) {
-            BluetoothService.sendData(Integer.toString(selected));
-        } else {
-            BluetoothService.sendData(Integer.toString(selected + 12));
-        }
+        BluetoothService.sendData(Integer.toString(pumps ? selected : selected + 6));
 
         // Send the id
         CarouselView selectionCarousel = findViewById(R.id.setup_modify_carousel);
         int position = selectionCarousel.getCurrentItem();
         BluetoothService.sendData(Integer.toString(position));
 
-        // Send the amount
-        CarouselView amountCarousel = findViewById(R.id.setup_modify_spinner);
-        int amount = amountCarousel.getCurrentItem() * 10;
-        BluetoothService.sendData(Integer.toString(amount));
-
-        // Update the value
-        drinks.set(selected, new Drink(modificationDrinks.drinks[position]));
-        drinks.get(selected).amount = amount;
         // Update the spinner
         spinnerAdapter.notifyDataSetChanged();
 

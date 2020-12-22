@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Bacardi Cola",
+    "image": null,
+    "ingredients": [
+      {
+        "name": "BACARDI",
+        "amount": 80
+      },
+      {
+        "name": "COCA_COLA",
+        "amount": 150
+      }
+    ]
+  },
+  {
+    "name": "Captain Cola",
+    "image": null,
+    "ingredients": [
+      {
+        "name": "CAPTAIN_MORGAN",
+        "amount": 80
+      },
+      {
+        "name": "COCA_COLA",
+        "amount": 150
+      }
+    ]
+  },
+  {
+    "name": "Cuba Libre",
+    "image": null,
+    "ingredients": [
+      {
+        "name": "HAVANA",
+        "amount": 80
+      },
+      {
+        "name": "COCA_COLA",
+        "amount": 150
+      }
+    ]
+  },
+  {
+    "name": "Gin Tonic",
+    "image": null,
+    "ingredients": [
+      {
+        "name": "GIN",
+        "amount": 80
+      },
+      {
+        "name": "TONIC_WATER",
+        "amount": 150
+      }
+    ]
+  },
+  {
+    "name": "Vodka Bull",
+    "image": null,
+    "ingredients": [
+      {
+        "name": "VODKA",
+        "amount": 80
+      },
+      {
+        "name": "ENERGY_DRINK",
+        "amount": 150
+      }
+    ]
+  },
+  {
+    "name": "Vodka O",
+    "image": null,
+    "ingredients": [
+      {
+        "name": "VODKA",
+        "amount": 80
+      },
+      {
+        "name": "ORANGE_JUICE",
+        "amount": 150
+      }
+    ]
+  }
+]

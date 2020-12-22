@@ -10,22 +10,34 @@ import com.synnapps.carouselview.ViewListener;
 public class AmountViewListener implements ViewListener {
 
     /**
-     * Type of drinks
+     * The possible amounts
      */
-    private int[] amounts;
+    private final int[] amounts;
     /**
-     * Active activity
+     * The current activity
      */
-    private Activity activity;
+    private final Activity activity;
 
+    /**
+     * Constructor
+     *
+     * @param amounts The possible amounts
+     * @param activity The current activity
+     */
     public AmountViewListener(int[] amounts, Activity activity) {
         this.amounts = amounts;
         this.activity = activity;
     }
 
+    /**
+     * Update the view for a certain position
+     *
+     * @param position The current position
+     * @return The updated view
+     */
     @Override
     public View setViewForPosition(int position) {
-        View amount_item = activity.getLayoutInflater().inflate(R.layout.adapter_amount, null);
+        View amount_item = View.inflate(activity, R.layout.adapter_amount, null);
         // Modify the text
         TextView text = amount_item.findViewById(R.id.text_amount);
         String amount = Integer.toString(amounts[position]);

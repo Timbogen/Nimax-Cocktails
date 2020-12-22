@@ -10,20 +10,20 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/recipes_layout"
-        android:transitionName="@string/transition_recipes_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        android:transitionName="@string/transition_recipes_layout">
 
         <ImageView
             android:id="@+id/recipes_load"
             android:layout_width="32dp"
             android:layout_height="48dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:contentDescription="@string/recipes_image_download"
             android:onClick="loadRecipes"
             android:src="@drawable/button_download"
-            android:layout_marginStart="32dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
@@ -33,41 +33,41 @@
             android:layout_height="2dp"
             android:layout_marginStart="140dp"
             android:background="@color/grey"
-            app:layout_constraintTop_toBottomOf="@id/recipes_load"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recipes_load" />
 
         <TextView
             android:id="@+id/recipes_no_recipes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:textSize="24sp"
             android:text="@string/recipes_no_recipes"
+            android:textSize="24sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/recipes_load"/>
+            app:layout_constraintTop_toBottomOf="@id/recipes_load" />
 
         <TextView
             android:id="@+id/recipes_no_recipes_info"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
-            android:textSize="18sp"
             android:text="@string/recipes_no_recipes_info"
+            android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/recipes_no_recipes" />
 
         <ListView
             android:id="@+id/recipes_list"
-            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/recipes_load"
+            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recipes_load" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

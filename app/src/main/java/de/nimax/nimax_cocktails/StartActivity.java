@@ -1,13 +1,13 @@
 package de.nimax.nimax_cocktails;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.util.Pair;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
 
 import com.nimax.nimax_cocktails.R;
 
@@ -78,6 +78,7 @@ public class StartActivity extends AppCompatActivity {
         // The logo
         Pair<View, String> layout = new Pair<>(
                 findViewById(R.id.start_logo), getString(R.string.transition_start_logo));
+        System.out.println(layout);
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 this, layout);
         startActivity(intent, options.toBundle());

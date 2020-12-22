@@ -1,6 +1,6 @@
 package de.nimax.nimax_cocktails.drinkers.edit;
 
-import android.content.Context;
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,27 +21,32 @@ public class DrinkerEditAdapter extends ArrayAdapter<HistoryDrink> {
     /**
      * The context of the activity
      */
-    private Context context;
+    private final Activity activity;
     /**
      * The drinks that should be shown in the list
      */
-    private ArrayList<HistoryDrink> drinks;
+    private final ArrayList<HistoryDrink> drinks;
 
     /**
      * Custom Array Adapter for the list and the spinners
-     * @param context of the adapter
+     *
+     * @param activity of the adapter
      */
-    DrinkerEditAdapter(@NonNull Context context, ArrayList<HistoryDrink> drinks) {
-        super(context, 0, drinks);
-        this.context = context;
+    DrinkerEditAdapter(@NonNull Activity activity, ArrayList<HistoryDrink> drinks) {
+        super(activity, 0, drinks);
+        this.activity = activity;
         this.drinks = drinks;
     }
 
+    /**
+     * Prepare a view for a given position
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View item, @NonNull ViewGroup parent) {
         // Check if the item is null
-        if (item == null) item = LayoutInflater.from(context).inflate(R.layout.adapter_drinker_edit, parent, false);
+        if (item == null)
+            item = LayoutInflater.from(activity).inflate(R.layout.adapter_drinker_edit, parent, false);
 
         // Specify the time
         TextView time = item.findViewById(R.id.list_time);
@@ -65,6 +70,9 @@ public class DrinkerEditAdapter extends ArrayAdapter<HistoryDrink> {
         return item;
     }
 
+    /**
+     * Get the dropdown view
+     */
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         return getView(position, convertView, parent);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">" Nimax-Cocktails"</string>
+    <string name="app_name">Nimax-Cocktails</string>
     <string name="drinkers_add_drinker">Trinker hinzufügen</string>
     <string name="drinkers_drinker_saved">Erfolgreiches hinzufügen von Trinker</string>
     <string name="drinkers_known_name">Dieser Name wird bereits verwendet!</string>
@@ -89,7 +89,7 @@
     <string name="settings_setup_value_changed">Das Getränk wurde geändert!</string>
     <string name="bluetooth_no_active_connection">Verbinden Sie ihr Gerät zuerst mit der Maschine!</string>
     <string name="bluetooth_currently_mixing">Warten Sie, bis die Maschine fertig ist mit mixen!</string>
-    <string name="bluetooth_no_bluetooth">Ihr Gerät unterstüzt vermutlich kein Bluetooth.</string>
+    <string name="bluetooth_no_bluetooth">Ihr Gerät unterstützt vermutlich kein Bluetooth.</string>
     <string name="bluetooth_no_drink">Die Maschine beinhaltet aktuell kein</string>
     <string name="bluetooth_too_less_1">Es sind nur noch</string>
     <string name="bluetooth_too_less_2">übrig.</string>
@@ -103,4 +103,44 @@
     <string name="settings_mc_cup_right">Becher Nach Rechts</string>
     <string name="settings_general_title">Generelles</string>
     <string name="settings_mc_title">Motoren Steuern</string>
+    <string name="drag">Drag</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="drink_asbach">Asbach </string>
+    <string name="drink_bacardi">Asbach </string>
+    <string name="drink_bitter_lemon">Bitter Lemon </string>
+    <string name="drink_campari">Campari </string>
+    <string name="drink_captain_morgan">Captain Morgan </string>
+    <string name="drink_cherry_juice">Kirschsaft</string>
+    <string name="drink_coca_cola">Coca Cola </string>
+    <string name="drink_energy_drink">Energy Drink </string>
+    <string name="drink_gin">Gin </string>
+    <string name="drink_grenadine_syrup">Grenadine Sirup</string>
+    <string name="drink_havana">Havana</string>
+    <string name="drink_joster">Joster </string>
+    <string name="drink_lillet">Lillet </string>
+    <string name="drink_lime_juice">Limettensaft</string>
+    <string name="drink_orange_juice">Orangensaft </string>
+    <string name="drink_pineapple_juice">Ananassaft</string>
+    <string name="drink_tonic_water">Tonic Water </string>
+    <string name="drink_vodka">Vodka </string>
+    <string name="drink_wild_berry">Wild Berry </string>
+    <string name="drink_asbach_info">Herkunft: Deutschland</string>
+    <string name="drink_bacardi_info">Herkunft: Kuba</string>
+    <string name="drink_bitter_lemon_info">Herkunft: Unbekannt</string>
+    <string name="drink_campari_info">Herkunft: Italien</string>
+    <string name="drink_captain_morgan_info">Herkunft: Jamaika</string>
+    <string name="drink_cherry_juice_info">Herkunft: Unbekannt</string>
+    <string name="drink_coca_cola_info">Herkunft: USA</string>
+    <string name="drink_energy_drink_info">Herkunft: Japan</string>
+    <string name="drink_gin_info">Herkunft: Holland</string>
+    <string name="drink_grenadine_syrup_info">Herkunft: Unbekannt</string>
+    <string name="drink_havana_info">Herkunft: Kuba</string>
+    <string name="drink_joster_info">Herkunft: Deutschland</string>
+    <string name="drink_lillet_info">Herkunft: Frankreich</string>
+    <string name="drink_lime_juice_info">Herkunft: Unbekannt</string>
+    <string name="drink_orange_juice_info">Herkunft: Unbekannt</string>
+    <string name="drink_pineapple_juice_info">Herkunft: Unbekannt</string>
+    <string name="drink_tonic_water_info">Herkunft: Koloniales Indien</string>
+    <string name="drink_vodka_info">Herkunft: Polen, Russland, Schweden</string>
+    <string name="drink_wild_berry_info">Herkunft: Unbekannt</string>
 </resources>

@@ -11,15 +11,27 @@ import android.widget.Toast;
 import com.nimax.nimax_cocktails.R;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
 
-import de.nimax.nimax_cocktails.recipes.data.Bar;
-import de.nimax.nimax_cocktails.recipes.data.Drink;
+import de.nimax.nimax_cocktails.recipes.data.Drinks;
 import de.nimax.nimax_cocktails.settings.SettingsActivity;
 
 public class BluetoothService {
 
+    /**
+     * The index for a drink that is not available
+     */
+    public static final int NOT_AVAILABLE = -1;
+    /**
+     * All the drinks that are setup on the pumps
+     */
+    public static ArrayList<Drinks> pumpDrinks = new ArrayList<>();
+    /**
+     * All the drinks that are setup on the roundel
+     */
+    public static ArrayList<Drinks> roundelDrinks = new ArrayList<>();
     /**
      * The UUID
      */
@@ -32,6 +44,20 @@ public class BluetoothService {
      * The socket connection
      */
     private static BluetoothSocket bluetoothSocket = null;
+
+    /**
+     * Get the actual index for a given drink
+     *
+     * @param drink The given drink
+     * @return The index
+     */
+    public static int getIndex(Drinks drink) {
+        for (int i = 0; i < 6; i++) {
+            if (pumpDrinks.get(i).name().equals(drink.name())) return i;
+            if (roundelDrinks.get(i).name().equals(drink.name())) return i + 6;
+        }
+        return NOT_AVAILABLE;
+    }
 
     /**
      * Method to guide trough the process of connecting the device
@@ -208,39 +234,38 @@ public class BluetoothService {
             this.view = view;
         }
 
+        /**
+         * Try to establish a bluetooth connection
+         */
         @Override
         public void run() {
             if (enableBluetooth(activity)) {
                 // Connect to arduino
                 connectToArduino(activity);
             }
+
             // If connection was built successfully load the data
             if (isConnected() && sendData("SETUP")) {
                 String res = readData();
-                // First get the non alcoholic drinks
-                while (!res.equals("ALC")) {
+
+                // First get the drinks on the pumps
+                while (!res.equals("ROUNDEL")) {
                     // Get the right drink
-                    int i = Integer.parseInt(res);
-                    Drink drink = new Drink(Bar.Drinks.NON_ALC.drinks[i]);
-                    // Get the amount
-                    drink.amount = Integer.parseInt(readData());
-                    SettingsActivity.nonAlcDrinks.add(drink);
+                    pumpDrinks.add(Drinks.values()[Integer.parseInt(res)]);
                     // Get the next response
                     res = readData();
                 }
-                // Now get the alcoholic drinks
+
+                // Now get the drinks on the roundel
                 res = readData();
                 while (!res.equals("END")) {
                     // Get the right drink
-                    int i = Integer.parseInt(res);
-                    Drink drink = new Drink(Bar.Drinks.ALC.drinks[i]);
-                    // Get the amount
-                    drink.amount = Integer.parseInt(readData());
-                    SettingsActivity.alcDrinks.add(drink);
+                    roundelDrinks.add(Drinks.values()[Integer.parseInt(res)]);
                     // Get the next response
                     res = readData();
                 }
             }
+
             // Enable view
             activity.runOnUiThread(new Runnable() {
                 @Override

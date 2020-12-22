@@ -1,56 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_height="wrap_content"
     android:orientation="horizontal">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/image_drink"
-            android:layout_width="100dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="25dp"
-            android:contentDescription="@string/mixing_image_drinks"/>
+            android:layout_width="150dp"
+            android:layout_height="232dp"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/mixing_image_drinks"
+            android:paddingBottom="32dp"
+            android:src="@drawable/drink_asbach"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:layout_margin="24dp"
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:orientation="vertical">
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/image_drink"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/text_drink_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
-                android:textSize="20sp"/>
+                android:text="@string/settings_image_alc"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/text_drink_alcohol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
-                android:textSize="20sp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:text="@string/mixing_level"
-                android:textSize="20sp"/>
-
-            <TextView
-                android:id="@+id/text_drink_level"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/settings_image_alc"
                 android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_drink_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/settings_image_alc"
+                android:textColor="@color/grey"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

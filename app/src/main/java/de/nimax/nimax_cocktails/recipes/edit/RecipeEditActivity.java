@@ -14,9 +14,12 @@ import android.widget.TextView;
 
 import com.nimax.nimax_cocktails.R;
 
+import java.util.ArrayList;
+
 import de.nimax.nimax_cocktails.menu.Showcase;
 import de.nimax.nimax_cocktails.mixing.MixingActivity;
 import de.nimax.nimax_cocktails.recipes.data.Bar;
+import de.nimax.nimax_cocktails.recipes.data.Drinks;
 import de.nimax.nimax_cocktails.recipes.data.Recipe;
 
 public class RecipeEditActivity extends AppCompatActivity {

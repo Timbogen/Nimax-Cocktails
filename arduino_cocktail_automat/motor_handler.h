@@ -105,7 +105,7 @@ struct MotorCup {
    * Move the cup to the right side and then to the middle
    */
   void toInitial(bool middle) {
-    moveToBarrier(CUP_RIGHT, BARRIER_RIGHT, 897);
+    moveToBarrier(CUP_RIGHT, BARRIER_RIGHT, 886);
     ENCODER.write(0);
 
     // Move to the middle
@@ -155,13 +155,10 @@ struct MotorRoundel {
    */
   int BARRIER = A3;
   /**
-   * Step width for the motor to rotate to the next bottle
-   */
-  int STEP_WIDTH = 352;
-  /**
    * The start offset to the first bottle
    */
   int START_OFFSET = 140;
+  int POS[6] = {140, 494, 844, 1174, 1521, 1881};
   /**
    * The encoder (GREEN = 2, WHITE = 3)
    */
@@ -178,22 +175,33 @@ struct MotorRoundel {
     deactivateMotor(ROUNDEL_LEFT);
   }
 
+  /**
+   * Shake the roundel to make sure
+   * that the spender is refilled
+   */
   void shake() {
-    int targetValue = ENCODER.read();
-    int delayTime = 200;
-    delay(100);
+    int startValue = ENCODER.read();
+    int delayTime = 300;
+    // Move roundel to the right
     activateMotor(ROUNDEL_RIGHT);
-    delay(delayTime);
+    int current = ENCODER.read();
+    while (current < startValue + 100) current = ENCODER.read();
     deactivateMotor(ROUNDEL_RIGHT);
-    delay(100);
+    delay(delayTime);
+
+    // Move roundel to the left
     activateMotor(ROUNDEL_LEFT);
-    delay(2 * delayTime);
+    current = ENCODER.read();
+    while (current > startValue - 100) current = ENCODER.read();
     deactivateMotor(ROUNDEL_LEFT);
-    delay(100);
-    activateMotor(ROUNDEL_RIGHT);
     delay(delayTime);
+
+    // Move roundel to the start
+    activateMotor(ROUNDEL_RIGHT);
+    current = ENCODER.read();
+    while (current < startValue - 15) current = ENCODER.read();
     deactivateMotor(ROUNDEL_RIGHT);
-    delay(300);
+    delay(delayTime);
   }
 
   /**
@@ -202,8 +210,8 @@ struct MotorRoundel {
    * @param index of the bottle
    */
   void toBottle(int index) {
-    // Calculate the threshold
-    int threshold = index * STEP_WIDTH + START_OFFSET;
+    // Get the threshold
+    int threshold = POS[index];
 
     // Start the motor (if necessary)
     int value = ENCODER.read();
@@ -229,7 +237,7 @@ struct MotorRoundel {
     ENCODER.write(0);
     activateMotor(ROUNDEL_RIGHT);
     int value = ENCODER.read();
-    while(value < 50) {
+    while(value < 67) {
       value = ENCODER.read();
     }
     deactivateMotor(ROUNDEL_RIGHT);
