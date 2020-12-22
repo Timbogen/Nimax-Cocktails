@@ -25,6 +25,10 @@ public class BluetoothService {
      */
     public static final int NOT_AVAILABLE = -1;
     /**
+     * True if the service is currently trying to connect
+     */
+    public static boolean connecting = false;
+    /**
      * All the drinks that are setup on the pumps
      */
     public static ArrayList<Drinks> pumpDrinks = new ArrayList<>();
@@ -57,6 +61,14 @@ public class BluetoothService {
             if (roundelDrinks.get(i).name().equals(drink.name())) return i + 6;
         }
         return NOT_AVAILABLE;
+    }
+
+    /**
+     * Method to guide trough the process of connecting the device
+     */
+    public static void connectDevice() {
+        // Connect to the arduino in separate thread
+        new Thread(new BluetoothConnection(null, null)).start();
     }
 
     /**
@@ -232,6 +244,7 @@ public class BluetoothService {
         BluetoothConnection(Activity activity, View view) {
             this.activity = activity;
             this.view = view;
+            connecting = true;
         }
 
         /**
@@ -266,7 +279,11 @@ public class BluetoothService {
                 }
             }
 
+            // Reset the connecting state
+            connecting = false;
+
             // Enable view
+            if (activity == null) return;
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {

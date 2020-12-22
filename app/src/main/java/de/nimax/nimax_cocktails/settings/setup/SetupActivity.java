@@ -146,6 +146,9 @@ public class SetupActivity extends AppCompatActivity {
         int position = selectionCarousel.getCurrentItem();
         BluetoothService.sendData(Integer.toString(position));
 
+        // Update the data
+        drinks.set(selected, Drinks.ALL.get(position));
+
         // Update the spinner
         spinnerAdapter.notifyDataSetChanged();
 

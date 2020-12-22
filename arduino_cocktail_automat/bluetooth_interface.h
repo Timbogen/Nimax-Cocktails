@@ -53,7 +53,7 @@ void sendSetup() {
   }
   // Then send the alcoholic drinks
   sendData("ROUNDEL");
-  for (int i = 62; i < 12; i++) {
+  for (int i = 6; i < 12; i++) {
     sendData(String(readInt(i)));
   }
   sendData("END");
@@ -67,11 +67,8 @@ void modifyDrink() {
   int position = getCommand().toInt();
   // Then the drink id
   int id = getCommand().toInt();
-  // And finally the amount
-  int amount = getCommand().toInt();
   // Save the result
-  saveInt(position * 2, id);
-  saveInt(position * 2 + 1, amount);
+  saveInt(position, id);
 }
 
 /**

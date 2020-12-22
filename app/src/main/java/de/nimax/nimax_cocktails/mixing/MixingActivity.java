@@ -129,7 +129,19 @@ public class MixingActivity extends AppCompatActivity {
     private boolean isMixable() {
         for (Recipe.Drink drink : recipe.drinks) {
             int result = BluetoothService.getIndex(drink.drink);
-            if (result == BluetoothService.NOT_AVAILABLE) return false;
+            if (result == BluetoothService.NOT_AVAILABLE) {
+                int resourceId = activity.getResources().getIdentifier(
+                        "drink_" + drink.drink.name().toLowerCase(),
+                        "string",
+                        activity.getPackageName()
+                );
+                Toast.makeText(
+                        this,
+                        getString(R.string.bluetooth_no_drink) + " " + getString(resourceId),
+                        Toast.LENGTH_SHORT
+                ).show();
+                return false;
+            }
         }
         return true;
     }

@@ -143,4 +143,5 @@
     <string name="drink_tonic_water_info">Herkunft: Koloniales Indien</string>
     <string name="drink_vodka_info">Herkunft: Polen, Russland, Schweden</string>
     <string name="drink_wild_berry_info">Herkunft: Unbekannt</string>
+    <string name="bluetooth_connecting">Gerät verbindet sich aktuell!</string>
 </resources>

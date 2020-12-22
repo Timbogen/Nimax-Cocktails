@@ -29,10 +29,15 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        // Try to establish a bluetooth connection
+        BluetoothService.connectDevice();
+
         // Deactivate the old transition
         getWindow().setEnterTransition(null);
         getWindow().setExitTransition(null);
         loadData();
+
         // Show the menu
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

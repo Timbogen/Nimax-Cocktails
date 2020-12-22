@@ -43,7 +43,6 @@ void setupMachine() {
    Move everything to the initial position
 */
 void moveToInitial() {
-  // Initialize the motors
   motorCup.toInitial(true);
   motorShift.toInitial();
   motorRoundel.toInitial();

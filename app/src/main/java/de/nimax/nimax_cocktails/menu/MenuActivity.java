@@ -8,9 +8,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.nimax.nimax_cocktails.R;
 
+import de.nimax.nimax_cocktails.BluetoothService;
 import de.nimax.nimax_cocktails.drinkers.DrinkersActivity;
 import de.nimax.nimax_cocktails.mixing.MixingActivity;
 import de.nimax.nimax_cocktails.recipes.RecipesActivity;
@@ -130,6 +132,10 @@ public class MenuActivity extends AppCompatActivity {
      * @param view that was clicked
      */
     public void openSettingsActivity(View view) {
+        if (BluetoothService.connecting) {
+            Toast.makeText(getApplicationContext(), getString(R.string.bluetooth_connecting), Toast.LENGTH_SHORT).show();
+            return;
+        }
         openActivity(new Intent(this, SettingsActivity.class), (MenuButton) view);
     }
 }
