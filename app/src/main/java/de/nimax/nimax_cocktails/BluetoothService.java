@@ -219,6 +219,7 @@ public class BluetoothService {
             return true;
         }
         // Ask the user to turn on bluetooth
+        if (activity == null) return false;
         Intent turnBluetoothOn = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
         activity.startActivityForResult(turnBluetoothOn, 1);
 
