@@ -25,6 +25,10 @@ public class BluetoothService {
      */
     public static final int NOT_AVAILABLE = -1;
     /**
+     * The UUID
+     */
+    private static final UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    /**
      * True if the service is currently trying to connect
      */
     public static boolean connecting = false;
@@ -36,10 +40,6 @@ public class BluetoothService {
      * All the drinks that are setup on the roundel
      */
     public static ArrayList<Drinks> roundelDrinks = new ArrayList<>();
-    /**
-     * The UUID
-     */
-    private static final UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     /**
      * The bluetooth adapter
      */
@@ -79,7 +79,7 @@ public class BluetoothService {
      */
     public static void connectDevice(Activity activity, final View view) {
         if (isConnected()) {
-            makeToast(activity, activity.getString(R.string.bluetooth_connected));
+            makeToast(activity, R.string.bluetooth_connected);
             return;
         }
         // Disable the button
@@ -146,15 +146,17 @@ public class BluetoothService {
      * Method for displaying toasts
      *
      * @param activity that is currently active
-     * @param message  to be shown
+     * @param resID    for the message that should be shown
      */
-    public static void makeToast(final Activity activity, final String message) {
-        activity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(activity.getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-            }
-        });
+    public static void makeToast(final Activity activity, final int resID) {
+        if (activity != null) {
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(activity.getApplicationContext(), activity.getString(resID), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     /**
@@ -179,7 +181,7 @@ public class BluetoothService {
 
         // If the module wasn't found just return and give a notice to the user
         if (name == null || name.equals("")) {
-            makeToast(activity, activity.getString(R.string.bluetooth_pair_device));
+            makeToast(activity, R.string.bluetooth_pair_device);
             return;
         }
 
@@ -194,7 +196,7 @@ public class BluetoothService {
             bluetoothSocket.connect();
         } catch (IOException e) {
             bluetoothSocket = null;
-            makeToast(activity, activity.getString(R.string.bluetooth_no_connection));
+            makeToast(activity, R.string.bluetooth_no_connection);
         }
     }
 
@@ -209,7 +211,7 @@ public class BluetoothService {
 
         if (bluetoothAdapter == null) {
             // Show a dialog to say that there is no bluetooth adapter
-            makeToast(activity, activity.getString(R.string.bluetooth_no_bluetooth));
+            makeToast(activity, R.string.bluetooth_no_bluetooth);
             return false;
         }
 
@@ -294,7 +296,7 @@ public class BluetoothService {
                     SettingsActivity.setupSettings(activity);
                     // Notify the user
                     if (isConnected()) {
-                        makeToast(activity, activity.getString(R.string.bluetooth_connected));
+                        makeToast(activity, R.string.bluetooth_connected);
                         // Make the other settings visible
                         activity.findViewById(R.id.settings_non).setVisibility(View.VISIBLE);
                         activity.findViewById(R.id.settings_alc).setVisibility(View.VISIBLE);

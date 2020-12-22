@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -153,7 +154,11 @@ public class SetupActivity extends AppCompatActivity {
         spinnerAdapter.notifyDataSetChanged();
 
         // Toast to notify the user
-        BluetoothService.makeToast(this, getString(R.string.settings_setup_value_changed));
+        Toast.makeText(
+                this,
+                getString(R.string.settings_setup_value_changed),
+                Toast.LENGTH_SHORT
+        ).show();
 
         // Enable the view
         v.setEnabled(true);
