@@ -15,7 +15,7 @@
         android:layout_marginStart="8dp"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:src="@drawable/ic_baseline_drag_handle_24"
+        android:src="@drawable/drag_handle"
         android:contentDescription="@string/drag" />
 
     <TextView
