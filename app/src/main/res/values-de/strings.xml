@@ -71,10 +71,10 @@
     <string name="bluetooth_no_connection">Es konnte keine Verbindung zur Maschine hergestellt werden.</string>
     <string name="settings_image_alc">Drink</string>
     <string name="settings_image_bluetooth">Bluetooth</string>
-    <string name="settings_non">Alkoholfreie Getränke</string>
-    <string name="settings_non_description">Klicken Sie hier um das Setup der alkoholfreien Drinks zu sehen.</string>
-    <string name="settings_alc">Alkoholische Getränke</string>
-    <string name="settings_alc_description">Klicken Sie hier um das Setup der alkoholischen Drinks zu sehen.</string>
+    <string name="settings_pump_drinks">Getränke an den Pumpen</string>
+    <string name="settings_pump_drinks_description">Klicken Sie hier um das Setup an den Pumpen zu sehen.</string>
+    <string name="settings_roundel_drinks">Getränke am Rondell</string>
+    <string name="settings_roundel_description">Klicken Sie hier um das Setup am Rondell zu sehen.</string>
     <string name="settings_setup_title">Setup</string>
     <string name="settings_setup_list_title">Wähle den Drink aus den du ändern willst:</string>
     <string name="settings_setup_pause_description">Klicken Sie hier um die Pumpe manuell zu stoppen.</string>
@@ -144,4 +144,6 @@
     <string name="drink_vodka_info">Herkunft: Polen, Russland, Schweden</string>
     <string name="drink_wild_berry_info">Herkunft: Unbekannt</string>
     <string name="bluetooth_connecting">Gerät verbindet sich aktuell!</string>
+    <string name="settings_mc_roundel_initial">Rondell Zu Initialposition</string>
+    <string name="settings_mc_cup_middle">Becher Zur Mitte</string>
 </resources>

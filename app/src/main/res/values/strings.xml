@@ -166,10 +166,10 @@
     <!--                   -->
     <string name="menu_settings"> Settings </string>
     <string name="settings_bluetooth"> Bluetooth Connection </string>
-    <string name="settings_non"> Non alcoholic drinks </string>
-    <string name="settings_alc"> Alcoholic drinks </string>
-    <string name="settings_non_description"> Click here to show the setup of the non alcoholic drinks </string>
-    <string name="settings_alc_description"> Click here to show the setup of the alcoholic drinks </string>
+    <string name="settings_pump_drinks"> Drinks attached to the pumps </string>
+    <string name="settings_roundel_drinks"> Drinks attached to the roundel </string>
+    <string name="settings_pump_drinks_description">" Click here to show the setup of the pump drinks "</string>
+    <string name="settings_roundel_description"> Click here to show the setup of the alcoholic drinks </string>
     <string name="settings_setup_title"> Setup </string>
     <string name="settings_setup_selection"> The selected drink </string>
     <string name="settings_setup_list_title"> Select the drink you want to modify: </string>
@@ -186,9 +186,11 @@
     <string name="settings_mc_pause"> Stop the motor </string>
     <string name="settings_mc_shift_up"> Move Shift Up </string>
     <string name="settings_mc_shift_down"> Move Shift Down </string>
+    <string name="settings_mc_roundel_initial">" Roundel To Initial Position"</string>
     <string name="settings_mc_roundel_left"> Rotate Roundel Left </string>
     <string name="settings_mc_roundel_right"> Rotate Roundel Right </string>
     <string name="settings_mc_cup_left"> Move Cup Left </string>
+    <string name="settings_mc_cup_middle"> Move Cup To Middle </string>
     <string name="settings_mc_cup_right"> Move Cup Right </string>
     <string name="settings_general_title"> General </string>
     <string name="settings_mc_title"> Control Motors </string>

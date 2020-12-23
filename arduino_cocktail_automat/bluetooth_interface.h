@@ -6,6 +6,11 @@
 #include "motor_handler.h"
 
 /**
+ * The amount of drinks that have been made without recalibrating the roundel
+ */
+int drinksSinceCalibration = 0;
+
+/**
  * The bluetooth serial
  */
 SoftwareSerial btSerial(11, 10); // (TX, RX)
@@ -38,8 +43,6 @@ String getCommand() {
       }
     }
   }
-  // Return the command
-  Serial.println(command);
   return command;
 }
 
@@ -88,81 +91,88 @@ void stopPump() {
 }
 
 /**
+ * Get a drink from one of the pumps
+ * 
+ * @position The position of the drink
+ * @amount The amount of the drink
+ * @last True if it is the last drink
+ */
+void pumpDrink(int position, int amount, bool last) {
+  // Move cup to the right nozzle
+  motorCup.moveToNozzle(position);
+
+  // Fill in the drink
+  if (amount > 0) {
+    delay(50);
+    motorCup.moveToNozzle(position);
+    startPump(position, amount);
+  }
+
+  // Check if it was the last run
+  if (last) {
+    motorCup.toMiddle(position);
+  }
+}
+
+/**
+ * Get a drink from the roundel
+ * 
+ * @position The position of the drink
+ * @amount The amount of the drink
+ * @last True if it is the last drink
+ */
+void roundelDrink(int position, int amount, bool last) {
+  // Move cup to the right 
+  motorCup.toInitial(false);
+
+  // Fill in the drink
+  motorRoundel.toBottle(position);
+  while (amount > 0) {
+    if (amount >= 20) {
+      motorShift.fullShot();
+      amount -= 20;
+    } else {
+      motorShift.halfShot();
+      amount -= 10;
+    }
+    delay(50);
+    if (amount > 0) {
+      motorRoundel.shake(); 
+    }
+  }
+
+  // Check if it was the last run
+  if (last) {
+    motorCup.toInitial(true);
+  }
+}
+
+/**
  * Mix a drink
  */
 void mixDrink() {
-  // The drink data
-  int alc[6] = {0, 0, 0, 0, 0, 0}, antiAlc[6] = {0, 0, 0, 0, 0, 0};
+  // First get the amount of drinks
+  int drinkCount = getCommand().toInt();
 
-  // Get the drink data
-  for (int i = 0; i < 6; i++) {
-    // Get the amount for the alc
-    alc[i] = getCommand().toInt();
-    
-    // Update the amounts
-    int newValue = readInt(i * 2 + 13) - alc[i];
-    saveInt(i * 2 + 13, newValue);
-  }
-  for (int i = 0; i < 6; i++) {
-    antiAlc[i] = getCommand().toInt();
+  // Fill in each ingredient
+  for (int i = 0; i < drinkCount; i++) {
+    // Get the necessary information
+    int position = getCommand().toInt();
+    int amount = getCommand().toInt();
 
-    // Update the amounts
-    int newValue = readInt(i * 2 + 1) - antiAlc[i];
-    saveInt(i * 2 + 1, newValue);
-  }
-
-  // Check if the drink contains alcohol
-  bool noAlc = true;
-  for (int i = 0; i < 6; i++) {
-    if (alc[i] > 0) {
-      noAlc = false;
-      break;
+    // Check if the drink is attached to the pumps or to the roundel
+    if (position > 5) {
+      roundelDrink(position - 6, amount, i == (drinkCount - 1));
+    } else {
+      pumpDrink(position, amount, i == (drinkCount - 1));
     }
   }
 
-  if (!noAlc) {
-    // Move cup to the right
-    motorCup.toInitial(false);
-    
-    // Fill  in the alc
-    for (int i = 0; i < 6; i++) {
-      motorRoundel.toBottle(i);
-      while (alc[i] > 0) {
-        if (alc[i] >= 20) {
-          motorShift.fullShot();
-          alc[i] -= 20;
-        } else {
-          motorShift.halfShot();
-          alc[i] -= 10;
-        }
-        delay(50);
-        if (alc[i] > 0) {
-          motorRoundel.shake(); 
-        }
-      }
-    }
-
-    // Move the roundel back to initial
+  // Check if the roundel has to recalibrate
+  drinksSinceCalibration++;
+  if (drinksSinceCalibration > 5) {
     motorRoundel.toInitial();
-    delay(1000);
-  }
-
-  // Fill in the anti alc
-  int position = -1;
-  for (int i = 0; i < 6; i++) {
-    if (antiAlc[i] > 0) {
-      delay(50);
-      motorCup.moveToNozzle(i);
-      position = i;
-      startPump(i, antiAlc[i]);
-    }
-  }
-
-  // Move to the middle
-  if (position == -1) {
-    motorCup.toInitial(true);
-  } else {
-    motorCup.toMiddle(position);
+    drinksSinceCalibration = 0;  
   }
   
   sendData("FINISHED");
@@ -172,7 +182,6 @@ void mixDrink() {
  * Method to handle a command
  */
 void handleCommand(String command) {
-  Serial.println("COMMAND");
   if(command == "SETUP") {
     sendSetup();
   }

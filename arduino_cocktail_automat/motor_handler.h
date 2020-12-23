@@ -137,15 +137,25 @@ struct MotorCup {
     int value = analogRead(BARRIER_LEFT);
     if (value > NOZZLE_THRESHOLDS[index]) {
       activateMotor(CUP_LEFT);
-    }
   
-    // Watch the barrier's value and wait till it falls below a certain value
-    while (value > NOZZLE_THRESHOLDS[index]) {
-      value = analogRead(BARRIER_LEFT);
-    }
+      // Watch the barrier's value and wait till it falls below a certain value
+      while (value > NOZZLE_THRESHOLDS[index]) {
+        value = analogRead(BARRIER_LEFT);
+      }
+    
+      // Stop the motor
+      deactivateMotor(CUP_LEFT);
+    } else if (value < NOZZLE_THRESHOLDS[index]) {
+      activateMotor(CUP_RIGHT);
   
-    // Stop the motor
-    deactivateMotor(CUP_LEFT);
+      // Watch the barrier's value and wait till it falls below a certain value
+      while (value < NOZZLE_THRESHOLDS[index]) {
+        value = analogRead(BARRIER_LEFT);
+      }
+    
+      // Stop the motor
+      deactivateMotor(CUP_RIGHT);
+    }
   }
 };
   
@@ -215,17 +225,27 @@ struct MotorRoundel {
 
     // Start the motor (if necessary)
     int value = ENCODER.read();
-    if (value < threshold) {
+    if (value < threshold - 15) {
       activateMotor(ROUNDEL_RIGHT);
-    }
   
-    // Watch the barrier's value and wait till it falls below a certain value
-    while (value < threshold) {
-      value = ENCODER.read();
-    }
+      // Watch the barrier's value and wait till it falls below a certain value
+      while (value < threshold - 15) {
+        value = ENCODER.read();
+      }
   
-    // Stop the motor
-    deactivateMotor(ROUNDEL_RIGHT);
+      // Stop the motor
+      deactivateMotor(ROUNDEL_RIGHT);
+    } else if (value > threshold + 15) {
+      activateMotor(ROUNDEL_LEFT);
+  
+      // Watch the barrier's value and wait till it falls below a certain value
+      while (value > threshold + 15) {
+        value = ENCODER.read();
+      }
+  
+      // Stop the motor
+      deactivateMotor(ROUNDEL_LEFT);
+    }
   }
   
   /**
@@ -334,6 +354,9 @@ String changeMotorState(String action) {
       deactivateMotor(ROUNDEL_LEFT);
     }
   }
+  else if (action == "roundel_initial") {
+    motorRoundel.toInitial();
+  }
   else if (action == "roundel_right") {
     if (digitalRead(ROUNDEL_RIGHT) == HIGH) {
       activateMotor(ROUNDEL_RIGHT);
@@ -344,6 +367,9 @@ String changeMotorState(String action) {
   }
   else if (action == "cup_left") {
     motorCup.moveToNozzle(5);
+  }
+  else if (action == "cup_middle") {
+    motorCup.toInitial(true);
   }
   else if (action == "cup_right") {
     motorCup.toInitial(false);

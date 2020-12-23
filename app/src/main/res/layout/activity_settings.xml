@@ -74,9 +74,9 @@
             android:visibility="invisible"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/settings_bluetooth"
-            app:settingDescription="@string/settings_non_description"
+            app:settingDescription="@string/settings_pump_drinks_description"
             app:settingLogo="@drawable/button_drink"
-            app:settingTitle="@string/settings_non" />
+            app:settingTitle="@string/settings_pump_drinks" />
 
         <de.nimax.nimax_cocktails.settings.SettingsButton
             android:id="@+id/settings_alc"
@@ -86,9 +86,9 @@
             android:visibility="invisible"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/settings_non"
-            app:settingDescription="@string/settings_alc_description"
+            app:settingDescription="@string/settings_roundel_description"
             app:settingLogo="@drawable/button_drink"
-            app:settingTitle="@string/settings_alc" />
+            app:settingTitle="@string/settings_roundel_drinks" />
 
         <TextView
             android:id="@+id/control_motors"

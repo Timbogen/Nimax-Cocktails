@@ -56,7 +56,8 @@ public class SettingsActivity extends AppCompatActivity {
         // Setup the list
         ListView list = findViewById(R.id.list_motors);
         list.setAdapter(new MotorControlAdapter(this, "shift_up", "shift_down",
-                "roundel_left", "roundel_right", "cup_left", "cup_right"));
+                "roundel_left", "roundel_initial", "roundel_right", "cup_left", "cup_middle",
+                "cup_right"));
     }
 
     /**
