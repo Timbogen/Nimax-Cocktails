@@ -23,101 +23,155 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/general"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/settings_general_title"
-            android:textSize="28sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/settings_underline" />
-
-        <View
-            android:id="@+id/general_underline"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginEnd="100dp"
-            android:background="@color/grey"
-            app:layout_constraintTop_toBottomOf="@id/general" />
-
-        <de.nimax.nimax_cocktails.settings.SettingsButton
-            android:id="@+id/settings_bluetooth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="connectToBluetooth"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/general_underline"
-            app:settingLogo="@drawable/menu_button_bluetooth"
-            app:settingTitle="@string/settings_bluetooth">
-
-            <ProgressBar
-                android:id="@+id/settings_bluetooth_progress"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginEnd="8dp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </de.nimax.nimax_cocktails.settings.SettingsButton>
-
-
-        <de.nimax.nimax_cocktails.settings.SettingsButton
-            android:id="@+id/settings_non"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="showNonAlcoholicSetup"
-            android:visibility="invisible"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/settings_bluetooth"
-            app:settingDescription="@string/settings_pump_drinks_description"
-            app:settingLogo="@drawable/button_drink"
-            app:settingTitle="@string/settings_pump_drinks" />
-
-        <de.nimax.nimax_cocktails.settings.SettingsButton
-            android:id="@+id/settings_alc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="showAlcoholicSetup"
-            android:visibility="invisible"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/settings_non"
-            app:settingDescription="@string/settings_roundel_description"
-            app:settingLogo="@drawable/button_drink"
-            app:settingTitle="@string/settings_roundel_drinks" />
-
-        <TextView
-            android:id="@+id/control_motors"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/settings_setup_actions"
-            android:textSize="28sp"
-            android:visibility="invisible"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/settings_alc" />
-
-        <View
-            android:id="@+id/control_motors_underline"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginEnd="100dp"
-            android:background="@color/grey"
-            android:visibility="invisible"
-            app:layout_constraintTop_toBottomOf="@id/control_motors" />
-
-        <ListView
-            android:id="@+id/list_motors"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/control_motors_underline" />
+            app:layout_constraintTop_toBottomOf="@id/settings_underline">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/general"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/settings_general_title"
+                    android:textSize="28sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/general_underline"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginEnd="100dp"
+                    android:background="@color/grey"
+                    app:layout_constraintTop_toBottomOf="@id/general" />
+
+                <de.nimax.nimax_cocktails.settings.SettingsButton
+                    android:id="@+id/settings_bluetooth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="connectToBluetooth"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/general_underline"
+                    app:settingLogo="@drawable/menu_button_bluetooth"
+                    app:settingTitle="@string/settings_bluetooth">
+
+                    <ProgressBar
+                        android:id="@+id/settings_bluetooth_progress"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginEnd="8dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </de.nimax.nimax_cocktails.settings.SettingsButton>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/hidden_settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    app:layout_constraintTop_toBottomOf="@id/settings_bluetooth">
+
+                    <de.nimax.nimax_cocktails.settings.SettingsButton
+                        android:id="@+id/settings_non"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="showNonAlcoholicSetup"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:settingDescription="@string/settings_pump_drinks_description"
+                        app:settingLogo="@drawable/button_drink"
+                        app:settingTitle="@string/settings_pump_drinks" />
+
+                    <de.nimax.nimax_cocktails.settings.SettingsButton
+                        android:id="@+id/settings_alc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="showAlcoholicSetup"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/settings_non"
+                        app:settingDescription="@string/settings_roundel_description"
+                        app:settingLogo="@drawable/button_drink"
+                        app:settingTitle="@string/settings_roundel_drinks" />
+
+                    <TextView
+                        android:id="@+id/control_motors"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/settings_setup_control"
+                        android:textSize="28sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/settings_alc" />
+
+                    <View
+                        android:id="@+id/control_motors_underline"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginEnd="100dp"
+                        android:background="@color/grey"
+                        app:layout_constraintTop_toBottomOf="@id/control_motors" />
+
+                    <LinearLayout
+                        android:id="@+id/list_motors"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:showDividers="middle"
+                        app:layout_constraintTop_toBottomOf="@id/control_motors_underline" />
+
+                    <TextView
+                        android:id="@+id/others_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/settings_others_title"
+                        android:textSize="28sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/list_motors" />
+
+                    <View
+                        android:id="@+id/others_title_underline"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginEnd="100dp"
+                        android:background="@color/grey"
+                        app:layout_constraintTop_toBottomOf="@id/others_title" />
+
+                    <de.nimax.nimax_cocktails.settings.SettingsButton
+                        android:id="@+id/button_clean_program"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="startCleaningProgram"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/others_title_underline"
+                        app:settingDescription="@string/settings_clean_description"
+                        android:layout_marginBottom="32dp"
+                        app:settingLogo="@drawable/rain_drop"
+                        app:settingTitle="@string/settings_clean" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        app:layout_constraintTop_toBottomOf="@id/button_clean_program" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

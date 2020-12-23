@@ -168,12 +168,15 @@
     <string name="settings_bluetooth"> Bluetooth Connection </string>
     <string name="settings_pump_drinks"> Drinks attached to the pumps </string>
     <string name="settings_roundel_drinks"> Drinks attached to the roundel </string>
-    <string name="settings_pump_drinks_description">" Click here to show the setup of the pump drinks "</string>
+    <string name="settings_pump_drinks_description">Click here to show the setup of the pump drinks</string>
     <string name="settings_roundel_description"> Click here to show the setup of the alcoholic drinks </string>
+    <string name="settings_others_title"> Others </string>
+    <string name="settings_clean"> Cleaning Program </string>
+    <string name="settings_clean_description"> Click here to start the cleaning process </string>
     <string name="settings_setup_title"> Setup </string>
     <string name="settings_setup_selection"> The selected drink </string>
     <string name="settings_setup_list_title"> Select the drink you want to modify: </string>
-    <string name="settings_setup_actions"> Actions </string>
+    <string name="settings_setup_control"> Controls </string>
     <string name="settings_setup_play_title"> Start pump </string>
     <string name="settings_setup_pause_title"> Stop pump </string>
     <string name="settings_setup_play_description"> Click here to manually start the pump. </string>

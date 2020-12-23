@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ListView;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
@@ -30,11 +30,7 @@ public class SettingsActivity extends AppCompatActivity {
         if (BluetoothService.isConnected()) {
             bluetooth.setDescription(activity.getString(R.string.bluetooth_status_connected) + "  " + activity.getString(R.string.point) + "  " + activity.getString(R.string.bluetooth_connect));
             // Make the other settings visible
-            activity.findViewById(R.id.settings_non).setVisibility(View.VISIBLE);
-            activity.findViewById(R.id.settings_alc).setVisibility(View.VISIBLE);
-            activity.findViewById(R.id.control_motors).setVisibility(View.VISIBLE);
-            activity.findViewById(R.id.control_motors_underline).setVisibility(View.VISIBLE);
-            activity.findViewById(R.id.list_motors).setVisibility(View.VISIBLE);
+            activity.findViewById(R.id.hidden_settings).setVisibility(View.VISIBLE);
         } else {
             bluetooth.setDescription(activity.getString(R.string.bluetooth_status_disconnected) + "  " + activity.getString(R.string.point) + "  " + activity.getString(R.string.bluetooth_connect));
         }
@@ -54,10 +50,10 @@ public class SettingsActivity extends AppCompatActivity {
         Showcase.setupShowcase(this, Showcase.SETTINGS, null, getString(R.string.showcase_settings_start), null);
 
         // Setup the list
-        ListView list = findViewById(R.id.list_motors);
-        list.setAdapter(new MotorControlAdapter(this, "shift_up", "shift_down",
+        LinearLayout list = findViewById(R.id.list_motors);
+        new MotorControlAdapter(this, list, "shift_up", "shift_down",
                 "roundel_left", "roundel_initial", "roundel_right", "cup_left", "cup_middle",
-                "cup_right"));
+                "cup_right");
     }
 
     /**
@@ -116,5 +112,16 @@ public class SettingsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SetupActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+    }
+
+    /**
+     * Start the cleaning program
+     *
+     * @param v view that was clicked
+     */
+    public void startCleaningProgram(View v) {
+        v.setEnabled(false);
+        BluetoothService.sendData("CLEANING_PROGRAM");
+        v.setEnabled(true);
     }
 }

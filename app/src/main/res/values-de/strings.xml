@@ -82,7 +82,7 @@
     <string name="settings_setup_pause_title">Stoppe Pumpe</string>
     <string name="settings_setup_play_title">Starte Pumpe</string>
     <string name="settings_setup_selection">Das gewählte Getränk</string>
-    <string name="settings_setup_actions">Aktionen</string>
+    <string name="settings_setup_control">Steuerung</string>
     <string name="settings_setup_modification">Ändere das Getränk</string>
     <string name="settings_setup_amount">Menge</string>
     <string name="settings_setup_confirm">Bestätigen</string>
@@ -146,4 +146,7 @@
     <string name="bluetooth_connecting">Gerät verbindet sich aktuell!</string>
     <string name="settings_mc_roundel_initial">Rondell Zu Initialposition</string>
     <string name="settings_mc_cup_middle">Becher Zur Mitte</string>
+    <string name="settings_others_title">Sonstiges</string>
+    <string name="settings_clean">Reinigungsprogramm</string>
+    <string name="settings_clean_description">Klicken Sie hier um das Reinigungsprogramm zu starten</string>
 </resources>

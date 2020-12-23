@@ -265,6 +265,7 @@ public class BluetoothService {
                 String res = readData();
 
                 // First get the drinks on the pumps
+                pumpDrinks = new ArrayList<>();
                 while (!res.equals("ROUNDEL")) {
                     // Get the right drink
                     pumpDrinks.add(Drinks.values()[Integer.parseInt(res)]);
@@ -274,6 +275,7 @@ public class BluetoothService {
 
                 // Now get the drinks on the roundel
                 res = readData();
+                roundelDrinks = new ArrayList<>();
                 while (!res.equals("END")) {
                     // Get the right drink
                     roundelDrinks.add(Drinks.values()[Integer.parseInt(res)]);

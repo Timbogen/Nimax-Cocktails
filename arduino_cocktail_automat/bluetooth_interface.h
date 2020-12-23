@@ -179,6 +179,24 @@ void mixDrink() {
 }
 
 /**
+ * Start the cleaning process for the pumps
+ */
+void startCleaning() {
+  for (int index = 0; index < 5; index++) {
+    if (index != 0) {
+      delay(500); 
+    }
+    for (int i = 0; i < 6; i++) {
+      activateMotor(PUMPS[i]);
+    }
+    delay(2000);
+    for (int i = 0; i < 6; i++) {
+      deactivateMotor(PUMPS[i]);
+    }
+  }
+}
+
+/**
  * Method to handle a command
  */
 void handleCommand(String command) {
@@ -202,6 +220,9 @@ void handleCommand(String command) {
   }
   else if (command == "REQUEST_MIXING") {
     sendData("READY");
+  }
+  else if (command == "CLEANING_PROGRAM") {
+    startCleaning();
   }
 }
  
