@@ -168,7 +168,7 @@ struct MotorRoundel {
    * The start offset to the first bottle
    */
   int START_OFFSET = 140;
-  int POS[6] = {140, 494, 844, 1174, 1521, 1881};
+  int POS[6] = {140, 500, 850, 1186, 1528, 1881};
   /**
    * The encoder (GREEN = 2, WHITE = 3)
    */
