@@ -149,4 +149,12 @@
     <string name="settings_others_title">Sonstiges</string>
     <string name="settings_clean">Reinigungsprogramm</string>
     <string name="settings_clean_description">Klicken Sie hier um das Reinigungsprogramm zu starten</string>
+    <string name="drink_blue_curacao">Blue Curaçao</string>
+    <string name="drink_grapefruit_juice">Grapefruitsaft</string>
+    <string name="drink_passion_fruit_juice">Maracujasaft</string>
+    <string name="drink_tequila">Tequila</string>
+    <string name="drink_blue_curacao_info">Herkunft: Curaçao</string>
+    <string name="drink_grapefruit_juice_info">Herkunft: Barbados</string>
+    <string name="drink_passion_fruit_juice_info">Herkunft: Brasilien</string>
+    <string name="drink_tequila_info">Herkunft: Mexiko</string>
 </resources>
