@@ -50,16 +50,18 @@ String getCommand() {
  * Method to send the setup of the cocktail machine
  */
 void sendSetup() {
-  // First send the non alcohlic drinks
+  // First send the drinks on the pumps
   for (int i = 0; i < 6; i++) {
     sendData(String(readInt(i)));
   }
-  // Then send the alcoholic drinks
-  sendData("ROUNDEL");
+  // Then send the drinks on the roundel
   for (int i = 6; i < 12; i++) {
     sendData(String(readInt(i)));
   }
-  sendData("END");
+  // And then the shake modes
+  for (int i = 12; i < 18; i++) {
+    sendData(String(readInt(i)));
+  }
 }
 
 /**
@@ -126,8 +128,11 @@ void roundelDrink(int position, int amount, bool last) {
   motorCup.toInitial(false);
 
   // Fill in the drink
+  int shakeMode = readInt(position + 12);
   motorRoundel.toBottle(position);
   while (amount > 0) {
+
+    // Fill the cup
     if (amount >= 20) {
       motorShift.fullShot();
       amount -= 20;
@@ -136,8 +141,14 @@ void roundelDrink(int position, int amount, bool last) {
       amount -= 10;
     }
     delay(50);
-    if (amount > 0) {
-      motorRoundel.shake(); 
+
+    // Check if the roundel should shake
+    Serial.println(shakeMode);
+    if (shakeMode == 1) {
+      motorRoundel.shake(true);
+    }
+    else if (amount > 0) {
+      motorRoundel.shake(false); 
     }
   }
 
@@ -197,6 +208,17 @@ void startCleaning() {
 }
 
 /**
+ * Change the shake mode for a position on the roundel
+ */
+void changeShakeMode() {
+  int position = getCommand().toInt();
+  int mode = readInt(position + 12);
+  int newMode = mode == 0 ? 1 : 0;
+  saveInt(position + 12, newMode);
+  sendData(String(newMode));
+}
+
+/**
  * Method to handle a command
  */
 void handleCommand(String command) {
@@ -223,6 +245,9 @@ void handleCommand(String command) {
   }
   else if (command == "CLEANING_PROGRAM") {
     startCleaning();
+  }
+  else if (command == "CHANGE_SHAKE_MODE") {
+    changeShakeMode();
   }
 }
  

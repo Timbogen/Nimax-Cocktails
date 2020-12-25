@@ -188,30 +188,50 @@ struct MotorRoundel {
   /**
    * Shake the roundel to make sure
    * that the spender is refilled
+   * 
+   * @param extended True if the shake should be extended
    */
-  void shake() {
+  void shake(bool extended) {
     int startValue = ENCODER.read();
     int delayTime = 300;
-    // Move roundel to the right
+
+    // Start the shaking
+    moveRightTo(startValue + 100);
+    delay(delayTime);
+    moveLeftTo(startValue - 100);
+    delay(delayTime);
+    if (extended) {
+      moveRightTo(startValue + 100);
+      delay(delayTime);
+      moveLeftTo(startValue - 100);
+      delay(delayTime); 
+    }
+    moveRightTo(startValue - 15);
+    delay(delayTime);
+  }
+
+  /**
+   * Let the roundel move right to a certain value
+   * 
+   * @param value The encoder value
+   */
+  void moveRightTo(int value) {
     activateMotor(ROUNDEL_RIGHT);
     int current = ENCODER.read();
-    while (current < startValue + 100) current = ENCODER.read();
+    while (current < value) current = ENCODER.read();
     deactivateMotor(ROUNDEL_RIGHT);
-    delay(delayTime);
+  }
 
-    // Move roundel to the left
+  /**
+   * Let the roundel move left to a certain value
+   * 
+   * @param value The encoder value
+   */
+  void moveLeftTo(int value) {
     activateMotor(ROUNDEL_LEFT);
-    current = ENCODER.read();
-    while (current > startValue - 100) current = ENCODER.read();
+    int current = ENCODER.read();
+    while (current > value) current = ENCODER.read();
     deactivateMotor(ROUNDEL_LEFT);
-    delay(delayTime);
-
-    // Move roundel to the start
-    activateMotor(ROUNDEL_RIGHT);
-    current = ENCODER.read();
-    while (current < startValue - 15) current = ENCODER.read();
-    deactivateMotor(ROUNDEL_RIGHT);
-    delay(delayTime);
   }
 
   /**

@@ -159,7 +159,7 @@
                         app:layout_constraintTop_toBottomOf="@id/others_title_underline"
                         app:settingDescription="@string/settings_clean_description"
                         android:layout_marginBottom="32dp"
-                        app:settingLogo="@drawable/rain_drop"
+                        app:settingLogo="@drawable/icon_rain_drop"
                         app:settingTitle="@string/settings_clean" />
 
                     <View

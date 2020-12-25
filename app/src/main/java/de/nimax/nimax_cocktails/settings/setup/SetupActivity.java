@@ -7,23 +7,21 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.nimax.nimax_cocktails.R;
 import com.synnapps.carouselview.CarouselView;
 
-import java.util.ArrayList;
-
 import de.nimax.nimax_cocktails.BluetoothService;
 import de.nimax.nimax_cocktails.mixing.DrinkViewListener;
 import de.nimax.nimax_cocktails.recipes.data.Drinks;
+import de.nimax.nimax_cocktails.settings.SettingsButton;
 
 public class SetupActivity extends AppCompatActivity {
 
     /**
      * The drinks of the setup
      */
-    public static ArrayList<Drinks> drinks;
+    public static Drinks[] drinks;
     /**
      * True if the view modifies the pumps
      */
@@ -57,18 +55,19 @@ public class SetupActivity extends AppCompatActivity {
      * Method to setup the list
      */
     private void setupSpinner() {
-        // Setup the list
+        // Set up the spinner
         Spinner list = findViewById(R.id.setup_drinks);
         spinnerAdapter = new SetupEditAdapter(this, drinks);
         list.setAdapter(spinnerAdapter);
+
+        // Update the view if the user chose another item
         list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // Update position
                 selected = position;
-                // Select the right items
                 CarouselView selectionCarousel = findViewById(R.id.setup_modify_carousel);
-                selectionCarousel.setCurrentItem(drinks.get(position).ordinal());
+                selectionCarousel.setCurrentItem(drinks[position].ordinal());
+                updateActions();
             }
 
             @Override
@@ -78,13 +77,24 @@ public class SetupActivity extends AppCompatActivity {
     }
 
     /**
-     * Method to setup the actions tab
+     * Set up the actions
      */
     private void setupActions() {
-        if (!pumps) {
-            ConstraintLayout actions = findViewById(R.id.actions_layout);
-            actions.setVisibility(ConstraintLayout.GONE);
-        }
+        SettingsButton button;
+        if (pumps) button = findViewById(R.id.setup_change_shake);
+        else button = findViewById(R.id.setup_play);
+        button.setVisibility(SettingsButton.INVISIBLE);
+        updateActions();
+    }
+
+    /**
+     * Update the shake button
+     */
+    private void updateActions() {
+        SettingsButton shakeMode = findViewById(R.id.setup_change_shake);
+        String text = getString(BluetoothService.roundelShakeModes[selected] == 1 ?
+                R.string.settings_setup_change_shake_on : R.string.settings_setup_change_shake_off);
+        shakeMode.setDescription(text);
     }
 
     /**
@@ -128,6 +138,23 @@ public class SetupActivity extends AppCompatActivity {
     }
 
     /**
+     * Change the shake mode for a position on the roundel
+     *
+     * @param v The view that was clicked
+     */
+    public void changeShakeMode(View v) {
+        v.setEnabled(false);
+
+        // Change the mode
+        BluetoothService.sendData("CHANGE_SHAKE_MODE");
+        BluetoothService.sendData(Integer.toString(selected));
+        BluetoothService.roundelShakeModes[selected] = Integer.parseInt(BluetoothService.readData());
+        updateActions();
+
+        v.setEnabled(true);
+    }
+
+    /**
      * Method to confirm the modification
      *
      * @param v view
@@ -140,7 +167,7 @@ public class SetupActivity extends AppCompatActivity {
         BluetoothService.sendData("MODIFY");
 
         // Send the position
-        BluetoothService.sendData(Integer.toString(pumps ? selected : selected + 6));
+        BluetoothService.sendData(Integer.toString(pumps ? selected : selected + BluetoothService.DRINK_COUNT));
 
         // Send the id
         CarouselView selectionCarousel = findViewById(R.id.setup_modify_carousel);
@@ -148,7 +175,7 @@ public class SetupActivity extends AppCompatActivity {
         BluetoothService.sendData(Integer.toString(position));
 
         // Update the data
-        drinks.set(selected, Drinks.ALL.get(position));
+        drinks[selected] = Drinks.ALL.get(position);
 
         // Update the spinner
         spinnerAdapter.notifyDataSetChanged();

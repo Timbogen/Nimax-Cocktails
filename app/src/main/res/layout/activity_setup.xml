@@ -141,6 +141,17 @@
                     app:settingLogo="@drawable/mixing_button_pause"
                     app:settingTitle="@string/settings_setup_pause_title" />
 
+                <de.nimax.nimax_cocktails.settings.SettingsButton
+                    android:id="@+id/setup_change_shake"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="changeShakeMode"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/setup_actions_underline"
+                    app:settingDescription="@string/settings_setup_change_shake_off"
+                    app:settingLogo="@drawable/icon_vibration"
+                    app:settingTitle="@string/settings_setup_change_shake" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView

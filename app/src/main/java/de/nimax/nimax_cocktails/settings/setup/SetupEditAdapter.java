@@ -1,7 +1,6 @@
 package de.nimax.nimax_cocktails.settings.setup;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +13,6 @@ import androidx.annotation.Nullable;
 
 import com.nimax.nimax_cocktails.R;
 
-import java.util.ArrayList;
-
 import de.nimax.nimax_cocktails.recipes.data.Drinks;
 
 public class SetupEditAdapter extends ArrayAdapter<Drinks> {
@@ -27,13 +24,14 @@ public class SetupEditAdapter extends ArrayAdapter<Drinks> {
     /**
      * The drinks that should be shown in the list
      */
-    private final ArrayList<Drinks> drinks;
+    private final Drinks[] drinks;
 
     /**
      * Custom Array Adapter for the list and the spinners
+     *
      * @param activity of the adapter
      */
-    public SetupEditAdapter(@NonNull Activity activity, ArrayList<Drinks> drinks) {
+    public SetupEditAdapter(@NonNull Activity activity, Drinks[] drinks) {
         super(activity, 0, drinks);
         this.activity = activity;
         this.drinks = drinks;
@@ -46,7 +44,8 @@ public class SetupEditAdapter extends ArrayAdapter<Drinks> {
     @Override
     public View getView(int position, @Nullable View item, @NonNull ViewGroup parent) {
         // Check if the item is null
-        if (item == null) item = LayoutInflater.from(activity).inflate(R.layout.adapter_recipe_edit, parent, false);
+        if (item == null)
+            item = LayoutInflater.from(activity).inflate(R.layout.adapter_recipe_edit, parent, false);
 
         // Specify the amount
         TextView amount = item.findViewById(R.id.list_amount);
@@ -55,15 +54,15 @@ public class SetupEditAdapter extends ArrayAdapter<Drinks> {
 
         // Specify the image
         ImageView image = item.findViewById(R.id.list_image);
-        image.setImageResource(drinks.get(position).image);
+        image.setImageResource(drinks[position].image);
 
         // Specify the name
         TextView name = item.findViewById(R.id.list_name);
-        name.setText(getString("drink_" + drinks.get(position).name().toLowerCase()));
+        name.setText(getString("drink_" + drinks[position].name().toLowerCase()));
 
         // Specify the alcohol
         TextView alcohol = item.findViewById(R.id.list_alcohol);
-        String alcoholContent = drinks.get(position).alcohol + "%";
+        String alcoholContent = drinks[position].alcohol + "%";
         alcohol.setText(alcoholContent);
 
         // Return the item

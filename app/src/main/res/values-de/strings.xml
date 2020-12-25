@@ -161,4 +161,7 @@
     <string name="drink_pitu_info">Herkunft: Brasilien</string>
     <string name="drink_strawberry_syrup">Erdbeersirup</string>
     <string name="drink_strawberry_syrup_info">Herkunft: Frankreich</string>
+    <string name="settings_setup_change_shake">Ändere den Shake-Modus</string>
+    <string name="settings_setup_change_shake_off">Aktueller Modus: Normal</string>
+    <string name="settings_setup_change_shake_on">Aktueller Modus: Mehrere Shakes</string>
 </resources>

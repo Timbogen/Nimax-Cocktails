@@ -191,6 +191,9 @@
     <string name="settings_setup_control"> Controls </string>
     <string name="settings_setup_play_title"> Start pump </string>
     <string name="settings_setup_pause_title"> Stop pump </string>
+    <string name="settings_setup_change_shake"> Change shake mode </string>
+    <string name="settings_setup_change_shake_off"> Current mode: Normal </string>
+    <string name="settings_setup_change_shake_on"> Current mode: More shakes </string>
     <string name="settings_setup_play_description"> Click here to manually start the pump. </string>
     <string name="settings_setup_pause_description"> Click here to manually stop the pump.</string>
     <string name="settings_setup_modification"> Modify the drink</string>

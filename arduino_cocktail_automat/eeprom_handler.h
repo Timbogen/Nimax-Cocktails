@@ -42,10 +42,20 @@ int readInt(int address) {
  * Roundel:       1 | 2 | 3 | 4 | 5 | 6
  * -------------------------------------
  * ID Index:      6 | 7 | 8 | 9 | 10| 11
+ * -------------------------------------
+ * Shake Mode:    1 | 2 | 3 | 4 | 5 | 6
+ * -------------------------------------
+ * ID Index:      12| 13| 14| 15| 16| 17
  */
 void setupEEPROM() {
+  // Set up the bottles
   for (int i = 0; i < 12; i++) {
     saveInt(i, i);
+  }
+
+  // Set up the shake modes
+  for (int i = 12; i < 18; i++) {
+    saveInt(i, 0);
   }
 }
 

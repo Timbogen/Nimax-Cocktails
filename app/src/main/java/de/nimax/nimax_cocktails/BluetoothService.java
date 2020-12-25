@@ -11,7 +11,6 @@ import android.widget.Toast;
 import com.nimax.nimax_cocktails.R;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
 
@@ -25,6 +24,10 @@ public class BluetoothService {
      */
     public static final int NOT_AVAILABLE = -1;
     /**
+     * The amount of drinks available on the pumps and on the roundel
+     */
+    public static final int DRINK_COUNT = 6;
+    /**
      * The UUID
      */
     private static final UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
@@ -35,11 +38,15 @@ public class BluetoothService {
     /**
      * All the drinks that are setup on the pumps
      */
-    public static ArrayList<Drinks> pumpDrinks = new ArrayList<>();
+    public static Drinks[] pumpDrinks = new Drinks[DRINK_COUNT];
     /**
      * All the drinks that are setup on the roundel
      */
-    public static ArrayList<Drinks> roundelDrinks = new ArrayList<>();
+    public static Drinks[] roundelDrinks = new Drinks[DRINK_COUNT];
+    /**
+     * The shake modes set on the roundel drinks
+     */
+    public static int[] roundelShakeModes = new int[DRINK_COUNT];
     /**
      * The bluetooth adapter
      */
@@ -56,9 +63,9 @@ public class BluetoothService {
      * @return The index
      */
     public static int getIndex(Drinks drink) {
-        for (int i = 0; i < 6; i++) {
-            if (pumpDrinks.get(i).name().equals(drink.name())) return i;
-            if (roundelDrinks.get(i).name().equals(drink.name())) return i + 6;
+        for (int i = 0; i < DRINK_COUNT; i++) {
+            if (pumpDrinks[i].name().equals(drink.name())) return i;
+            if (roundelDrinks[i].name().equals(drink.name())) return i + DRINK_COUNT;
         }
         return NOT_AVAILABLE;
     }
@@ -262,25 +269,24 @@ public class BluetoothService {
 
             // If connection was built successfully load the data
             if (isConnected() && sendData("SETUP")) {
-                String res = readData();
+                String res;
 
-                // First get the drinks on the pumps
-                pumpDrinks = new ArrayList<>();
-                while (!res.equals("ROUNDEL")) {
-                    // Get the right drink
-                    pumpDrinks.add(Drinks.values()[Integer.parseInt(res)]);
-                    // Get the next response
+                // Get the drinks on the pumps
+                for (int i = 0; i < 6; i++) {
                     res = readData();
+                    pumpDrinks[i] = Drinks.values()[Integer.parseInt(res)];
                 }
 
-                // Now get the drinks on the roundel
-                res = readData();
-                roundelDrinks = new ArrayList<>();
-                while (!res.equals("END")) {
-                    // Get the right drink
-                    roundelDrinks.add(Drinks.values()[Integer.parseInt(res)]);
-                    // Get the next response
+                // Get the drinks on the roundel
+                for (int i = 0; i < 6; i++) {
                     res = readData();
+                    roundelDrinks[i] = Drinks.values()[Integer.parseInt(res)];
+                }
+
+                // Now get the shake modes
+                for (int i = 0; i < 6; i++) {
+                    res = readData();
+                    roundelShakeModes[i] = Integer.parseInt(res);
                 }
             }
 
