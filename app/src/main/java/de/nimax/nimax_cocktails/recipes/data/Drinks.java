@@ -25,6 +25,8 @@ public enum Drinks {
     ORANGE_JUICE(R.drawable.drink_orange_juice, 0),
     PASSION_FRUIT_JUICE(R.drawable.drink_passion_fruit_juice, 0),
     PINEAPPLE_JUICE(R.drawable.drink_pineapple_juice, 0),
+    PITU(R.drawable.drink_pitu, 40),
+    STRAWBERRY_SYRUP(R.drawable.drink_strawberry_syrup, 0),
     TEQUILA(R.drawable.drink_tequila, 38),
     TONIC_WATER(R.drawable.drink_tonic_water, 0),
     VODKA(R.drawable.drink_vodka, 37.5),

@@ -157,4 +157,8 @@
     <string name="drink_grapefruit_juice_info">Herkunft: Barbados</string>
     <string name="drink_passion_fruit_juice_info">Herkunft: Brasilien</string>
     <string name="drink_tequila_info">Herkunft: Mexiko</string>
+    <string name="drink_pitu">Pitú</string>
+    <string name="drink_pitu_info">Herkunft: Brasilien</string>
+    <string name="drink_strawberry_syrup">Erdbeersirup</string>
+    <string name="drink_strawberry_syrup_info">Herkunft: Frankreich</string>
 </resources>

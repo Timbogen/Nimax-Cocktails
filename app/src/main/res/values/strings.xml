@@ -31,6 +31,8 @@
     <string name="drink_orange_juice"> Orange Juice </string>
     <string name="drink_passion_fruit_juice"> Passion Fruit Juice </string>
     <string name="drink_pineapple_juice"> Pineapple Juice </string>
+    <string name="drink_pitu"> Pitú </string>
+    <string name="drink_strawberry_syrup"> Strawberry Syrup </string>
     <string name="drink_tequila"> Tequila </string>
     <string name="drink_tonic_water"> Tonic Water </string>
     <string name="drink_vodka"> Vodka </string>
@@ -56,6 +58,8 @@
     <string name="drink_orange_juice_info"> Origin: Unknown </string>
     <string name="drink_passion_fruit_juice_info"> Origin: Brazil </string>
     <string name="drink_pineapple_juice_info"> Origin: South America </string>
+    <string name="drink_pitu_info"> Origin: Brazil </string>
+    <string name="drink_strawberry_syrup_info"> Origin: France </string>
     <string name="drink_tequila_info"> Origin: Mexico </string>
     <string name="drink_tonic_water_info"> Origin: Colonial India </string>
     <string name="drink_vodka_info"> Origin: Poland, Russia, Sweden </string>
