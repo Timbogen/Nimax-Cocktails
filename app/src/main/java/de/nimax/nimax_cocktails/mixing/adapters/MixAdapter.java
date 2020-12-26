@@ -1,4 +1,4 @@
-package de.nimax.nimax_cocktails.mixing;
+package de.nimax.nimax_cocktails.mixing.adapters;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -18,6 +18,7 @@ import com.nimax.nimax_cocktails.R;
 import java.util.Collections;
 import java.util.Objects;
 
+import de.nimax.nimax_cocktails.mixing.MixingActivity;
 import de.nimax.nimax_cocktails.recipes.data.Drinks;
 import de.nimax.nimax_cocktails.recipes.data.Recipe;
 
@@ -41,7 +42,7 @@ public class MixAdapter extends RecyclerView.Adapter<MixAdapter.ViewHolder> {
      * @param activity The current activity
      * @param recipe   The active recipe
      */
-    MixAdapter(Activity activity, Recipe recipe, ItemTouchHelper touchHelper) {
+    public MixAdapter(Activity activity, Recipe recipe, ItemTouchHelper touchHelper) {
         this.activity = activity;
         MixAdapter.recipe = recipe;
         this.touchHelper = touchHelper;
@@ -91,6 +92,7 @@ public class MixAdapter extends RecyclerView.Adapter<MixAdapter.ViewHolder> {
             public void onClick(View v) {
                 // Remove the item
                 recipe.drinks.remove(position);
+                MixingActivity.setModifiedState();
                 notifyDataSetChanged();
 
                 // Show or hide the divider
@@ -195,6 +197,7 @@ public class MixAdapter extends RecyclerView.Adapter<MixAdapter.ViewHolder> {
             int to = target.getAdapterPosition();
             Objects.requireNonNull(recyclerView.getAdapter()).notifyItemMoved(from, to);
             Collections.swap(recipe.drinks, from, to);
+            MixingActivity.setModifiedState();
             return true;
         }
 

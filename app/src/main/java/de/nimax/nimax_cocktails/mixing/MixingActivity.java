@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
@@ -18,9 +17,13 @@ import com.synnapps.carouselview.ImageClickListener;
 
 import java.util.Objects;
 
-import de.nimax.nimax_cocktails.shared.BluetoothService;
 import de.nimax.nimax_cocktails.menu.MenuActivity;
 import de.nimax.nimax_cocktails.menu.Showcase;
+import de.nimax.nimax_cocktails.mixing.adapters.AmountViewListener;
+import de.nimax.nimax_cocktails.mixing.adapters.DrinkViewListener;
+import de.nimax.nimax_cocktails.mixing.adapters.MixAdapter;
+import de.nimax.nimax_cocktails.mixing.dialogs.MixDialog;
+import de.nimax.nimax_cocktails.mixing.dialogs.SavingDialog;
 import de.nimax.nimax_cocktails.recipes.data.Drinks;
 import de.nimax.nimax_cocktails.recipes.data.Recipe;
 
@@ -31,10 +34,6 @@ public class MixingActivity extends AppCompatActivity {
      */
     public static Recipe recipe = new Recipe("Mix");
     /**
-     * True if the machine is currently mixing
-     */
-    private static boolean mixing = false;
-    /**
      * The current activity
      */
     private final Activity activity = this;
@@ -42,6 +41,14 @@ public class MixingActivity extends AppCompatActivity {
      * The list view for the current mix
      */
     private RecyclerView mixView;
+
+    /**
+     * Set the recipe into the modified state
+     */
+    public static void setModifiedState() {
+        recipe.image = null;
+        recipe.name = "Mix";
+    }
 
     /**
      * Create the view
@@ -64,86 +71,10 @@ public class MixingActivity extends AppCompatActivity {
     }
 
     /**
-     * Mix the recipe
+     * Open the dialog for mixing
      */
     public void mixRecipe(View v) {
-        // Check if the machine is currently mixing
-        if (mixing) {
-            Toast.makeText(
-                    this,
-                    getString(R.string.bluetooth_currently_mixing),
-                    Toast.LENGTH_SHORT
-            ).show();
-            return;
-        }
-
-        // Check if the recipe is empty
-        if (recipe.isEmpty()) {
-            Toast.makeText(
-                    this,
-                    getString(R.string.mixing_no_drinks),
-                    Toast.LENGTH_SHORT
-            ).show();
-            return;
-        }
-
-        // Check if the connection is active
-        if (BluetoothService.isConnected()) {
-            if (isMixable()) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mixing = true;
-                        BluetoothService.sendData("MIX_DRINK");
-
-                        // Send the cocktail data
-                        BluetoothService.sendData(Integer.toString(recipe.drinks.size()));
-                        for (Recipe.Drink drink : recipe.drinks) {
-                            BluetoothService.sendData(
-                                    Integer.toString(BluetoothService.getIndex(drink.drink))
-                            );
-                            BluetoothService.sendData(Integer.toString(drink.amount));
-                        }
-
-                        // Wait for the arduino to respond
-                        if (BluetoothService.readData().equals("FINISHED")) {
-                            mixing = false;
-                        }
-                    }
-                }).start();
-            }
-        } else {
-            Toast.makeText(
-                    this,
-                    getString(R.string.bluetooth_no_active_connection),
-                    Toast.LENGTH_SHORT
-            ).show();
-        }
-    }
-
-    /**
-     * Check if a cocktail is mixable
-     *
-     * @return True if a cocktail is mixable
-     */
-    private boolean isMixable() {
-        for (Recipe.Drink drink : recipe.drinks) {
-            int result = BluetoothService.getIndex(drink.drink);
-            if (result == BluetoothService.NOT_AVAILABLE) {
-                int resourceId = activity.getResources().getIdentifier(
-                        "drink_" + drink.drink.name().toLowerCase(),
-                        "string",
-                        activity.getPackageName()
-                );
-                Toast.makeText(
-                        this,
-                        getString(R.string.bluetooth_no_drink) + " " + getString(resourceId),
-                        Toast.LENGTH_SHORT
-                ).show();
-                return false;
-            }
-        }
-        return true;
+        new MixDialog(this, recipe).show();
     }
 
     /**

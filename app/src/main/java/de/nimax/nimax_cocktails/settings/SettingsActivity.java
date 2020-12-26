@@ -12,6 +12,7 @@ import androidx.core.util.Pair;
 
 import com.nimax.nimax_cocktails.R;
 
+import de.nimax.nimax_cocktails.settings.adapters.MotorControlAdapter;
 import de.nimax.nimax_cocktails.shared.BluetoothService;
 import de.nimax.nimax_cocktails.menu.MenuActivity;
 import de.nimax.nimax_cocktails.menu.Showcase;

@@ -12,11 +12,11 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import de.nimax.nimax_cocktails.drinkers.adapters.DrinkersAdapter;
+import de.nimax.nimax_cocktails.drinkers.dialogs.AddDialog;
 import de.nimax.nimax_cocktails.menu.MenuActivity;
 import de.nimax.nimax_cocktails.drinkers.data.Administration;
 import de.nimax.nimax_cocktails.menu.Showcase;
-import de.nimax.nimax_cocktails.recipes.RecipesAdapter;
-import de.nimax.nimax_cocktails.recipes.data.Bar;
 import de.nimax.nimax_cocktails.shared.ConfirmDialog;
 
 import com.nimax.nimax_cocktails.R;
@@ -94,7 +94,7 @@ public class DrinkersActivity extends AppCompatActivity {
      */
     private void setupView() {
         ListView list = findViewById(R.id.drinkers_list);
-        adapter = new DrinkersAdapter(this, Administration.drinkers);
+        adapter = new DrinkersAdapter(this, Administration.drinkers, true);
         list.setAdapter(adapter);
         updateView();
     }
@@ -108,7 +108,7 @@ public class DrinkersActivity extends AppCompatActivity {
         // Update the list
         if (noDrinkers) {
             ListView list = findViewById(R.id.drinkers_list);
-            adapter = new DrinkersAdapter(this, Administration.drinkers);
+            adapter = new DrinkersAdapter(this, Administration.drinkers, true);
             list.setAdapter(adapter);
         }
         else {

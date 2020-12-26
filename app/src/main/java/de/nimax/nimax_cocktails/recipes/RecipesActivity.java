@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
@@ -16,6 +15,7 @@ import com.nimax.nimax_cocktails.R;
 
 import de.nimax.nimax_cocktails.menu.MenuActivity;
 import de.nimax.nimax_cocktails.menu.Showcase;
+import de.nimax.nimax_cocktails.recipes.adapters.RecipesAdapter;
 import de.nimax.nimax_cocktails.recipes.data.Bar;
 import de.nimax.nimax_cocktails.shared.ConfirmDialog;
 

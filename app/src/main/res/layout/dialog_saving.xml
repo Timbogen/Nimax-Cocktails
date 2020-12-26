@@ -18,22 +18,33 @@
         android:text="@string/mixing_add_recipe"
         android:textSize="24sp" />
 
+    <TextView
+        android:id="@+id/description"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        android:layout_margin="16dp"
+        android:textColor="@color/grey"
+        android:text="@string/mixing_save_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <EditText
         android:id="@+id/input_recipe_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:hint="@string/mixing_name"
         android:importantForAutofill="no"
         android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@id/title" />
+        app:layout_constraintTop_toBottomOf="@id/description" />
 
     <Button
         android:id="@+id/dialog_cancel"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_accent"
@@ -47,7 +58,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_dark"

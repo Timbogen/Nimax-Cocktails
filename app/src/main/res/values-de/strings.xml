@@ -17,7 +17,7 @@
     <string name="menu_settings">Einstellungen</string>
     <string name="menu_title">Nimax</string>
     <string name="mixing_add_drink">Klicken für:</string>
-    <string name="mixing_add_recipe">Rezept hinzufügen</string>
+    <string name="mixing_add_recipe">Rezept speichern</string>
     <string name="mixing_alc">Alkoholische Getränke</string>
     <string name="mixing_anti_alc">Alkoholfreie Getränke</string>
     <string name="mixing_image_add">Hinzufügen</string>
@@ -172,4 +172,13 @@
     <string name="recipes_clear_description">Alle Rezepte entfernen</string>
     <string name="recipes_load_title">Lade Rezepte</string>
     <string name="recipes_load_description">Lade ein paar vordefinierte Rezepte</string>
+    <string name="mixing_start_mixing_title">Mix bestellen</string>
+    <string name="mixing_start_mixing_action">Los</string>
+    <string name="settings_setup_position">Position</string>
+    <string name="mixing_default_drinker">Standard Trinker</string>
+    <string name="drinkers_amount">Menge:</string>
+    <string name="drinkers_alcohol">Alk.:</string>
+    <string name="mixing_start_mixing_description">Wer ist am bestellen?</string>
+    <string name="mixing_save_name">Was ist der Name des Rezepts?</string>
+    <string name="drinkers_save_name">Was ist der Name des Trinkers?</string>
 </resources>

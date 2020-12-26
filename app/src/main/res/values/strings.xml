@@ -111,7 +111,7 @@
     <!-- Notifications -->
     <string name="recipes_recipes_load"> A prepared set of recipes was loaded! </string>
 
-    <!--- Image description -->
+    <!-- Image description -->
     <string name="recipes_image_download"> Image of arrow </string>
     <string name="recipes_image_photo"> Image of camera </string>
 
@@ -128,12 +128,17 @@
     <string name="menu_mixing"> Mixing </string>
 
     <!-- Content -->
+    <string name="mixing_default_drinker"> Default drinker </string>
     <string name="mixing_anti_alc"> Non-alcoholic drinks </string>
     <string name="mixing_level"> Level </string>
     <string name="mixing_alc"> Alcoholic drinks </string>
     <string name="mixing_add_drink"> Click to add: </string>
     <string name="mixing_ml"> ml </string>
-    <string name="mixing_add_recipe"> Add Recipe </string>
+    <string name="mixing_add_recipe"> Save Recipe </string>
+    <string name="mixing_start_mixing_title"> Start Mixing </string>
+    <string name="mixing_start_mixing_description"> Who is ordering? </string>
+    <string name="mixing_start_mixing_action"> Start </string>
+    <string name="mixing_save_name"> What is the name of the recipe? </string>
     <string name="mixing_name"> Name of the recipe </string>
     <string name="mixing_save"> Save </string>
     <string name="mixing_cancel"> Cancel </string>
@@ -166,6 +171,7 @@
     <string name="drinkers_no_drinkers_info"> Click on the button in the upper left corner to add a first drinker. </string>
     <string name="drinkers_add_drinker"> Add Drinker </string>
     <string name="drinkers_name"> Name of the drinker </string>
+    <string name="drinkers_save_name"> What is the name of the drinker? </string>
     <string name="drinkers_save"> Save </string>
     <string name="drinkers_clear_title"> Clear drinkers </string>
     <string name="drinkers_clear_description"> Remove all the drinkers </string>
@@ -174,6 +180,8 @@
     <string name="drinkers_known_name"> This name is already taken! </string>
     <string name="drinkers_last_drink"> Last drink: </string>
     <string name="drinkers_no_last_drink"> Did not order yet </string>
+    <string name="drinkers_amount"> Amount: </string>
+    <string name="drinkers_alcohol">" Alc.: "</string>
 
     <!-- Showcase titles -->
     <string name="showcase_drinkers_add"> Click this button to add a new drinker. </string>
@@ -207,6 +215,7 @@
     <string name="settings_setup_modification"> Modify the drink</string>
     <string name="settings_setup_amount"> Amount </string>
     <string name="settings_setup_confirm"> Confirm </string>
+    <string name="settings_setup_position">Position</string>
     <string name="settings_setup_value_changed"> Drink was modified! </string>
     <string name="settings_mc_play"> Start the motor </string>
     <string name="settings_mc_pause"> Stop the motor </string>

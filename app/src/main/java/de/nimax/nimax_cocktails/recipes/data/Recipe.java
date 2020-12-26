@@ -17,6 +17,8 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
+import de.nimax.nimax_cocktails.mixing.MixingActivity;
+
 public class Recipe {
 
     /**
@@ -54,7 +56,7 @@ public class Recipe {
      */
     public Recipe(Recipe recipe) {
         this.name = recipe.name;
-        if (image != null) {
+        if (recipe.image != null) {
             this.image = recipe.image.copy(recipe.image.getConfig(), true);
         }
         drinks.addAll(recipe.drinks);
@@ -167,6 +169,7 @@ public class Recipe {
 
         // Otherwise add the drink
         drinks.add(new Drink(drink, amount));
+        MixingActivity.setModifiedState();
         return true;
     }
 
@@ -184,10 +187,11 @@ public class Recipe {
      */
     public double getAlcohol() {
         double alcohol = 0;
+        double totalAmount = getAmount();
         for (Drink drink : drinks) {
-            alcohol += drink.amount * drink.drink.alcohol / 100;
+            alcohol += drink.amount * drink.drink.alcohol / totalAmount;
         }
-        return alcohol / getAmount();
+        return alcohol;
     }
 
     /**

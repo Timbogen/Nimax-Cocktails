@@ -72,7 +72,7 @@ public class DrinkerEditActivity extends AppCompatActivity {
 
         // Setup the list
         if (drinker.drinks.size() > 0) {
-            ListView list = findViewById(R.id.list_ingredients);
+            ListView list = findViewById(R.id.list_drinks);
             list.setAdapter(new DrinkerEditAdapter(this, drinker.drinks));
         }
     }
@@ -95,6 +95,9 @@ public class DrinkerEditActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Check if the image was taken successfully
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

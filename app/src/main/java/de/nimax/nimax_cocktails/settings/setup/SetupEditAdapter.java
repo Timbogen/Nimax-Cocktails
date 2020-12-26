@@ -49,7 +49,7 @@ public class SetupEditAdapter extends ArrayAdapter<Drinks> {
 
         // Specify the amount
         TextView amount = item.findViewById(R.id.list_amount);
-        String amountText = (position + 1) + ".";
+        String amountText = (position + 1) + ". " + activity.getString(R.string.settings_setup_position);
         amount.setText(amountText);
 
         // Specify the image
@@ -65,7 +65,6 @@ public class SetupEditAdapter extends ArrayAdapter<Drinks> {
         String alcoholContent = drinks[position].alcohol + "%";
         alcohol.setText(alcoholContent);
 
-        // Return the item
         return item;
     }
 

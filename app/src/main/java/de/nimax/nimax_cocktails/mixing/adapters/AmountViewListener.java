@@ -1,4 +1,4 @@
-package de.nimax.nimax_cocktails.mixing;
+package de.nimax.nimax_cocktails.mixing.adapters;
 
 import android.app.Activity;
 import android.view.View;

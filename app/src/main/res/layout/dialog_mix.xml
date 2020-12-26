@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:background="@drawable/button_dark"
-        android:text="@string/drinkers_add_drinker"
+        android:text="@string/mixing_start_mixing_title"
         android:textSize="24sp" />
 
     <TextView
@@ -23,16 +23,16 @@
         app:layout_constraintTop_toBottomOf="@id/title"
         android:layout_margin="16dp"
         android:textColor="@color/grey"
-        android:text="@string/drinkers_save_name"
+        android:text="@string/mixing_start_mixing_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/input_drinker_name"
+    <Spinner
+        android:id="@+id/spinner_drinkers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:popupBackground="@color/colorPrimary"
         android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:hint="@string/drinkers_name"
         android:importantForAutofill="no"
@@ -44,27 +44,27 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_accent"
         android:text="@string/mixing_cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@id/dialog_confirm"
-        app:layout_constraintTop_toBottomOf="@id/input_drinker_name" />
+        app:layout_constraintTop_toBottomOf="@id/spinner_drinkers" />
 
     <Button
         android:id="@+id/dialog_confirm"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_dark"
-        android:text="@string/drinkers_save"
+        android:text="@string/mixing_start_mixing_action"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/input_drinker_name" />
+        app:layout_constraintTop_toBottomOf="@id/spinner_drinkers" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

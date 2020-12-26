@@ -1,4 +1,4 @@
-package de.nimax.nimax_cocktails.settings;
+package de.nimax.nimax_cocktails.settings.adapters;
 
 import android.app.Activity;
 import android.view.LayoutInflater;

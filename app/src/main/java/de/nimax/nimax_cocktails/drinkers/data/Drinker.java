@@ -9,8 +9,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
-import java.sql.Date;
 import java.util.ArrayList;
+
+import de.nimax.nimax_cocktails.recipes.data.Recipe;
 
 public class Drinker {
 
@@ -45,6 +46,7 @@ public class Drinker {
 
     /**
      * Constructor for evaluating a json object
+     *
      * @param drinker json object of the drinker
      */
     Drinker(JSONObject drinker) {
@@ -57,11 +59,23 @@ public class Drinker {
 
             // Extract the single drinks
             for (int i = 0; i < drinks.length(); i++) {
+                // Get the data
                 String name = drinks.getJSONObject(i).getString(NAME);
                 HistoryDrink drink = new HistoryDrink(name);
                 drink.amount = drinks.getJSONObject(i).getInt(AMOUNT);
-                drink.alcohol = drinks.getJSONObject(i).getDouble(ALCOHOL);
-                drink.time = Date.valueOf(drinks.getJSONObject(i).getString(TIME));
+                drink.alcohol = drinks.getJSONObject(i).getString(ALCOHOL);
+                drink.date = drinks.getJSONObject(i).getString(TIME);
+
+                // Get the image
+                try {
+                    String encodedImage = drinks.getJSONObject(i).getString(IMAGE);
+                    byte[] bytes = Base64.decode(encodedImage, Base64.DEFAULT);
+                    drink.image = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                } catch (Exception e) {
+                    drink.image = null;
+                    e.printStackTrace();
+                }
+
                 this.drinks.add(drink);
             }
 
@@ -69,8 +83,9 @@ public class Drinker {
             String encodedImage = drinker.getString(IMAGE);
             byte[] bytes = Base64.decode(encodedImage, Base64.DEFAULT);
             image = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-        } catch (JSONException e) {
+        } catch (Exception e) {
             image = null;
+            e.printStackTrace();
         }
     }
 
@@ -90,7 +105,16 @@ public class Drinker {
                 ingredients.put(NAME, drink.name);
                 ingredients.put(AMOUNT, drink.amount);
                 ingredients.put(ALCOHOL, drink.alcohol);
-                ingredients.put(TIME, drink.time.toString());
+                ingredients.put(TIME, drink.date);
+
+                // Compress the image
+                if (drink.image != null) {
+                    ByteArrayOutputStream os = new ByteArrayOutputStream();
+                    drink.image.compress(Bitmap.CompressFormat.PNG, 100, os);
+                    byte[] bytes = os.toByteArray();
+                    String encodedImage = Base64.encodeToString(bytes, Base64.DEFAULT);
+                    ingredients.put(IMAGE, encodedImage);
+                }
 
                 // Add to array
                 drinks.put(ingredients);
@@ -115,5 +139,15 @@ public class Drinker {
             e.printStackTrace();
         }
         return json;
+    }
+
+    /**
+     * Add a drink to the history
+     *
+     * @param recipe the drink to be added
+     */
+    public void addDrink(Recipe recipe) {
+        drinks.add(0, new HistoryDrink(recipe));
+        Administration.saveDrinkers();
     }
 }

@@ -1,11 +1,10 @@
-package de.nimax.nimax_cocktails.mixing;
+package de.nimax.nimax_cocktails.drinkers.dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,10 +12,12 @@ import androidx.annotation.NonNull;
 
 import com.nimax.nimax_cocktails.R;
 
-import de.nimax.nimax_cocktails.recipes.data.Bar;
-import de.nimax.nimax_cocktails.recipes.data.Recipe;
+import java.util.Objects;
 
-public class SavingDialog extends Dialog {
+import de.nimax.nimax_cocktails.drinkers.data.Administration;
+import de.nimax.nimax_cocktails.drinkers.data.Drinker;
+
+public class AddDialog extends Dialog {
 
     /**
      * Current context
@@ -25,10 +26,9 @@ public class SavingDialog extends Dialog {
 
     /**
      * Dialog for saving a drinker
-     *
      * @param context in which the dialog should be opened
      */
-    SavingDialog(@NonNull Context context) {
+    public AddDialog(@NonNull Context context) {
         super(context, R.style.DialogTheme);
         this.context = context;
     }
@@ -36,7 +36,8 @@ public class SavingDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_saving);
+        setContentView(R.layout.dialog_add);
+        Objects.requireNonNull(getWindow()).setStatusBarColor(context.getResources().getColor(R.color.colorPrimaryDark));
         setupDialog();
     }
 
@@ -49,7 +50,7 @@ public class SavingDialog extends Dialog {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addRecipe();
+                addDrinker();
             }
         });
 
@@ -61,10 +62,6 @@ public class SavingDialog extends Dialog {
                 closeDialog();
             }
         });
-
-        // Set the name
-        EditText name = findViewById(R.id.input_recipe_name);
-        name.setText(MixingActivity.recipe.name);
     }
 
     /**
@@ -75,49 +72,43 @@ public class SavingDialog extends Dialog {
     }
 
     /**
-     * Add a recipe
+     * Method to add a drinker on button click
      */
-    private void addRecipe() {
+    private void addDrinker() {
         // If field is empty do nothing
-        TextView nameEdit = findViewById(R.id.input_recipe_name);
-        if (nameEdit.getText().toString().equals("")) {
+        TextView nameEdit = findViewById(R.id.input_drinker_name);
+        if(nameEdit.getText().toString().equals("")) {
             Toast.makeText(
                     context,
-                    context.getResources().getString(R.string.mixing_no_name),
-                    Toast.LENGTH_SHORT
-            ).show();
-            return;
-        }
-
-        // If order / drinker is empty
-        if (MixingActivity.recipe.drinks.isEmpty()) {
-            Toast.makeText(
-                    context,
-                    context.getResources().getString(R.string.mixing_no_drinks),
+                    context.getResources().getString(R.string.drinkers_no_name),
                     Toast.LENGTH_SHORT
             ).show();
             return;
         }
 
         // If it was successful
-        MixingActivity.recipe.name = nameEdit.getText().toString();
-        if (Bar.addRecipe(new Recipe(MixingActivity.recipe))) {
+        Drinker drinker = new Drinker(nameEdit.getText().toString());
+        if (Administration.addDrinker(drinker)) {
             // Save the recipes
-            Bar.saveRecipes();
+            Administration.saveDrinkers();
             // Close the dialog
             this.dismiss();
             // Notify the user
-            Toast.makeText(
+            Toast toast = Toast.makeText(
                     context,
-                    context.getString(R.string.mixing_recipe_saved) + " " + MixingActivity.recipe.name,
+                    context.getString(R.string.drinkers_drinker_saved) + " " + drinker.name,
                     Toast.LENGTH_SHORT
-            ).show();
+            );
+            toast.show();
+
+        // If it wasn't successful
         } else {
             Toast.makeText(
                     context,
-                    context.getResources().getString(R.string.mixing_known_name),
+                    context.getResources().getString(R.string.drinkers_known_name),
                     Toast.LENGTH_SHORT
             ).show();
         }
+
     }
 }

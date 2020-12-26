@@ -1,4 +1,4 @@
-package de.nimax.nimax_cocktails.drinkers;
+package de.nimax.nimax_cocktails.drinkers.adapters;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -25,22 +25,30 @@ public class DrinkersAdapter extends ArrayAdapter<Drinker> {
     /**
      * The activity of the activity
      */
-    private Activity activity;
+    private final Activity activity;
     /**
      * The drinkers that should be shown in the list
      */
-    private ArrayList<Drinker> drinkers;
+    private final ArrayList<Drinker> drinkers;
+    /**
+     * True if the views can be clicked
+     */
+    private final boolean clickable;
 
     /**
      * Custom Array Adapter for the list and the spinners
      * @param activity of the adapter
      */
-    DrinkersAdapter(@NonNull Activity activity, ArrayList<Drinker> drinkers) {
+    public DrinkersAdapter(@NonNull Activity activity, ArrayList<Drinker> drinkers, boolean clickable) {
         super(activity, 0, drinkers);
         this.activity = activity;
         this.drinkers = drinkers;
+        this.clickable = clickable;
     }
 
+    /**
+     * Prepare the view for a given position
+     */
     @NonNull
     @Override
     public View getView(final int position, @Nullable View item, @NonNull ViewGroup parent) {
@@ -70,20 +78,25 @@ public class DrinkersAdapter extends ArrayAdapter<Drinker> {
         }
 
         // Set the on click listener
-        item.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DrinkerEditActivity.drinker = Administration.drinkers.get(position);
-                Intent intent = new Intent(activity, DrinkerEditActivity.class);
-                activity.startActivityForResult(intent, 0);
-                activity.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
-            }
-        });
+        if (clickable) {
+            item.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DrinkerEditActivity.drinker = Administration.drinkers.get(position);
+                    Intent intent = new Intent(activity, DrinkerEditActivity.class);
+                    activity.startActivityForResult(intent, 0);
+                    activity.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+                }
+            });
+        }
 
         // Return the item
         return item;
     }
 
+    /**
+     * Get the dropdown
+     */
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         return getView(position, convertView, parent);

@@ -11,8 +11,14 @@ import androidx.annotation.NonNull;
 
 import com.nimax.nimax_cocktails.R;
 
+import java.util.Objects;
+
 public class ConfirmDialog extends Dialog {
 
+    /**
+     * Current context
+     */
+    private final Context context;
     /**
      * The action on confirmation
      */
@@ -32,6 +38,7 @@ public class ConfirmDialog extends Dialog {
      */
     public ConfirmDialog(@NonNull Context context, String title, String description, DialogAction action) {
         super(context, R.style.DialogTheme);
+        this.context = context;
         this.title = title;
         this.description = description;
         this.action = action;
@@ -44,6 +51,7 @@ public class ConfirmDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_confirm);
+        Objects.requireNonNull(getWindow()).setStatusBarColor(context.getResources().getColor(R.color.colorPrimaryDark));
         setupDialog();
     }
 

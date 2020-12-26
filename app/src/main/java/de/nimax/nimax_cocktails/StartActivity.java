@@ -84,7 +84,6 @@ public class StartActivity extends AppCompatActivity {
         // The logo
         Pair<View, String> layout = new Pair<>(
                 findViewById(R.id.start_logo), getString(R.string.transition_start_logo));
-        System.out.println(layout);
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 this, layout);
         startActivity(intent, options.toBundle());
