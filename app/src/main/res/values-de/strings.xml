@@ -93,8 +93,6 @@
     <string name="bluetooth_no_drink">Die Maschine beinhaltet aktuell kein</string>
     <string name="bluetooth_too_less_1">Es sind nur noch</string>
     <string name="bluetooth_too_less_2">übrig.</string>
-    <string name="settings_mc_play">Motor starten</string>
-    <string name="settings_mc_pause">Motor stoppen</string>
     <string name="settings_mc_shift_up">Drücker Nach Oben</string>
     <string name="settings_mc_shift_down">Drücker Nach Unten</string>
     <string name="settings_mc_roundel_left">Rondell Links Rotieren</string>
@@ -181,4 +179,12 @@
     <string name="mixing_start_mixing_description">Wer ist am bestellen?</string>
     <string name="mixing_save_name">Was ist der Name des Rezepts?</string>
     <string name="drinkers_save_name">Was ist der Name des Trinkers?</string>
+    <string name="settings_mc_shift_up_info">Bewege die Drückgerätschaft nach oben um einen Shot auszugeben</string>
+    <string name="settings_mc_shift_down_info">Bewege die Drückgerätschaft zur Initialposition</string>
+    <string name="settings_mc_roundel_initial_info">Beweg das Rondell zur Initialposition</string>
+    <string name="settings_mc_roundel_left_info">Rotiere das Rondell nach links (im Uhrzeigersinn)</string>
+    <string name="settings_mc_roundel_right_info">Rotiere das Rondell nach rechts (gegen den Uhrzeigersinn)</string>
+    <string name="settings_mc_cup_left_info">Bewege den Becher ganz nach links</string>
+    <string name="settings_mc_cup_middle_info">Bewege den Becher zur Initialposition</string>
+    <string name="settings_mc_cup_right_info">Bewege den Becher ganz nach rechts</string>
 </resources>

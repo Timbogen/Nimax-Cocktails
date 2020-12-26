@@ -59,7 +59,7 @@ public class MotorControlAdapter {
 
         // Set the description
         TextView description = item.findViewById(R.id.setting_description);
-        text = activity.getString(R.string.settings_mc_play);
+        text = getString("settings_mc_" + action + "_info");
         description.setText(text);
 
         // Add click method
@@ -103,23 +103,11 @@ public class MotorControlAdapter {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                // Change the icon
                 ImageView logo = item.findViewById(R.id.setting_logo);
-                TextView description = item.findViewById(R.id.setting_description);
-                if (!response.equals("PAUSE_AVAILABLE")) {
-                    // Set the logo
-                    logo.setImageResource(R.drawable.icon_play);
+                if (!response.equals("PAUSE_AVAILABLE")) logo.setImageResource(R.drawable.icon_play);
+                else logo.setImageResource(R.drawable.icon_pause);
 
-                    // Set the description
-                    String text = activity.getString(R.string.settings_mc_play);
-                    description.setText(text);
-                } else {
-                    // Set the logo
-                    logo.setImageResource(R.drawable.icon_pause);
-
-                    // Set the description
-                    String text = activity.getString(R.string.settings_mc_pause);
-                    description.setText(text);
-                }
                 // Stop the loading spinner
                 item.findViewById(R.id.setting_loading).setVisibility(View.GONE);
             }
