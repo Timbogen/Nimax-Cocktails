@@ -1,59 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_margin="32dp"
-    android:background="@drawable/menu_button_dark"
+    android:background="@drawable/button_dark"
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/title"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_margin="16dp"
         android:text="@string/drinkers_add_drinker"
-        android:textSize="32sp" />
+        android:textSize="24sp" />
 
     <View
+        app:layout_constraintTop_toBottomOf="@id/title"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="128dp"
         android:background="@color/grey" />
 
     <EditText
-        android:id="@+id/input_recipe_name"
+        android:id="@+id/input_drinker_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="end"
+        android:layout_margin="16dp"
         android:hint="@string/drinkers_name"
         android:importantForAutofill="no"
         android:inputType="text"
-        android:maxLength="18"
-        android:padding="10dp" />
-
-    <TextView
-        android:id="@+id/text_error"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:gravity="end"
-        android:textColor="@color/colorAccent"
-        android:visibility="gone" />
+        app:layout_constraintTop_toBottomOf="@id/title" />
 
     <Button
-        android:id="@+id/button_save"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="32dp"
-        android:background="@drawable/menu_button"
-        android:text="@string/drinkers_save" />
+        android:id="@+id/dialog_cancel"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/button_accent"
+        android:text="@string/mixing_cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/dialog_confirm"
+        app:layout_constraintTop_toBottomOf="@id/input_drinker_name" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/dialog_confirm"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/button"
+        android:text="@string/drinkers_save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_drinker_name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

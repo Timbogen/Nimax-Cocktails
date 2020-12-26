@@ -23,7 +23,7 @@
             android:layout_marginTop="16dp"
             android:contentDescription="@string/recipes_image_download"
             android:onClick="loadRecipes"
-            android:src="@drawable/button_download"
+            android:src="@drawable/icon_download"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
@@ -88,7 +88,7 @@
         android:layout_height="48dp"
         android:layout_margin="16dp"
         android:contentDescription="@string/image_menu"
-        android:src="@drawable/menu_button_recipes"
+        android:src="@drawable/icon_recipes"
         android:transitionName="@string/transition_recipes_logo"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"

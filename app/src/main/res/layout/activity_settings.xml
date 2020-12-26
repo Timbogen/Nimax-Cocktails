@@ -59,7 +59,7 @@
                     android:onClick="connectToBluetooth"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/general_underline"
-                    app:settingLogo="@drawable/menu_button_bluetooth"
+                    app:settingLogo="@drawable/icon_bluetooth"
                     app:settingTitle="@string/settings_bluetooth">
 
                     <ProgressBar
@@ -90,7 +90,7 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:settingDescription="@string/settings_pump_drinks_description"
-                        app:settingLogo="@drawable/button_drink"
+                        app:settingLogo="@drawable/icon_drink"
                         app:settingTitle="@string/settings_pump_drinks" />
 
                     <de.nimax.nimax_cocktails.settings.SettingsButton
@@ -101,7 +101,7 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/settings_non"
                         app:settingDescription="@string/settings_roundel_description"
-                        app:settingLogo="@drawable/button_drink"
+                        app:settingLogo="@drawable/icon_drink"
                         app:settingTitle="@string/settings_roundel_drinks" />
 
                     <TextView
@@ -194,7 +194,7 @@
         android:layout_height="48dp"
         android:layout_margin="16dp"
         android:contentDescription="@string/image_menu"
-        android:src="@drawable/menu_button_settings"
+        android:src="@drawable/icon_settings"
         android:transitionName="@string/transition_settings_logo"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"

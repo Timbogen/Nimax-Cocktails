@@ -19,8 +19,6 @@ import java.util.ArrayList;
 import de.nimax.nimax_cocktails.drinkers.data.Administration;
 import de.nimax.nimax_cocktails.drinkers.data.Drinker;
 import de.nimax.nimax_cocktails.drinkers.edit.DrinkerEditActivity;
-import de.nimax.nimax_cocktails.recipes.data.Bar;
-import de.nimax.nimax_cocktails.recipes.edit.RecipeEditActivity;
 
 public class DrinkersAdapter extends ArrayAdapter<Drinker> {
 
@@ -54,7 +52,7 @@ public class DrinkersAdapter extends ArrayAdapter<Drinker> {
         if (drinkers.get(position).image != null) {
             image.setImageBitmap(drinkers.get(position).image);
         } else {
-            image.setImageResource(R.drawable.menu_button_drinkers);
+            image.setImageResource(R.drawable.icon_drinkers);
         }
 
         // Specify the name

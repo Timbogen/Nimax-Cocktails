@@ -24,7 +24,7 @@ public class SettingsButton extends ConstraintLayout {
         TypedArray values = context.obtainStyledAttributes(attributeSet, R.styleable.SettingsButton);
         // Set the logo
         ImageView logo = findViewById(R.id.setting_logo);
-        int resourceId = values.getResourceId(R.styleable.SettingsButton_settingLogo, R.drawable.menu_button_settings);
+        int resourceId = values.getResourceId(R.styleable.SettingsButton_settingLogo, R.drawable.icon_settings);
         logo.setImageResource(resourceId);
 
         // Set the title

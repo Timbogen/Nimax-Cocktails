@@ -164,4 +164,5 @@
     <string name="settings_setup_change_shake">Ändere den Shake-Modus</string>
     <string name="settings_setup_change_shake_off">Aktueller Modus: Normal</string>
     <string name="settings_setup_change_shake_on">Aktueller Modus: Mehrere Shakes</string>
+    <string name="mixing_cancel">Abbrechen</string>
 </resources>

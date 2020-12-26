@@ -57,7 +57,7 @@ public class RecipesAdapter extends ArrayAdapter<Recipe> {
         if (recipes.get(position).image != null) {
             image.setImageBitmap(recipes.get(position).image);
         } else {
-            image.setImageResource(R.drawable.menu_button_mixing);
+            image.setImageResource(R.drawable.icon_mixing);
         }
 
         // Specify the name

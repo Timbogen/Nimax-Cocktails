@@ -36,7 +36,7 @@ public class MenuButton extends ConstraintLayout {
         TypedArray values = context.obtainStyledAttributes(attributeSet, R.styleable.MenuButton);
         // Set the logo
         ImageView logo = findViewById(R.id.menu_logo);
-        int resourceId = values.getResourceId(R.styleable.MenuButton_menuLogo, R.drawable.menu_button_recipes);
+        int resourceId = values.getResourceId(R.styleable.MenuButton_menuLogo, R.drawable.icon_recipes);
         logo.setImageResource(resourceId);
 
         // Set the name

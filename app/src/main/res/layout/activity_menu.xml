@@ -45,7 +45,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:menuLayoutTransition="@string/transition_recipes_layout"
-                app:menuLogo="@drawable/menu_button_recipes"
+                app:menuLogo="@drawable/icon_recipes"
                 app:menuLogoTransition="@string/transition_recipes_logo"
                 app:menuTitle="@string/menu_recipes"
                 app:menuTitleTransition="@string/transition_recipes_title" />
@@ -60,7 +60,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:menuLayoutTransition="@string/transition_mixing_layout"
-                app:menuLogo="@drawable/menu_button_mixing"
+                app:menuLogo="@drawable/icon_mixing"
                 app:menuLogoTransition="@string/transition_mixing_logo"
                 app:menuTitle="@string/menu_mixing"
                 app:menuTitleTransition="@string/transition_mixing_title" />
@@ -83,7 +83,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:menuLayoutTransition="@string/transition_drinkers_layout"
-                app:menuLogo="@drawable/menu_button_drinkers"
+                app:menuLogo="@drawable/icon_drinkers"
                 app:menuLogoTransition="@string/transition_drinkers_logo"
                 app:menuTitle="@string/menu_drinkers"
                 app:menuTitleTransition="@string/transition_drinkers_title" />
@@ -98,7 +98,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:menuLayoutTransition="@string/transition_settings_layout"
-                app:menuLogo="@drawable/menu_button_settings"
+                app:menuLogo="@drawable/icon_settings"
                 app:menuLogoTransition="@string/transition_settings_logo"
                 app:menuTitle="@string/menu_settings"
                 app:menuTitleTransition="@string/transition_settings_title" />

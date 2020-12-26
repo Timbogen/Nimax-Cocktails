@@ -50,7 +50,7 @@ public class MotorControlAdapter {
 
         // Set the logo
         ImageView logo = item.findViewById(R.id.setting_logo);
-        logo.setImageResource(R.drawable.mixing_button_play);
+        logo.setImageResource(R.drawable.icon_play);
 
         // Set the title
         TextView title = item.findViewById(R.id.setting_title);
@@ -107,14 +107,14 @@ public class MotorControlAdapter {
                 TextView description = item.findViewById(R.id.setting_description);
                 if (!response.equals("PAUSE_AVAILABLE")) {
                     // Set the logo
-                    logo.setImageResource(R.drawable.mixing_button_play);
+                    logo.setImageResource(R.drawable.icon_play);
 
                     // Set the description
                     String text = activity.getString(R.string.settings_mc_play);
                     description.setText(text);
                 } else {
                     // Set the logo
-                    logo.setImageResource(R.drawable.mixing_button_pause);
+                    logo.setImageResource(R.drawable.icon_pause);
 
                     // Set the description
                     String text = activity.getString(R.string.settings_mc_pause);

@@ -131,6 +131,7 @@
     <string name="mixing_add_recipe"> Add Recipe </string>
     <string name="mixing_name"> Name of the recipe </string>
     <string name="mixing_save"> Save </string>
+    <string name="mixing_cancel"> Cancel </string>
     <string name="mixing_no_name"> Your recipe needs a name! </string>
     <string name="mixing_no_drinks"> Your recipe is empty! </string>
     <string name="mixing_known_name"> This name is already taken! </string>

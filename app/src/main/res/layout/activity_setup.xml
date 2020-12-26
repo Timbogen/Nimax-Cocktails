@@ -25,7 +25,7 @@
         android:layout_height="48dp"
         android:layout_margin="16dp"
         android:contentDescription="@string/settings_image_alc"
-        android:src="@drawable/button_drink"
+        android:src="@drawable/icon_drink"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
@@ -126,7 +126,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/setup_actions_underline"
                     app:settingDescription="@string/settings_setup_play_description"
-                    app:settingLogo="@drawable/mixing_button_play"
+                    app:settingLogo="@drawable/icon_play"
                     app:settingTitle="@string/settings_setup_play_title" />
 
                 <de.nimax.nimax_cocktails.settings.SettingsButton
@@ -138,7 +138,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/setup_actions_underline"
                     app:settingDescription="@string/settings_setup_pause_description"
-                    app:settingLogo="@drawable/mixing_button_pause"
+                    app:settingLogo="@drawable/icon_pause"
                     app:settingTitle="@string/settings_setup_pause_title" />
 
                 <de.nimax.nimax_cocktails.settings.SettingsButton
@@ -190,7 +190,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:background="@drawable/menu_button_dark"
+                android:background="@drawable/button_dark"
                 android:onClick="confirmModification"
                 android:text="@string/settings_setup_confirm"
                 app:layout_constraintLeft_toLeftOf="parent"

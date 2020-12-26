@@ -15,7 +15,7 @@
         android:layout_marginStart="8dp"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:src="@drawable/drag_handle"
+        android:src="@drawable/icon_drag_handle"
         android:contentDescription="@string/drag" />
 
     <TextView
@@ -52,7 +52,7 @@
         android:layout_marginEnd="8dp"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:src="@drawable/mixing_button_delete"
+        android:src="@drawable/icon_delete"
         android:contentDescription="@string/drag" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

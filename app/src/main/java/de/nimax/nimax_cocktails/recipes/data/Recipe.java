@@ -28,15 +28,15 @@ public class Recipe {
      */
     private static final String NAME = "name", AMOUNT = "amount", IMAGE = "image", INGREDIENTS = "ingredients";
     /**
-     * Name of the drinker
+     * Name of the recipe
      */
     public String name;
     /**
-     * Image of the drinker
+     * Image of the recipe
      */
     public Bitmap image;
     /**
-     * The drinks that the drinker is containing
+     * The drinks that the recipe is containing
      */
     public ArrayList<Drink> drinks = new ArrayList<>();
 
@@ -92,7 +92,7 @@ public class Recipe {
     /**
      * Method to transform a drinker to a json
      *
-     * @return drinker in json format
+     * @return recipe in json format
      */
     JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -133,7 +133,7 @@ public class Recipe {
     /**
      * Method to check whether the drinker is empty
      *
-     * @return true if drinker is empty
+     * @return true if recipe is empty
      */
     public boolean isEmpty() {
         return drinks.size() == 0;

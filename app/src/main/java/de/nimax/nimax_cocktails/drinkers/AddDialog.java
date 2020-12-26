@@ -42,27 +42,44 @@ public class AddDialog extends Dialog {
      * Method to setup the dialog
      */
     private void setupDialog() {
-        // Save the drinker on click
-        Button save = findViewById(R.id.button_save);
+        // Save the drinker on confirm
+        Button save = findViewById(R.id.dialog_confirm);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addRecipe();
+                addDrinker();
+            }
+        });
+
+        // Close the dialog on cancel
+        Button cancel = findViewById(R.id.dialog_cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closeDialog();
             }
         });
     }
 
     /**
+     * Close the dialog
+     */
+    private void closeDialog() {
+        this.dismiss();
+    }
+
+    /**
      * Method to add a drinker on button click
      */
-    private void addRecipe() {
+    private void addDrinker() {
         // If field is empty do nothing
-        TextView nameEdit = findViewById(R.id.input_recipe_name);
-        TextView error = findViewById(R.id.text_error);
-        error.setVisibility(TextView.VISIBLE);
+        TextView nameEdit = findViewById(R.id.input_drinker_name);
         if(nameEdit.getText().toString().equals("")) {
-            // Set the hint of the input field
-            error.setText(context.getResources().getString(R.string.drinkers_no_drinkers));
+            Toast.makeText(
+                    context,
+                    context.getResources().getString(R.string.drinkers_no_name),
+                    Toast.LENGTH_SHORT
+            ).show();
             return;
         }
 
@@ -83,8 +100,11 @@ public class AddDialog extends Dialog {
 
         // If it wasn't successful
         } else {
-            // Tell that the names already blocked
-            error.setText(context.getResources().getString(R.string.drinkers_known_name));
+            Toast.makeText(
+                    context,
+                    context.getResources().getString(R.string.drinkers_known_name),
+                    Toast.LENGTH_SHORT
+            ).show();
         }
 
     }

@@ -25,6 +25,7 @@ public class SavingDialog extends Dialog {
 
     /**
      * Dialog for saving a drinker
+     *
      * @param context in which the dialog should be opened
      */
     SavingDialog(@NonNull Context context) {
@@ -43,37 +44,58 @@ public class SavingDialog extends Dialog {
      * Method to setup the dialog
      */
     private void setupDialog() {
-        // Save the drinker on click
-        Button save = findViewById(R.id.button_save);
+        // Save the drinker on confirm
+        Button save = findViewById(R.id.dialog_confirm);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addRecipe();
             }
         });
+
+        // Close the dialog on cancel
+        Button cancel = findViewById(R.id.dialog_cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closeDialog();
+            }
+        });
+
         // Set the name
         EditText name = findViewById(R.id.input_recipe_name);
         name.setText(MixingActivity.recipe.name);
     }
 
     /**
-     * Method to add a drinker on button click
+     * Close the dialog
+     */
+    private void closeDialog() {
+        this.dismiss();
+    }
+
+    /**
+     * Add a recipe
      */
     private void addRecipe() {
         // If field is empty do nothing
         TextView nameEdit = findViewById(R.id.input_recipe_name);
-        TextView error = findViewById(R.id.text_error);
-        error.setVisibility(TextView.VISIBLE);
-        if(nameEdit.getText().toString().equals("")) {
-            // Set the hint of the input field
-            error.setText(context.getResources().getString(R.string.mixing_no_name));
+        if (nameEdit.getText().toString().equals("")) {
+            Toast.makeText(
+                    context,
+                    context.getResources().getString(R.string.mixing_no_name),
+                    Toast.LENGTH_SHORT
+            ).show();
             return;
         }
 
         // If order / drinker is empty
         if (MixingActivity.recipe.drinks.isEmpty()) {
-            // Set the hint for the input field
-            error.setText(context.getResources().getString(R.string.mixing_no_drinks));
+            Toast.makeText(
+                    context,
+                    context.getResources().getString(R.string.mixing_no_drinks),
+                    Toast.LENGTH_SHORT
+            ).show();
             return;
         }
 
@@ -85,18 +107,17 @@ public class SavingDialog extends Dialog {
             // Close the dialog
             this.dismiss();
             // Notify the user
-            Toast toast = Toast.makeText(
+            Toast.makeText(
                     context,
                     context.getString(R.string.mixing_recipe_saved) + " " + MixingActivity.recipe.name,
                     Toast.LENGTH_SHORT
-            );
-            toast.show();
-
-        // If it wasn't successful
+            ).show();
         } else {
-            // Tell that the names already blocked
-            error.setText(context.getResources().getString(R.string.mixing_known_name));
+            Toast.makeText(
+                    context,
+                    context.getResources().getString(R.string.mixing_known_name),
+                    Toast.LENGTH_SHORT
+            ).show();
         }
-
     }
 }

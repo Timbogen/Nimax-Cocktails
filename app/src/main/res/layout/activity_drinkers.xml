@@ -21,7 +21,7 @@
             android:layout_marginTop="16dp"
             android:contentDescription="@string/recipes_image_download"
             android:onClick="addDrinker"
-            android:src="@drawable/button_add_drinker"
+            android:src="@drawable/icon_add_drinker"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
@@ -89,7 +89,7 @@
         android:layout_height="48dp"
         android:layout_margin="16dp"
         android:contentDescription="@string/image_menu"
-        android:src="@drawable/menu_button_drinkers"
+        android:src="@drawable/icon_drinkers"
         android:transitionName="@string/transition_drinkers_logo"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
