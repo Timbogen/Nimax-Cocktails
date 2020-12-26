@@ -173,7 +173,7 @@
     <string name="mixing_start_mixing_title">Mix bestellen</string>
     <string name="mixing_start_mixing_action">Los</string>
     <string name="settings_setup_position">Position</string>
-    <string name="mixing_default_drinker">Standard Trinker</string>
+    <string name="mixing_default_drinker">Unbekannt</string>
     <string name="drinkers_amount">Menge:</string>
     <string name="drinkers_alcohol">Alk.:</string>
     <string name="mixing_start_mixing_description">Wer ist am bestellen?</string>

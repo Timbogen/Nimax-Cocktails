@@ -128,7 +128,7 @@
     <string name="menu_mixing"> Mixing </string>
 
     <!-- Content -->
-    <string name="mixing_default_drinker"> Default drinker </string>
+    <string name="mixing_default_drinker"> Unknown </string>
     <string name="mixing_anti_alc"> Non-alcoholic drinks </string>
     <string name="mixing_level"> Level </string>
     <string name="mixing_alc"> Alcoholic drinks </string>
