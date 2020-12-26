@@ -1,9 +1,5 @@
 package de.nimax.nimax_cocktails.recipes;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.util.Pair;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,11 +8,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
+
+import com.nimax.nimax_cocktails.R;
+
 import de.nimax.nimax_cocktails.menu.MenuActivity;
 import de.nimax.nimax_cocktails.menu.Showcase;
 import de.nimax.nimax_cocktails.recipes.data.Bar;
-
-import com.nimax.nimax_cocktails.R;
+import de.nimax.nimax_cocktails.shared.ConfirmDialog;
 
 public class RecipesActivity extends AppCompatActivity {
 
@@ -25,6 +26,9 @@ public class RecipesActivity extends AppCompatActivity {
      */
     private RecipesAdapter adapter;
 
+    /**
+     * Create the view
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +37,7 @@ public class RecipesActivity extends AppCompatActivity {
         // Deactivate the old transition
         getWindow().setEnterTransition(null);
         getWindow().setExitTransition(null);
-        setupList();
+        setupView();
         // Setup the showcases for first use
         setupShowcases();
     }
@@ -53,10 +57,13 @@ public class RecipesActivity extends AppCompatActivity {
         Showcase.setupShowcase(this, Showcase.RECIPES, findViewById(R.id.recipes_load), getString(R.string.showcase_recipes_load), list);
     }
 
+    /**
+     * Check if an item was deleted
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        adapter.notifyDataSetChanged();
+        updateView();
     }
 
     /**
@@ -84,34 +91,71 @@ public class RecipesActivity extends AppCompatActivity {
      * Method to handle a click on the download button
      */
     public void loadRecipes(View v) {
-        // Let the bar load the pre made recipes
-        Bar.loadRecipes(getResources().openRawResource(R.raw.recipes));
-        // Save the recipes
-        Bar.saveRecipes();
-        // If list wasn't setup yet do it now
-        if (adapter == null) setupList();
-        // Let the adapter reload
-        adapter.notifyDataSetChanged();
-        // Show toast
-        Toast toast = Toast.makeText(this, getString(R.string.recipes_recipes_load), Toast.LENGTH_SHORT);
-        toast.show();
+        new ConfirmDialog(
+                this,
+                getString(R.string.recipes_load_title),
+                getString(R.string.recipes_load_description),
+                new ConfirmDialog.DialogAction() {
+                    @Override
+                    public void confirm() {
+                        Bar.loadRecipes(getResources().openRawResource(R.raw.recipes));
+                        Bar.saveRecipes();
+                        updateView();
+                    }
+                }
+        ).show();
     }
 
     /**
-     * Method to setup the list
+     * Delete all the recipes
+     *
+     * @param v The view that was clicked
      */
-    private void setupList() {
-        if (Bar.recipes.size() > 0) {
-            // Hide the text fields
-            TextView noRecipes = findViewById(R.id.recipes_no_recipes);
-            TextView noRecipesInfo = findViewById(R.id.recipes_no_recipes_info);
-            noRecipes.setVisibility(TextView.GONE);
-            noRecipesInfo.setVisibility(TextView.GONE);
-            // Setup the adapter
+    public void clearRecipes(View v) {
+        new ConfirmDialog(
+                this,
+                getString(R.string.recipes_clear_title),
+                getString(R.string.recipes_clear_description),
+                new ConfirmDialog.DialogAction() {
+                    @Override
+                    public void confirm() {
+                        Bar.removeAllRecipes();
+                        updateView();
+                    }
+                }
+        ).show();
+    }
+
+    /**
+     * Set up the view
+     */
+    private void setupView() {
+        ListView list = findViewById(R.id.recipes_list);
+        adapter = new RecipesAdapter(this, Bar.recipes);
+        list.setAdapter(adapter);
+        updateView();
+    }
+
+    /**
+     * Update the view of this activity
+     */
+    private void updateView() {
+        boolean noDrinks = Bar.recipes.isEmpty();
+
+        // Update the list
+        if (noDrinks) {
+            ListView list = findViewById(R.id.recipes_list);
             adapter = new RecipesAdapter(this, Bar.recipes);
-            // Get the list view
-            final ListView list = findViewById(R.id.recipes_list);
             list.setAdapter(adapter);
         }
+        else {
+            adapter.notifyDataSetChanged();
+        }
+
+        // Show/Hide the text fields
+        TextView noRecipes = findViewById(R.id.recipes_no_recipes);
+        TextView noRecipesInfo = findViewById(R.id.recipes_no_recipes_info);
+        noRecipes.setVisibility(noDrinks ? TextView.VISIBLE : TextView.GONE);
+        noRecipesInfo.setVisibility(noDrinks ? TextView.VISIBLE : TextView.GONE);
     }
 }

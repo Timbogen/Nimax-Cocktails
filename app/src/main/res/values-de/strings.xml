@@ -165,4 +165,11 @@
     <string name="settings_setup_change_shake_off">Aktueller Modus: Normal</string>
     <string name="settings_setup_change_shake_on">Aktueller Modus: Mehrere Shakes</string>
     <string name="mixing_cancel">Abbrechen</string>
+    <string name="confirm">Bestätigen</string>
+    <string name="drinkers_clear_title">Trinker leeren</string>
+    <string name="drinkers_clear_description">Alle Trinker entfernen</string>
+    <string name="recipes_clear_title">Rezepte leeren</string>
+    <string name="recipes_clear_description">Alle Rezepte entfernen</string>
+    <string name="recipes_load_title">Lade Rezepte</string>
+    <string name="recipes_load_description">Lade ein paar vordefinierte Rezepte</string>
 </resources>

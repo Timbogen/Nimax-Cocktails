@@ -65,6 +65,14 @@ public class Administration {
     }
 
     /**
+     * Remove all the drinkers
+     */
+    public static void removeAllDrinkers() {
+        drinkers = new ArrayList<>();
+        saveDrinkers();
+    }
+
+    /**
      * Saves the drinkers
      */
     public static void saveDrinkers() {

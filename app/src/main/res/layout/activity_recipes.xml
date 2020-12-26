@@ -28,6 +28,20 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
+        <ImageView
+            android:id="@+id/recipes_clear"
+            android:layout_width="32dp"
+            android:layout_height="48dp"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/image_menu"
+            android:onClick="clearRecipes"
+            android:src="@drawable/icon_clear"
+            app:layout_constraintLeft_toRightOf="@id/recipes_load"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:layout_editor_absoluteX="347dp"
+            tools:layout_editor_absoluteY="16dp" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"

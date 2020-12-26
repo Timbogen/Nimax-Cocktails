@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 
 import com.nimax.nimax_cocktails.R;
 
-import de.nimax.nimax_cocktails.BluetoothService;
+import de.nimax.nimax_cocktails.shared.BluetoothService;
 
 public class MotorControlAdapter {
 

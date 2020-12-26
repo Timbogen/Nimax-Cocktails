@@ -18,7 +18,7 @@ import com.synnapps.carouselview.ImageClickListener;
 
 import java.util.Objects;
 
-import de.nimax.nimax_cocktails.BluetoothService;
+import de.nimax.nimax_cocktails.shared.BluetoothService;
 import de.nimax.nimax_cocktails.menu.MenuActivity;
 import de.nimax.nimax_cocktails.menu.Showcase;
 import de.nimax.nimax_cocktails.recipes.data.Drinks;

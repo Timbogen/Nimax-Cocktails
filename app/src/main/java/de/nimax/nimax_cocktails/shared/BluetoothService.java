@@ -1,4 +1,4 @@
-package de.nimax.nimax_cocktails;
+package de.nimax.nimax_cocktails.shared;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;

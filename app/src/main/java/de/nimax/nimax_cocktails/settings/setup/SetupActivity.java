@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.nimax.nimax_cocktails.R;
 import com.synnapps.carouselview.CarouselView;
 
-import de.nimax.nimax_cocktails.BluetoothService;
+import de.nimax.nimax_cocktails.shared.BluetoothService;
 import de.nimax.nimax_cocktails.mixing.DrinkViewListener;
 import de.nimax.nimax_cocktails.recipes.data.Drinks;
 import de.nimax.nimax_cocktails.settings.SettingsButton;

@@ -9,24 +9,24 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/dialog_title"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
+        android:text="@string/placeholder"
         android:background="@drawable/button_dark"
-        android:text="@string/mixing_add_recipe"
         android:textSize="24sp" />
 
-    <EditText
-        android:id="@+id/input_recipe_name"
+    <TextView
+        android:id="@+id/dialog_description"
         android:layout_width="match_parent"
+        android:textColor="@color/grey"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:hint="@string/mixing_name"
+        android:hint="@string/placeholder"
         android:importantForAutofill="no"
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@id/title" />
+        app:layout_constraintTop_toBottomOf="@id/dialog_title" />
 
     <Button
         android:id="@+id/dialog_cancel"
@@ -40,7 +40,7 @@
         android:text="@string/mixing_cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@id/dialog_confirm"
-        app:layout_constraintTop_toBottomOf="@id/input_recipe_name" />
+        app:layout_constraintTop_toBottomOf="@id/dialog_description" />
 
     <Button
         android:id="@+id/dialog_confirm"
@@ -48,12 +48,12 @@
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/button_dark"
-        android:text="@string/mixing_save"
+        android:text="@string/confirm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/input_recipe_name" />
+        app:layout_constraintTop_toBottomOf="@id/dialog_description" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

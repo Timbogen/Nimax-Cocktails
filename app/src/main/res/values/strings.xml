@@ -10,6 +10,7 @@
     <string name="point">"•"</string>
     <string name="drag"> Drag </string>
     <string name="placeholder"> Placeholder</string>
+    <string name="confirm"> Confirm </string>
 
     <!-- Drink names -->
     <string name="drink_asbach"> Asbach </string>
@@ -100,6 +101,10 @@
     <string name="recipes_delete"> Delete </string>
     <string name="recipes_load"> Load </string>
     <string name="recipes_recipe"> Recipe </string>
+    <string name="recipes_load_title"> Load recipes </string>
+    <string name="recipes_load_description"> Load a predefined set of recipes </string>
+    <string name="recipes_clear_title"> Clear recipes </string>
+    <string name="recipes_clear_description"> Remove all the recipes </string>
     <string name="recipes_no_recipes"> No recipes found! </string>
     <string name="recipes_no_recipes_info"> Click on the download button in the upper left corner to load a prepared set of recipes. </string>
 
@@ -162,6 +167,8 @@
     <string name="drinkers_add_drinker"> Add Drinker </string>
     <string name="drinkers_name"> Name of the drinker </string>
     <string name="drinkers_save"> Save </string>
+    <string name="drinkers_clear_title"> Clear drinkers </string>
+    <string name="drinkers_clear_description"> Remove all the drinkers </string>
     <string name="drinkers_no_name"> The drinker needs a name! </string>
     <string name="drinkers_drinker_saved"> Successfully added the drinker </string>
     <string name="drinkers_known_name"> This name is already taken! </string>

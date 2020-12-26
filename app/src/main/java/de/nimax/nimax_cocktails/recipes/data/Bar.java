@@ -68,6 +68,14 @@ public class Bar {
     }
 
     /**
+     * Remove all the recipes
+     */
+    public static void removeAllRecipes() {
+        recipes = new ArrayList<>();
+        saveRecipes();
+    }
+
+    /**
      * Saves the recipes
      */
     public static void saveRecipes() {

@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.nimax.nimax_cocktails.R;
 
-import de.nimax.nimax_cocktails.BluetoothService;
+import de.nimax.nimax_cocktails.shared.BluetoothService;
 import de.nimax.nimax_cocktails.drinkers.DrinkersActivity;
 import de.nimax.nimax_cocktails.mixing.MixingActivity;
 import de.nimax.nimax_cocktails.recipes.RecipesActivity;

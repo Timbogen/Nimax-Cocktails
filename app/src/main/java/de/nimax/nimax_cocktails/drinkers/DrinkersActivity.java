@@ -15,6 +15,9 @@ import android.widget.TextView;
 import de.nimax.nimax_cocktails.menu.MenuActivity;
 import de.nimax.nimax_cocktails.drinkers.data.Administration;
 import de.nimax.nimax_cocktails.menu.Showcase;
+import de.nimax.nimax_cocktails.recipes.RecipesAdapter;
+import de.nimax.nimax_cocktails.recipes.data.Bar;
+import de.nimax.nimax_cocktails.shared.ConfirmDialog;
 
 import com.nimax.nimax_cocktails.R;
 
@@ -25,6 +28,9 @@ public class DrinkersActivity extends AppCompatActivity {
      */
     private DrinkersAdapter adapter;
 
+    /**
+     * Create the view
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +39,7 @@ public class DrinkersActivity extends AppCompatActivity {
         // Deactivate the old transition
         getWindow().setEnterTransition(null);
         getWindow().setExitTransition(null);
-        setupList();
+        setupView();
         // Setup the showcases for first use
         setupShowcases();
     }
@@ -53,10 +59,13 @@ public class DrinkersActivity extends AppCompatActivity {
         Showcase.setupShowcase(this, Showcase.DRINKERS, findViewById(R.id.drinker_add), getString(R.string.showcase_drinkers_add), list);
     }
 
+    /**
+     * Check if an item was deleted
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        adapter.notifyDataSetChanged();
+        updateView();
     }
 
     /**
@@ -81,25 +90,42 @@ public class DrinkersActivity extends AppCompatActivity {
     }
 
     /**
-     * Method to setup the list
+     * Set up the view
      */
-    private void setupList() {
-        if (Administration.drinkers.size() > 0) {
-            // Hide the text fields
-            TextView noRecipes = findViewById(R.id.drinkers_no_drinkers);
-            TextView noRecipesInfo = findViewById(R.id.drinkers_no_drinkers_info);
-            noRecipes.setVisibility(TextView.GONE);
-            noRecipesInfo.setVisibility(TextView.GONE);
-            // Setup the adapter
+    private void setupView() {
+        ListView list = findViewById(R.id.drinkers_list);
+        adapter = new DrinkersAdapter(this, Administration.drinkers);
+        list.setAdapter(adapter);
+        updateView();
+    }
+
+    /**
+     * Update the view of this activity
+     */
+    private void updateView() {
+        boolean noDrinkers = Administration.drinkers.isEmpty();
+
+        // Update the list
+        if (noDrinkers) {
+            ListView list = findViewById(R.id.drinkers_list);
             adapter = new DrinkersAdapter(this, Administration.drinkers);
-            // Get the list view
-            final ListView list = findViewById(R.id.drinkers_list);
             list.setAdapter(adapter);
         }
+        else {
+            adapter.notifyDataSetChanged();
+        }
+
+        // Hide or show the text fields
+        TextView noRecipes = findViewById(R.id.drinkers_no_drinkers);
+        TextView noRecipesInfo = findViewById(R.id.drinkers_no_drinkers_info);
+        noRecipes.setVisibility(noDrinkers ? TextView.VISIBLE : TextView.GONE);
+        noRecipesInfo.setVisibility(noDrinkers ? TextView.VISIBLE : TextView.GONE);
     }
 
     /**
      * Method for opening a dialog to save recipes
+     *
+     * @param v The view that was clicked
      */
     public void addDrinker(View v) {
         AddDialog dialog = new AddDialog(this);
@@ -107,12 +133,28 @@ public class DrinkersActivity extends AppCompatActivity {
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
-                if (Administration.drinkers.size() == 1) {
-                    setupList();
-                } else if (Administration.drinkers.size() > 1) {
-                    adapter.notifyDataSetChanged();
-                }
+                updateView();
             }
         });
+    }
+
+    /**
+     * Remove the drinkers
+     *
+     * @param v The view that was clicked
+     */
+    public void clearDrinkers(View v) {
+        new ConfirmDialog(
+                this,
+                getString(R.string.drinkers_clear_title),
+                getString(R.string.drinkers_clear_description),
+                new ConfirmDialog.DialogAction() {
+                    @Override
+                    public void confirm() {
+                        Administration.removeAllDrinkers();
+                        updateView();
+                    }
+                }
+        ).show();
     }
 }
