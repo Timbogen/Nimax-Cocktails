@@ -3,4 +3,4 @@ Android application for controlling a cocktail machine via bluetooth on your pho
 
 All the external libraries are documented in build.gradle (Module: app)
 
-Figga Figga
+Sry, doch nicht, bitte nicht judgen.
