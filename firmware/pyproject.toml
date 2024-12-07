@@ -4,10 +4,15 @@ version = "0.1.0"
 description = "Firmware for the Nimax cocktail machine."
 authors = ["Tim Niederer <niederer.tim@gmail.com>", "Hannes Ritzler <h.ritzler@gmail.com>"]
 readme = "README.md"
-package-mode = false
+packages = [
+    { include = "src" }
+]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "3.11.11"
+
+[tool.poetry.scripts]
+firmware = "src.main:start"
 
 [build-system]
 requires = ["poetry-core"]
