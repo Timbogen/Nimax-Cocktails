@@ -4,10 +4,12 @@ This is the new version of the firmware (written in python)
 
 ## Prerequisites
 
-### Install pyenv && python
+### Install python
+
+#### For MacOS
 
 ```bash
-    brew install pyenv && pyenv install 3.11.11
+    brew install pyenv && pyenv install 3.11
 ```
 
 Edit .zsh profile
@@ -20,6 +22,12 @@ Edit .zsh profile
 
 See here: https://github.com/pyenv/pyenv
 
+#### Other
+
+Install python 3.11
+
+https://www.python.org/downloads/release/python-31111/
+
 ### Install dependencies with poetry
 
 1. Install PipX https://pipx.pypa.io/stable/installation/
@@ -31,6 +39,14 @@ See here: https://github.com/pyenv/pyenv
 ```
 
 ## Running the firmware
+
+Remote execution:
+
+```bash
+    poetry run ssh-firmware
+```
+
+or this one if you are executing it directly on the pi
 
 ```bash
     poetry run firmware

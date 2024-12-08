@@ -5,13 +5,17 @@ description = "Firmware for the Nimax cocktail machine."
 authors = ["Tim Niederer <niederer.tim@gmail.com>", "Hannes Ritzler <h.ritzler@gmail.com>"]
 readme = "README.md"
 packages = [
+    { include = "scripts" },
     { include = "src" }
 ]
 
 [tool.poetry.dependencies]
-python = "3.11.11"
+python = "3.11.*"
+paramiko = "3.5.0"
+python-dotenv = "1.0.1"
 
 [tool.poetry.scripts]
+ssh-firmware = "scripts.deploy:start"
 firmware = "src.main:start"
 
 [build-system]
