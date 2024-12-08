@@ -8,9 +8,6 @@ import hashlib
 # Load the .env file
 load_dotenv()
 
-# Load pyenv
-init_pyenv_command = 'export PYENV_ROOT="$HOME/.pyenv" && command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH" && eval "$(pyenv init -)"'
-
 # Check if config was loaded successfully
 if not os.getenv('RASPBERRY_HOST'):
     raise ValueError(
