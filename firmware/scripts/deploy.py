@@ -3,7 +3,7 @@ import paramiko
 from dotenv import load_dotenv
 import select
 import argparse
-import stat
+import hashlib
 
 # Load the .env file
 load_dotenv()
@@ -19,7 +19,6 @@ if not os.getenv('RASPBERRY_HOST'):
 
 def chapter(chapter_title):
     """Print a section to the console"""
-
     print()
     print("=" * 90)
     print("‖ " + chapter_title)
@@ -78,26 +77,6 @@ def install_python_env(ssh):
                     'cd /tmp/firmware && poetry env use python3.11 && poetry config keyring.enabled false && poetry install')
 
 
-def remove_remote_directory(sftp, remote_dir):
-    """Recursively remove a directory from remote"""
-    try:
-        for entry in sftp.listdir_attr(remote_dir):
-            entry_path = f"{remote_dir}/{entry.filename}"
-            if stat.S_ISDIR(entry.st_mode):
-                # If it's a directory, recursively remove it
-                remove_remote_directory(sftp, entry_path)
-            else:
-                # If it's a file, delete it
-                sftp.remove(entry_path)
-        # Remove the now-empty directory
-        sftp.rmdir(remote_dir)
-    except FileNotFoundError:
-        pass  # Directory doesn't exist, no action needed
-    except Exception as e:
-        print(f"Error removing directory {remote_dir}: {e}")
-        raise
-
-
 def ensure_remote_dir_exists(sftp, remote_dir):
     """Create directory structure on remote"""
 
@@ -114,27 +93,48 @@ def ensure_remote_dir_exists(sftp, remote_dir):
         sftp.mkdir(remote_dir)
 
 
-def copy_directory(sftp, local_dir, remote_dir):
-    """Copy a local directory to a remote directory"""
-    local_dir_abs = os.path.abspath(local_dir)
-    print(f'Copy "{local_dir_abs}" to "{remote_dir}"...')
+def calculate_file_hash(file_path):
+    """Calculate SHA-256 hash of a file."""
+    hasher = hashlib.sha256()
+    with open(file_path, 'rb') as f:
+        for chunk in iter(lambda: f.read(4096), b""):
+            hasher.update(chunk)
+    return hasher.hexdigest()
 
+
+def sync_files(sftp, local_dir, remote_dir):
+    """Sync local directory to remote directory over SSH."""
     ensure_remote_dir_exists(sftp, remote_dir)
+    for root, dirs, files in os.walk(local_dir):
+        # Skip __pycache__ directories
+        dirs[:] = [d for d in dirs if d not in {"__pycache__", ".idea"}]
+        relative_path = os.path.relpath(root, local_dir)
+        remote_path = os.path.join(remote_dir, relative_path).replace("\\", "/")
 
-    for root, dirs, files in os.walk(local_dir_abs):
-        root_abs = os.path.abspath(root)
-        for dirname in dirs:
-            local_path = os.path.join(root_abs, dirname)
-            relative_path = os.path.relpath(local_path, local_dir_abs)
-            remote_path = os.path.join(remote_dir, relative_path)
-            ensure_remote_dir_exists(sftp, remote_path)
+        # Ensure the remote directory exists
+        try:
+            sftp.stat(remote_path)
+        except FileNotFoundError:
+            sftp.mkdir(remote_path)
 
-        for filename in files:
-            local_path = os.path.join(root_abs, filename)
-            relative_path = os.path.relpath(local_path, local_dir_abs)
-            remote_path = os.path.join(remote_dir, relative_path)
-            ensure_remote_dir_exists(sftp, os.path.dirname(remote_path))
-            sftp.put(local_path, remote_path)
+        for file_name in files:
+            local_file = os.path.join(root, file_name)
+            remote_file = f"{remote_path}/{file_name}"
+
+            # Calculate local file hash
+            local_hash = calculate_file_hash(local_file)
+
+            # Check remote file hash
+            try:
+                with sftp.open(remote_file, 'rb') as f:
+                    remote_hash = hashlib.sha256(f.read()).hexdigest()
+            except FileNotFoundError:
+                remote_hash = None
+
+            # If hashes differ or remote file doesn't exist, upload
+            if local_hash != remote_hash:
+                print(f"Syncing: {local_file} -> {remote_file}")
+                sftp.put(local_file, remote_file)
 
 
 def start():
@@ -161,12 +161,11 @@ def start():
     )
     print("Connected.")
 
-    # Copy the controller code
+    # Copy the controller code (only changed files)
     copy_chapter_appendix = "..." if skip_env else " & install dependencies..."
     chapter(f"Copying code{copy_chapter_appendix}")
     sftp = ssh.open_sftp()
-    remove_remote_directory(sftp, '/tmp/firmware')
-    copy_directory(sftp, '.', f'/tmp/firmware')
+    sync_files(sftp, '.', f'/tmp/firmware')
 
     # Install env
     if not skip_env:

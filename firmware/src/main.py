@@ -1,5 +1,6 @@
 import os
 import time
+from src.test import whatever, whatever1
 
 # Path to control the built-in LED (typically led0 or act)
 LED_PATH = "/sys/class/leds/ACT"  # Adjust if necessary for your Pi model
@@ -13,7 +14,7 @@ def write_led_file(file_name, value):
 
 def blink_led(delay=0.2, count=100):
     """
-    Blink the built-in LED on the Raspberry Pi.
+    Blinks the built-in LED on the Raspberry Pi.
 
     Args:
         delay (float): Time in seconds between blinks.
@@ -36,4 +37,8 @@ def blink_led(delay=0.2, count=100):
 
 def start():
     """Let the LED blink"""
+    whatever()
+    whatever()
+    whatever()
+    whatever1()
     blink_led()
