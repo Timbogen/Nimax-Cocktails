@@ -3,6 +3,7 @@ import paramiko
 from dotenv import load_dotenv
 import select
 import argparse
+import stat
 
 # Load the .env file
 load_dotenv()
@@ -77,6 +78,26 @@ def install_python_env(ssh):
                     'cd /tmp/firmware && poetry env use python3.11 && poetry config keyring.enabled false && poetry install')
 
 
+def remove_remote_directory(sftp, remote_dir):
+    """Recursively remove a directory from remote"""
+    try:
+        for entry in sftp.listdir_attr(remote_dir):
+            entry_path = f"{remote_dir}/{entry.filename}"
+            if stat.S_ISDIR(entry.st_mode):
+                # If it's a directory, recursively remove it
+                remove_remote_directory(sftp, entry_path)
+            else:
+                # If it's a file, delete it
+                sftp.remove(entry_path)
+        # Remove the now-empty directory
+        sftp.rmdir(remote_dir)
+    except FileNotFoundError:
+        pass  # Directory doesn't exist, no action needed
+    except Exception as e:
+        print(f"Error removing directory {remote_dir}: {e}")
+        raise
+
+
 def ensure_remote_dir_exists(sftp, remote_dir):
     """Create directory structure on remote"""
 
@@ -144,6 +165,7 @@ def start():
     copy_chapter_appendix = "..." if skip_env else " & install dependencies..."
     chapter(f"Copying code{copy_chapter_appendix}")
     sftp = ssh.open_sftp()
+    remove_remote_directory(sftp, '/tmp/firmware')
     copy_directory(sftp, '.', f'/tmp/firmware')
 
     # Install env
